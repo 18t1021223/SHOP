@@ -37,10 +37,6 @@
 </head>
 
 <body class="register">
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
     <!-- Add your site or application content here -->
     <!-- header-area-start -->
     <header>
@@ -77,9 +73,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="account-area text-right">
                             <ul>
-                                <li><a href="register.html">My Account</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="login.html">Sign in</a></li>
+                
+                                <li><a href="login.jsp">Đăng nhập</a></li>
                             </ul>
                         </div>
                     </div>
@@ -90,64 +85,12 @@
         <!-- header-mid-area-start -->
         <div class="header-mid-area ptb-40">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
-                        <div class="header-search">
-                            <form action="#">
-                                <input type="text" placeholder="Search entire store here..." />
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                <div class="row">                  
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="logo-area text-center logo-xs-mrg">
-                            <a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
+                            <a href="login.jsp"><img src="img/logo/logo.png" alt="logo" /></a>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="my-cart">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
-                                    <span>2</span>
-                                    <div class="mini-cart-sub">
-                                        <div class="cart-product">
-                                            <div class="single-cart">
-                                                <div class="cart-img">
-                                                    <a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-                                                </div>
-                                                <div class="cart-info">
-                                                    <h5><a href="#">Joust Duffle Bag</a></h5>
-                                                    <p>1 x £60.00</p>
-                                                </div>
-                                                <div class="cart-icon">
-                                                    <a href="#"><i class="fa fa-remove"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="single-cart">
-                                                <div class="cart-img">
-                                                    <a href="#"><img src="img/product/3.jpg" alt="book" /></a>
-                                                </div>
-                                                <div class="cart-info">
-                                                    <h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-                                                    <p>1 x £52.00</p>
-                                                </div>
-                                                <div class="cart-icon">
-                                                    <a href="#"><i class="fa fa-remove"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-totals">
-                                            <h5>Total <span>£12.00</span></h5>
-                                        </div>
-                                        <div class="cart-bottom">
-                                            <a class="view-cart" href="cart.html">view cart</a>
-                                            <a href="checkout.html">Check out</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </div>                  
                 </div>
             </div>
         </div>
@@ -160,16 +103,8 @@
                         <div class="menu-area">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-                                        <div class="sub-menu">
-                                            <ul>
-                                                <li><a href="index-2.html">Home-2</a></li>
-                                                <li><a href="index-3.html">Home-3</a></li>
-                                                <li><a href="index-4.html">Home-4</a></li>
-                                                <li><a href="index-5.html">Home-5</a></li>
-                                                <li><a href="index-6.html">Home-6</a></li>
-                                            </ul>
-                                        </div>
+                                    <li class="active"><a href="index.html">Home</a>
+                                        
                                     </li>
                                     <li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
                                         <div class="mega-menu">
@@ -264,32 +199,7 @@
 												</span>
                                         </div>
                                     </li>
-                                    <li><a href="#">blog<i class="fa fa-angle-down"></i></a>
-                                        <div class="sub-menu sub-menu-2">
-                                            <ul>
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="blog-details.html">blog-details</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="#">pages<i class="fa fa-angle-down"></i></a>
-                                        <div class="sub-menu sub-menu-2">
-                                            <ul>
-                                                <li><a href="shop.html">shop</a></li>
-                                                <li><a href="product-details.html">product-details</a></li>
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="blog-details.html">blog-details</a></li>
-                                                <li><a href="contact.html">contact</a></li>
-                                                <li><a href="about.html">about</a></li>
-                                                <li><a href="login.html">login</a></li>
-                                                <li><a href="register.html">register</a></li>
-                                                <li><a href="cart.html">cart</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                                <li><a href="wishlist.html">wishlist</a></li>
-                                                <li><a href="404.html">404 Page</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                                                      
                                 </ul>
                             </nav>
                         </div>
@@ -310,13 +220,7 @@
                             <nav id="mobile-menu-active">
                                 <ul id="nav">
                                     <li><a href="index.html">Home</a>
-                                        <ul>
-                                            <li><a href="index-2.html">Home-2</a></li>
-                                            <li><a href="index-3.html">Home-3</a></li>
-                                            <li><a href="index-4.html">Home-4</a></li>
-                                            <li><a href="index-5.html">Home-5</a></li>
-                                            <li><a href="index-6.html">Home-6</a></li>
-                                        </ul>
+                                       
                                     </li>
                                     <li><a href="product-details.html">Book</a>
                                         <ul>
@@ -378,28 +282,7 @@
                                             <li><a href="shop.html">Ankle boots</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">blog-details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="product-details.html">Page</a>
-                                        <ul>
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="product-details.html">product-details</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">blog-details</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
+                                                                       
                                 </ul>
                             </nav>
                         </div>
@@ -418,7 +301,7 @@
                     <div class="breadcrumbs-menu">
                         <ul>
                             <li><a href="#">Home</a></li>
-                            <li><a href="#" class="active">register</a></li>
+                            <li><a href="#" class="active">đăng ký</a></li>
                         </ul>
                     </div>
                 </div>
@@ -430,119 +313,85 @@
     <div class="user-login-area mb-70">
         <div class="container">
             <div class="row">
+
+            <c:choose>
+   					 <c:when test="${notify == 1 }">
+	   						 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> yêu cầu thiết lập lại mật khẩu thành công , kiểm tra email của bạn </strong>
+	  						</div>
+  						</c:when>
+  						 <c:when test="${notify == 2 }">
+  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> Email chưa được đăng ký , vui lòng nhập lại Email </strong>
+    				 		</div>
+  						</c:when> 	
+  						 <c:when test="${notify == 3 }">
+  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> Sai tài khoản hoặc mật khẩu , vui lòng nhập lại  </strong>
+    				 		</div>
+  						</c:when> 	
+  						 <c:when test="${notify == 4 }">
+  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> Email đã tồn tại , vui lòng nhập lại  </strong>
+    				 		</div>
+  						</c:when> 						
+ 					</c:choose>
+ 					
                 <div class="col-lg-12">
                     <div class="login-title text-center mb-30">
-                        <h2>Sign Up</h2>
+                        <h2>Đăng ký</h2>
                         <p>doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo<br>inventore veritatis et quasi architecto beat</p>
                     </div>
                 </div>
-                <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+                <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
                     <div class="billing-fields">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="single-register">
                                     <form action="#">
-                                        <label>First Name<span>*</span></label>
-                                        <input type="text" />
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="single-register">
-                                    <form action="#">
-                                        <label>Last Name<span>*</span></label>
-                                        <input type="text" />
+                                        <label>Họ tên<span>*</span></label>
+                                        <input type="text" required form="f1" name="user_name"/>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="single-register">
-                            <form action="#">
-                                <label>Company Name</label>
-                                <input type="text" />
-                            </form>
-                        </div>
+
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="single-register">
                                     <form action="#">
-                                        <label>Email Address<span>*</span></label>
-                                        <input type="text" />
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="single-register">
-                                    <form action="#">
-                                        <label>Phone<span>*</span></label>
-                                        <input type="text" />
+                                        <label>Email<span>*</span></label>
+                                        <input type="email" required form="f1" name='user_email'/>
+                                        <p>${ email_exists }</p>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="single-register">
-								<label>Country<span>*</span></label>
-								<select class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
-									<option value="country">Select a country</option>
-									<option value="Islands">Aland Islands</option>
-									<option value="Afghanistan">Afghanistan</option>
-									<option value="Albania">Albania</option>
-									<option value="Samoa">American Samoa</option>
-								</select>
-							</div> -->
-                        <div class="single-register">
+
+                         <div class="single-register">
                             <form action="#">
-                                <label>Address<span>*</span></label>
-                                <input type="text" placeholder="Street address" />
-                                <input type="text" id="billing_address_2" placeholder="Apartment, suite, unit etc. (optional" />
+                                <label>Mật khẩu<span>*</span></label>
+                                <input type="password" name='user_password' placeholder="mật khẩu" required form="f1" id="password" minlength="8" />
                             </form>
                         </div>
                         <div class="single-register">
                             <form action="#">
-                                <label>Town/City<span>*</span></label>
-                                <input type="text" />
+                                <label>Xác thực mật khẩu<span>*</span></label>
+                                <input type="password" placeholder="Xác thực" id="again-password" required/>
+                                <span id="msg-apw" style="color: red;"></span>
                             </form>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="single-register">
-                                    <label>State<span>*</span></label>
-                                    <select class="chosen-select" tabindex="1" style="width:100%;" data-placeholder="Default Sorting">
-											<option value="Select">Select a State</option>
-											<option value="Andhra">Andhra Pradesh</option>
-											<option value="Pradesh">Arunachal Pradesh</option>
-											<option value="Delhi">Delhi</option>
-											<option value="Lakshadeep">Lakshadeep</option>
-										</select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="single-register">
-                                    <form action="#">
-                                        <label>Postcode/zip<span>*</span></label>
-                                        <input type="text" placeholder="Postcode/zip" />
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="single-register">
-                            <form action="#">
-                                <label>Account password<span>*</span></label>
-                                <input type="text" placeholder="Password" />
+                            <form action="userController" method="GET" id="f1" onsubmit="return run()">
+                            	<input type='hidden' name='action' value='register' />
+                                <input type="submit" value="Đăng ký" id="submit" onclick="loading()"/>
+                                <i class="fa fa-spinner fa-spin" id="loading_icon" style="display: none;"></i>
                             </form>
-                        </div>
-                        <div class="single-register">
-                            <form action="#">
-                                <label>Confirm password<span>*</span></label>
-                                <input type="text" placeholder="Password" />
-                            </form>
-                        </div>
-                        <div class="single-register single-register-3">
-                            <input id="rememberme" type="checkbox" name="rememberme" value="forever">
-                            <label class="inline">I agree <a href="#">Terms & Condition</a></label>
-                        </div>
-                        <div class="single-register">
-                            <a href="#">Register</a>
                         </div>
                     </div>
                 </div>
@@ -564,7 +413,7 @@
                                     <li><a href="#">Enable Cookies</a></li>
                                     <li><a href="#">Privacy and Cookie Policy</a></li>
                                     <li><a href="#">contact us</a></li>
-                                    <li><a href="#">blog</a></li>
+                                    
                                 </ul>
                             </nav>
                         </div>

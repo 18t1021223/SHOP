@@ -25,7 +25,6 @@ public class controller_direction extends HttpServlet {
 
 	public controller_direction() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,64 +34,44 @@ public class controller_direction extends HttpServlet {
 
 		String page = (String) request.getParameter("page");
 		if (page != null) {
-			controller_direction(request, response, page);
-			return;
-		}
-		String quickView = (String) request.getParameter("quickView");
-		if (quickView != null) {
-			System.out.println(quickView);
-			productBEAN prod = productBO.getProduct(quickView);
-			hs.setAttribute("quickView", prod);
-			// request.getRequestDispatcher("shop.jsp").forward(request,
-			// response);
-		}
-		String infoProduct = (String) request.getParameter("infoProduct");
-		if (infoProduct != null) {
-			ArrayList<imageBEAN> ds = (ArrayList<imageBEAN>) imageBO.getImageAll(infoProduct);
-			productBEAN prod = productBO.getProduct(infoProduct);
-			hs.setAttribute("productImageAll", ds);
-			hs.setAttribute("product", prod);
-			request.getRequestDispatcher("product-details.jsp").forward(request, response);
-			return;
+			controller_directionPage(request, response, page);
+			
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
-	public void controller_direction(HttpServletRequest req, HttpServletResponse resp, String page)
+	public void controller_directionPage(HttpServletRequest req, HttpServletResponse resp, String page)
 			throws ServletException, IOException {
 		HttpSession hs = req.getSession();
 
 		if (page.equals("shop")) {
 
-			int total = productBO.getProductTotal();
+			int total = productBO.getProductTotal(utils.productFilter(req));
 			int fetch = 16;
 			int totalPage = utils.getTotalPage((double) total, (double) fetch);
-			int current_page = utils.currentPage( req.getParameter("numberPage"), totalPage);
+			int current_page = utils.currentPage(req.getParameter("numberPage"), totalPage);
 			int offset = (current_page - 1) * fetch;
 
-			ArrayList<productBEAN> dsProd = (ArrayList<productBEAN>) productBO.getProductAll(offset, fetch);
-			
+			ArrayList<productBEAN> dsProd = (ArrayList<productBEAN>) productBO.getProductAll(utils.productFilter(req),
+					offset, fetch);
+
 			hs.setAttribute("totalPage", totalPage);
 			hs.setAttribute("numberPage", current_page);
 			hs.setAttribute("product_list", dsProd);
 
-			String init = (String) req.getParameter("init");
-			if (init == null)
-				init = "";
-			if (init.equals("init")) {
+			ArrayList<categoryBEAN> dsCate = (ArrayList<categoryBEAN>) categoryBO.getCategoryAll();
+			ArrayList<producerBEAN> dsProducer = (ArrayList<producerBEAN>) producerBO.getProducerAll();
 
-				ArrayList<categoryBEAN> dsCate = (ArrayList<categoryBEAN>) categoryBO.getCategoryAll();
-				ArrayList<producerBEAN> dsProducer = (ArrayList<producerBEAN>) producerBO.getProducerAll();
+			hs.setAttribute("category_list", dsCate);
+			hs.setAttribute("producer_list", dsProducer);
 
-				hs.setAttribute("category_list", dsCate);
-				hs.setAttribute("producer_list", dsProducer);
-			}
-			resp.sendRedirect("shop.jsp");
+			req.getRequestDispatcher("controller_direction?page=view").forward(req, resp);
+		} else if (page.equals("view")) {
+
+			req.getRequestDispatcher("shop.jsp").forward(req, resp);
 		}
 
 	}

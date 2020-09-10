@@ -33,7 +33,7 @@
 	17. Home 6
 	18. Shop page
 	19. Product details
-	
+
 	22. Login
 	23. Register
 	24. Contact
@@ -56,10 +56,12 @@
 
 /* google-font */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Rufina:400,700');
+
+
 html,
 body {
     height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .floatleft {
@@ -153,7 +155,6 @@ ul {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: #666;
@@ -586,6 +587,7 @@ body {
     display: inline-block;
     font-size: 18px;
     height: 42px;
+    line-height: 40px;
     position: absolute;
     right: 0;
     text-align: center;
@@ -1218,7 +1220,7 @@ body {
     font-weight: 700;
     line-height: 1;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -1229,7 +1231,7 @@ body {
     line-height: 1;
     margin-bottom: 25px;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -1239,7 +1241,7 @@ body {
     font-weight: 400;
     line-height: 1;
     text-transform: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -1255,7 +1257,7 @@ body {
     margin-top: 43px;
     padding: 10px 38px;
     text-transform: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     text-decoration: none;
     box-shadow: 2px 2px 2px 2px #a8c0ba;
@@ -1436,7 +1438,7 @@ body {
     letter-spacing: 1px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: 'Rufina', serif;
+    
     color: #333;
 }
 
@@ -1524,7 +1526,12 @@ body {
     transition: all .5s ease 0s;
     opacity: 0;
 }
-
+.quick-view-icon{
+	 position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  transform: translate(-50%, -50%);
+}
 .product-wrapper:hover .quick-view {
     opacity: 1;
 }
@@ -1536,14 +1543,9 @@ body {
     display: inline-block;
     font-size: 22px;
     height: 61px;
-    line-height: 61px;
     width: 61px;
     transform: scale(0);
     transition: all .5s ease 0s;
-}
-
-.quick-view a i{
-	line-height: 61px;
 }
 
 .product-wrapper:hover .quick-view a {
@@ -1574,7 +1576,7 @@ body {
     padding: 0;
     text-transform: capitalize;
     transition: .3s;
-    font-family: 'Rufina', serif;
+    
 }
 
 .product-details h4 a:hover,
@@ -1588,14 +1590,14 @@ body {
     color: #f07c29;
     font-size: 20px;
     font-weight: 600;
-    font-family: 'Rufina', serif;
+   	font-family: "Times New Roman", Times, serif;
     font-style: italic;
 }
 
 .product-price ul li span {
     color: #666;
     padding-right: 5px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     font-size: 16px;
 }
@@ -1672,10 +1674,11 @@ body {
     font-weight: 700;
     line-height: 30px;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     transition: .3s;
 }
+
 
 .product-link .product-button a i {
     padding-right: 8px;
@@ -1732,7 +1735,7 @@ body {
     padding: 0 6px;
     text-align: center;
     text-transform: uppercase;
-    z-index: 100;
+    z-index: 98;
     font-weight: 400;
     position: relative;
     font-family: "Open Sans", sans-serif;
@@ -1906,7 +1909,7 @@ body {
     font-weight: 700;
     line-height: 1.1;
     text-align: right;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -1969,7 +1972,7 @@ body {
 }
 
 .single-bestseller .bestseller-text h3 {
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     margin-bottom: 0;
 }
@@ -1998,7 +2001,7 @@ body {
 
 .single-bestseller .bestseller-text .price ul li span {
     font-size: 15px;
-    font-family: 'Rufina', serif;
+    
     transition: .3s;
     font-weight: 600;
     font-style: italic;
@@ -2134,7 +2137,7 @@ body {
     font-weight: 700;
     line-height: 1.3;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     text-decoration: none;
     transition: .3s;
@@ -2195,7 +2198,7 @@ body {
     color: #fff;
     font-size: 16px;
     line-height: 24px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -2594,7 +2597,7 @@ footer {
     text-decoration: none;
     transition: all 0.5s ease 0s;
     line-height: 30px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -2608,7 +2611,7 @@ footer {
 
 .footer-contact p {
     color: #fff;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -2641,7 +2644,7 @@ footer {
     color: #fff;
     margin-bottom: 0;
     margin-top: 8px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -2835,7 +2838,7 @@ a#scrollUp:hover {
     padding-left: 233px;
     padding-right: 55px;
     width: 100%;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -3116,7 +3119,7 @@ a#scrollUp:hover {
     line-height: 1.15;
     text-transform: capitalize;
     text-decoration: none;
-    font-family: 'Rufina', serif;
+    
     transition: .3s;
 }
 
@@ -3158,7 +3161,7 @@ a#scrollUp:hover {
     font-size: 18px;
     font-weight: 400;
     text-decoration: line-through;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -3488,7 +3491,7 @@ a#scrollUp:hover {
     font-weight: 700;
     line-height: 1;
     text-transform: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     margin: 0 0 10px;
 }
@@ -3499,7 +3502,7 @@ a#scrollUp:hover {
     line-height: 1;
     margin-bottom: 20px;
     text-transform: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 700;
 }
 
@@ -3515,7 +3518,7 @@ a#scrollUp:hover {
     padding: 10px 23px;
     text-transform: uppercase;
     text-decoration: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -3567,7 +3570,7 @@ a#scrollUp:hover {
     color: #222;
     font-size: 16px;
     font-weight: 700;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     margin-bottom: 0;
     transition: .3s;
@@ -3581,7 +3584,7 @@ a#scrollUp:hover {
 .single-banner-2 .single-text-2 p {
     color: #333;
     font-size: 14px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     margin-bottom: 0;
     transition: .3s;
@@ -4204,7 +4207,7 @@ nav.menu .cr-dropdown ul {
     line-height: 30px;
     padding: 10px;
     width: 370px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -4319,7 +4322,7 @@ nav.menu .cr-dropdown ul {
     font-size: 14px;
     color: #333;
     text-decoration: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -4364,6 +4367,21 @@ nav.menu .cr-dropdown ul {
     width: 100%;
 }
 
+.left-title .btn-filter {
+    width: 130px;
+    padding: 3px;
+    font-size: 18px;
+    background: rgb(240, 124, 41) none repeat scroll 0 0;
+    color: white;
+    border: 1px solid;
+    box-shadow: 0px 0px 1px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+}
+
+.btn-filter:hover {
+    background-color: rgba( 240, 124, 41, 0.9);
+}
+
 .left-title h4 {
     color: #3f3f3f;
     display: block;
@@ -4383,22 +4401,25 @@ nav.menu .cr-dropdown ul {
     border-bottom: 0;
 }
 
-.left-menu ul li a {
+.left-menu ul li a{
     color: #333;
     display: block;
     font-size: 15px;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 17px;
     padding: 10px 0;
     position: relative;
     text-transform: capitalize;
     text-decoration: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
+    width: 100%;
+    height: 100%;
 }
 
 .left-menu ul li a:hover {
-    color: #f07c29;
+    background: #f07c29 none repeat scroll 0 0;
+    color:white;
 }
 
 .left-menu ul li a:before {
@@ -4472,7 +4493,7 @@ nav.menu .cr-dropdown ul {
     font-weight: 900;
     line-height: 24px;
     text-transform: uppercase;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -4486,11 +4507,6 @@ nav.menu .cr-dropdown ul {
     border-bottom: 1px solid #cccccc;
     overflow: hidden;
     padding: 20px 0;
-}
-
-.shop-tab {
-    float: left;
-    display: inline-block;
 }
 
 .tab-3 {
@@ -4577,7 +4593,7 @@ nav.menu .cr-dropdown ul {
     font-size: 16px;
     font-weight: 400;
     line-height: 35px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -4589,7 +4605,7 @@ nav.menu .cr-dropdown ul {
     height: 35px;
     min-width: 95px;
     padding: 0 5px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     color: #333;
 }
@@ -4616,7 +4632,7 @@ nav.menu .cr-dropdown ul {
     margin-right: 0;
     min-width: 95px;
     padding: 0 5px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -4625,7 +4641,7 @@ nav.menu .cr-dropdown ul {
     font-size: 16px;
     font-weight: 400;
     line-height: 35px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -5048,7 +5064,6 @@ nav.menu .cr-dropdown ul {
     margin: 15px 0 9px;
     padding: 0;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5058,7 +5073,7 @@ nav.menu .cr-dropdown ul {
     font-weight: 400;
     margin-right: 15px;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
+ 
     font-weight: 400;
     float: left;
     display: inline-block;
@@ -5073,7 +5088,6 @@ nav.menu .cr-dropdown ul {
 }
 
 .product-attribute span.value {
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5119,12 +5133,12 @@ nav.menu .cr-dropdown ul {
     text-align: left;
     background-color: rgb(240, 124, 41);
     padding: 3px 1px;
-    width: 90px;
+    width: 95px;
     color: white;
 }
 
 .product-info-price {
-    margin:  10px 0 26px 0;
+    margin: 0 0 26px 0;
     overflow: hidden;
 }
 
@@ -5132,13 +5146,20 @@ nav.menu .cr-dropdown ul {
     color: #f07c29;
     font-size: 25px;
     font-weight: 400;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
 .product-info-price .price-final span.old-price {
     color: #909090;
     font-weight: 400;
+    text-decoration: line-through;
+}
+
+.product-price span.old-price {
+    line-height: 3;
+    font-size: 15px;
+    color: #666;
+    font-weight: 600;
     text-decoration: line-through;
 }
 
@@ -5154,7 +5175,7 @@ nav.menu .cr-dropdown ul {
     padding: 0 10px;
 }
 
-.product-add-form form a {
+.product-add-form form input {
     background: #333 none repeat scroll 0 0;
     border: 0 none;
     border-radius: 0;
@@ -5169,13 +5190,12 @@ nav.menu .cr-dropdown ul {
     width: auto;
     transition: .3s;
 }
-
 .product-add-form form .quality-button {
     float: left;
     margin-right: 10px;
 }
 
-.product-add-form form a {
+.product-add-form form input {
     float: left;
 }
 
@@ -5202,7 +5222,7 @@ nav.menu .cr-dropdown ul {
 }
 
 .product-addto-links a:hover,
-.product-add-form form a:hover {
+.product-add-form form input:hover {
     background: #f07c29 none repeat scroll 0 0;
 }
 
@@ -5214,6 +5234,9 @@ nav.menu .cr-dropdown ul {
     margin: 10px 0 0;
     padding: 30px 0;
 }
+
+
+/*----------------------------------------*/
 
 
 /*  22. Login
@@ -5231,7 +5254,7 @@ nav.menu .cr-dropdown ul {
     margin-bottom: 15px;
     padding-bottom: 10px;
     text-transform: capitalize;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -5240,7 +5263,7 @@ nav.menu .cr-dropdown ul {
     font-weight: 400;
     margin: 0;
     line-height: 1.6em;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     color: #333;
 }
@@ -5264,7 +5287,6 @@ nav.menu .cr-dropdown ul {
     font-weight: 400;
     margin-top: 7px;
     display: block;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5273,26 +5295,12 @@ nav.menu .cr-dropdown ul {
     border: 1px solid #eceff8;
     padding: 12px 10px;
     width: 100%;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
- .login-form .single-login input[type='submit'] {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: 1px solid #eceff8;
-    display: inline-block;
-    padding: 10px 43px;
-    color: #333;
-    text-transform: capitalize;
-    text-decoration: none;
-    float: left;
-    transition: .3s;
-    font-family: 'Rufina', serif;
-    font-weight: 400;
-    width:auto;
-}
 
-.login-form .single-login input[type='submit']:hover {
+
+.login-form .single-login input[ type="submit" ]:hover {
     background: #F07C29;
     color: #fff;
     border: 1px solid #F07C29;
@@ -5307,7 +5315,6 @@ nav.menu .cr-dropdown ul {
 .single-login-2 span {
     float: left;
     margin-top: 10px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
     color: #333;
 }
@@ -5316,7 +5323,7 @@ nav.menu .cr-dropdown ul {
     overflow: hidden;
 }
 
-.login-form>input[type='submit']{
+.login-form>a {
     color: #F07C29;
     line-height: 24px;
     margin-bottom: 15px;
@@ -5344,7 +5351,6 @@ nav.menu .cr-dropdown ul {
     font-size: 16px;
     font-weight: 400;
     margin-top: 7px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5357,7 +5363,6 @@ nav.menu .cr-dropdown ul {
     height: 45px;
     padding-left: 10px;
     width: 100%;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5371,7 +5376,6 @@ nav.menu .cr-dropdown ul {
     padding-left: 10px;
     box-shadow: none;
     text-align: left;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5390,7 +5394,6 @@ nav.menu .cr-dropdown ul {
     margin-top: 0;
     padding-left: 10px;
     font-size: 13px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5398,11 +5401,11 @@ nav.menu .cr-dropdown ul {
     color: #F07C29;
     font-size: 14px;
     text-decoration: none;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
-.single-register>a {
+
+.single-register form input[type='submit'] {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
     box-shadow: none;
@@ -5413,11 +5416,11 @@ nav.menu .cr-dropdown ul {
     padding: 12px 48px;
     text-decoration: none;
     transition: .3s;
-    font-family: 'Rufina', serif;
     font-weight: 400;
+    width: 150px;
 }
 
-.single-register>a:hover {
+.single-register form input[type='submit']:hover {
     background-color: #F07C29;
     color: #fff;
     border: 1px solid #F07C29;
@@ -5474,7 +5477,6 @@ nav.menu .cr-dropdown ul {
 
 .contact-info ul li span {
     font-weight: 700;
-    font-family: 'Rufina', serif;
     color: #333;
 }
 
@@ -5482,7 +5484,6 @@ nav.menu .cr-dropdown ul {
     color: #333;
     text-decoration: none;
     transition: .3s;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5503,7 +5504,6 @@ nav.menu .cr-dropdown ul {
     padding: 12px 10px;
     width: 100%;
     color: #333;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5536,7 +5536,6 @@ nav.menu .cr-dropdown ul {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
     width: 140px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5579,7 +5578,6 @@ nav.menu .cr-dropdown ul {
     font-weight: 700;
     line-height: 21px;
     margin-bottom: 20px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5587,7 +5585,6 @@ nav.menu .cr-dropdown ul {
 .single-misson h3 span {
     font-weight: 500;
     padding-left: 10px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5596,7 +5593,6 @@ nav.menu .cr-dropdown ul {
     color: #4a4d4f;
     font-size: 15px;
     line-height: 25px;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5609,7 +5605,6 @@ nav.menu .cr-dropdown ul {
     color: #444;
     text-decoration: none;
     transition: .3s;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5631,14 +5626,12 @@ nav.menu .cr-dropdown ul {
     font-size: 40px;
     color: #444;
     font-weight: 600;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
 .single-counter span {
     font-size: 15px;
     text-transform: uppercase;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5651,7 +5644,6 @@ nav.menu .cr-dropdown ul {
 
 .team-title h2 span {
     font-weight: 700;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -5663,14 +5655,12 @@ nav.menu .cr-dropdown ul {
     font-size: 20px;
     margin: 0;
     font-weight: 500;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
 .team-content span {
     color: #666;
     display: block;
-    font-family: "Rufina", serif;
     font-size: 15px;
     font-weight: 400;
     margin: 3px 0 0;
@@ -5733,8 +5723,7 @@ nav.menu .cr-dropdown ul {
 .team-link ul li a {
     color: #fff;
     font-size: 20px;
-    transition: all 0.3s ease 0s;
-    font-family: 'Rufina', serif;
+    transition: all 0.3s ease 0s;   
     font-weight: 400;
 }
 
@@ -5746,8 +5735,7 @@ nav.menu .cr-dropdown ul {
     color: #252525;
     font-size: 28px;
     font-weight: 500;
-    margin-bottom: 30px;
-    font-family: 'Rufina', serif;
+    margin-bottom: 30px;   
     font-weight: 400;
 }
 
@@ -5760,8 +5748,7 @@ nav.menu .cr-dropdown ul {
     color: #4a4d4f;
     font-size: 16px;
     letter-spacing: 1px;
-    line-height: 25px;
-    font-family: 'Rufina', serif;
+    line-height: 25px;    
     font-weight: 400;
 }
 
@@ -5771,8 +5758,7 @@ nav.menu .cr-dropdown ul {
     font-size: 15px;
     display: inline-block;
     text-decoration: none;
-    transition: .3s;
-    font-family: 'Rufina', serif;
+    transition: .3s;   
     font-weight: 400;
 }
 
@@ -5803,8 +5789,7 @@ nav.menu .cr-dropdown ul {
     font-weight: 700;
     position: absolute;
     text-transform: uppercase;
-    top: -28px;
-    font-family: 'Rufina', serif;
+    top: -28px;  
     font-weight: 400;
 }
 
@@ -5828,8 +5813,7 @@ nav.menu .cr-dropdown ul {
 
 .entry-header-title h2 {
     font-weight: 400;
-    color: #333;
-    font-family: 'Rufina', serif;
+    color: #333;   
     font-weight: 400;
 }
 
@@ -5840,8 +5824,7 @@ nav.menu .cr-dropdown ul {
 .entry-header-area .ntry-header-title h2 {
     font-size: 20px;
     margin: 0;
-    text-transform: uppercase;
-    font-family: 'Rufina', serif;
+    text-transform: uppercase;    
     font-weight: 400;
 }
 
@@ -5881,8 +5864,7 @@ nav.menu .cr-dropdown ul {
     border-top: medium none;
     font-size: 13px;
     padding: 20px 10px;
-    vertical-align: middle;
-    font-family: 'Rufina', serif;
+    vertical-align: middle;   
     font-weight: 400;
 }
 
@@ -5895,8 +5877,7 @@ nav.menu .cr-dropdown ul {
     font-size: 14px;
     font-weight: 700;
     margin-left: 10px;
-    text-decoration: none;
-    font-family: 'Rufina', serif;
+    text-decoration: none;  
     font-weight: 400;
     color: #333;
 }
@@ -5919,20 +5900,20 @@ nav.menu .cr-dropdown ul {
     height: 40px;
     padding: 0 5px 0 10px;
     width: 60px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
 .table-content table td.product-subtotal {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: bold;
-    width: 120px;
-    font-family: 'Rufina', serif;
+    width: 120px;   
     font-weight: 400;
+    color:black;
 }
 
 .table-content table .product-price .amount {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
     color: #333;
 }
@@ -5971,7 +5952,7 @@ nav.menu .cr-dropdown ul {
     text-shadow: none;
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -5996,7 +5977,7 @@ nav.menu .cr-dropdown ul {
 .coupon p {
     font-size: 14px;
     color: : #777;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     color: #333;
 }
@@ -6009,7 +5990,7 @@ nav.menu .cr-dropdown ul {
     max-width: 100%;
     padding: 0 0 0 10px;
     width: 170px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     color: #333;
 }
@@ -6039,6 +6020,7 @@ nav.menu .cr-dropdown ul {
     float: right;
     margin: 0;
     text-align: right;
+    width:100%;
 }
 
 .cart_totals table th {
@@ -6050,7 +6032,7 @@ nav.menu .cr-dropdown ul {
     text-transform: uppercase;
     vertical-align: top;
     color: #777;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     color: #333;
 }
@@ -6068,8 +6050,6 @@ nav.menu .cr-dropdown ul {
     font-weight: bold;
     margin-left: 5px;
     text-align: right;
-    text-transform: uppercase;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
@@ -6087,7 +6067,7 @@ nav.menu .cr-dropdown ul {
     width: 100%;
     color: #333;
     font-size: 13px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6106,16 +6086,14 @@ nav.menu .cr-dropdown ul {
 
 .cart_totals table tr.order-total th,
 .cart_totals table tr.order-total .amount {
-    font-size: 20px;
-    text-transform: uppercase;
+    font-size: 18px;
     white-space: nowrap;
-    font-family: 'Rufina', serif;
     font-weight: 400;
 }
 
 .cart_totals table td {
     border: medium none;
-    padding: 0 0 12px;
+    padding: 0 0 12px 15px;
     vertical-align: top;
 }
 
@@ -6130,7 +6108,7 @@ nav.menu .cr-dropdown ul {
     margin-top: 20px;
     padding: 0 30px;
     text-transform: uppercase;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6178,7 +6156,7 @@ nav.menu .cr-dropdown ul {
 .coupon-accordion span {
     color: #6f6f6f;
     cursor: pointer;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6211,7 +6189,7 @@ p.lost-password a:hover {
 .coupon-accordion span {
     color: #333;
     cursor: pointer;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6219,7 +6197,7 @@ p.lost-password a:hover {
 .coupon-info p.form-row-last label span.required {
     color: #FF1111;
     font-weight: 700;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6231,7 +6209,7 @@ p.lost-password a:hover {
     max-width: 100%;
     padding: 0 0 0 10px;
     width: 370px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6256,7 +6234,7 @@ p.lost-password a:hover {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
     white-space: nowrap;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6275,7 +6253,7 @@ p.lost-password {
 
 p.lost-password a {
     color: #333;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6299,7 +6277,7 @@ p.checkout-coupon input[type="submit"] {
     margin-left: 6px;
     padding: 5px 10px;
     transition: all 0.3s ease 0s;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6319,7 +6297,7 @@ p.lost-password a:hover {
     margin: 0 0 20px;
     padding-bottom: 10px;
     text-transform: uppercase;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6335,14 +6313,14 @@ p.lost-password a:hover {
     font-size: 14px;
     font-weight: 600;
     margin: 0 0 5px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
 .country-select label span.required,
 .checkout-form-list label span.required {
     color: #FF1111;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6352,7 +6330,7 @@ p.lost-password a:hover {
     border: 1px solid #ddd;
     padding-left: 10px;
     font-size: 13px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6368,7 +6346,7 @@ p.lost-password a:hover {
     height: 42px;
     padding: 0 0 0 10px;
     width: 100%;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6400,7 +6378,7 @@ p.lost-password a:hover {
 .create-account p {
     font-size: 13px;
     color: #777;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6429,7 +6407,7 @@ p.lost-password a:hover {
     text-transform: uppercase;
     width: 100%;
     color: #252525;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6456,7 +6434,7 @@ p.lost-password a:hover {
     padding: 15px 0;
     text-align: center;
     color: #333;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6481,7 +6459,7 @@ p.lost-password a:hover {
 .your-order-table table tr.order-total td span {
     color: #ec4445;
     font-size: 20px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6516,7 +6494,7 @@ p.lost-password a:hover {
     text-transform: capitalize;
     margin-bottom: 10px;
     display: inline-block;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6529,7 +6507,7 @@ p.lost-password a:hover {
     font-size: 14px;
     margin-bottom: 0;
     color: #333;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6573,7 +6551,7 @@ p.lost-password a:hover {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
     width: 100%;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6592,7 +6570,7 @@ p.lost-password a:hover {
     color: #252525;
     font-size: 30px;
     font-weight: 300;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6614,7 +6592,7 @@ p.lost-password a:hover {
     padding: 15px 10px;
     text-align: center;
     color: #333;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6643,7 +6621,7 @@ p.lost-password a:hover {
 .wishlist-table table .product-remove>a {
     font-size: 25px;
     color: #333;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6658,7 +6636,7 @@ p.lost-password a:hover {
 .product-name a {
     color: #333;
     transition: .3s;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6686,7 +6664,7 @@ p.lost-password a:hover {
     padding: 10px 56px;
     text-transform: uppercase;
     width: 260px;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6702,7 +6680,7 @@ p.lost-password a:hover {
     color: #252525;
     font-size: 18px;
     font-weight: 500;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6716,7 +6694,7 @@ p.lost-password a:hover {
     font-size: 20px;
     text-decoration: none;
     transition: all 0.3s ease 0s;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
 }
 
@@ -6739,7 +6717,7 @@ p.lost-password a:hover {
     color: #000;
     font-size: 24px;
     margin-bottom: 0;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     font-weight: 400;
 }
@@ -6757,7 +6735,7 @@ p.lost-password a:hover {
     padding: 10px 30px;
     transition: .3s;
     text-decoration: none;
-    font-family: 'Rufina', serif;
+    
     font-weight: 400;
     font-weight: 400;
 }
@@ -6805,8 +6783,61 @@ p.lost-password a:hover {
     line-height: 30px;
 }
 
+.quickview-color>ul li {
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 25px;
+    margin-right: 9px;
+    text-indent: -9999px;
+    transition: all 0.4s ease 0s;
+    width: 25px;
+}
 
-.modal-pro-content form button {
+.quickview-color>ul li.blue {
+    background: #0000FE none repeat scroll 0 0;
+}
+
+.quickview-color>ul li.red {
+    background: #DC143C none repeat scroll 0 0;
+}
+
+.quickview-color>ul li.pink {
+    background: #FF017E none repeat scroll 0 0;
+}
+
+.quick-view-select {
+    display: block;
+    margin: 3px 0 20px;
+    overflow: hidden;
+    padding: 10px 0 0;
+}
+
+.select-option-part select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    color: #232323;
+    font-size: 15px;
+    height: 39px;
+    padding: 0 35px 0 5px;
+    width: auto;
+    background: rgba(0, 0, 0, 0) url("img/icon-img/select.png") no-repeat scroll right 0.5rem center / 2.25rem 2.25rem;
+}
+
+.select-option-part>label,
+.quickview-color-wrap>label {
+    color: #232323;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 0.375rem;
+    opacity: 1;
+}
+
+.modal-pro-content button {
     background: #333 none repeat scroll 0 0;
     border: medium none;
     color: #fff;
@@ -6815,15 +6846,18 @@ p.lost-password a:hover {
     height: 49px;
     letter-spacing: 0.025em;
     line-height: 49px;
-    margin-left: 45px;
+    margin-left: 20px;
     padding: 0 30px;
     text-transform: uppercase;
 }
 
-.modal-pro-content form button:hover {
+.modal-pro-content button:hover {
     background: #f07c29 none repeat scroll 0 0;
 }
 
+.quickview-color-wrap {
+    margin: 15px 0 0;
+}
 
 .modal-pro-content input {
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -6886,3 +6920,67 @@ p.lost-password a:hover {
 .quickview-active:hover .owl-nav button {
     opacity: 1;
 }
+
+.table_img {
+    width: 130px;
+}
+
+.bill_price {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* thong bao */
+.modal-msg {
+    position: fixed;
+     background-color: rgba(0,0,0,0.5);
+    width: 340px;
+    height: 160px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    z-index:100;
+}
+        
+.msg-header {
+  padding: 10px;
+  text-align: center;
+}
+.msg-icon{
+  font-size:35px;
+  color: rgb(255, 99, 71 )
+}
+.msg-text{
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+
+/* ---- hết hàng------------------*/
+
+.product-off {
+    text-align: center;
+    height: 120px;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid lightblue;
+    
+    border-radius: 50%;
+    /*----*/
+    position: absolute;
+    z-index: 99;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -91%);
+}
+
+.product-off-text {
+    line-height: 120px;
+    font-size: 18px;
+    color: white;
+}
+
+/*input:disabled {
+	 cursor: not-allowed;	
+}*/

@@ -35,9 +35,6 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body class="login">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
         <!-- Add your site or application content here -->
 		<!-- header-area-start -->
@@ -45,103 +42,26 @@
 			<!-- header-top-area-start -->
 			<div class="header-top-area">
 				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="language-area">
-								<ul>
-									<li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub">
-											<ul>
-												<li><a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a></li>
-												<li><a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a></li>
-											</ul>
-										</div>
-									</li>
-									<li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub dolor">
-											<ul>
-												<li><a href="#">EUR €</a></li>
-												<li><a href="#">USD $</a></li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="account-area text-right">
-								<ul>
-									<li><a href="register.jsp">My Account</a></li>
-									<li><a href="checkout.jsp">Checkout</a></li>
-									<li><a href="login.jsp">Sign in</a></li>
-								</ul>
+					<div class="row">						
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="account-area text-right">	
+								<ul><li><a href="register.jsp">đăng ký</a></li></ul>																															
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- header-top-area-end -->
 			<!-- header-mid-area-start -->
 			<div class="header-mid-area ptb-40">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
-							<div class="header-search">
-								<form action="#">
-									<input type="text" placeholder="Search entire store here..." />
-									<a href="#"><i class="fa fa-search"></i></a>
-								</form>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+						
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="logo-area text-center logo-xs-mrg">
 								<a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-							<div class="my-cart">
-								<ul>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
-										<span>2</span>
-										<div class="mini-cart-sub">
-											<div class="cart-product">
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Joust Duffle Bag</a></h5>
-														<p>1 x £60.00</p>
-													</div>
-													<div class="cart-icon">
-													    <a href="#"><i class="fa fa-remove"></i></a>
-													</div>
-												</div>
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/3.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-														<p>1 x £52.00</p>
-													</div>
-													<div class="cart-icon">
-                                                        <a href="#"><i class="fa fa-remove"></i></a>
-                                                    </div>
-												</div>
-											</div>
-											<div class="cart-totals">
-												<h5>Total <span>£12.00</span></h5>
-											</div>
-											<div class="cart-bottom">
-												<a class="view-cart" href="cart.html">view cart</a>
-												<a href="checkout.html">Check out</a>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -348,7 +268,7 @@
 		</header>
 		<!-- header-area-end -->
 		<!-- breadcrumbs-area-start -->
-		<div class="breadcrumbs-area mb-70">
+		<div class="breadcrumbs-area mb-20">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -365,8 +285,37 @@
 		<!-- breadcrumbs-area-end -->
 		<!-- user-login-area-start -->
 		<div class="user-login-area mb-70">
+			
 			<div class="container">
-				<div class="row">
+				<div class="row">	
+   	
+  					<c:choose>
+   					 <c:when test="${notify == 1 }">
+	   						 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> yêu cầu thiết lập lại mật khẩu thành công , kiểm tra email của bạn </strong>
+	  						</div>
+  						</c:when>
+  						 <c:when test="${notify == 2 }">
+  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> Email chưa được đăng ký , vui lòng nhập lại Email </strong>
+    				 		</div>
+  						</c:when> 	
+  						 <c:when test="${notify == 3 }">
+  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> Sai tài khoản hoặc mật khẩu , vui lòng nhập lại  </strong>
+    				 		</div>
+  						</c:when> 	
+  						 <c:when test="${notify == 4 }">
+  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
+	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    				 		<strong> Email đã tồn tại , vui lòng nhập lại  </strong>
+    				 		</div>
+  						</c:when> 						
+ 					</c:choose>
+
 					<div class="col-lg-12">
 						<div class="login-title text-center mb-30">
 							<h2>đăng nhập</h2>
@@ -377,20 +326,18 @@
 						<form action="loginController" method="get">
 							<div class="login-form">
 							<div class="single-login">
-								<label>số điện thoại / email<span>*</span></label>
+								<label>email<span>*</span></label>
 								<input type="text" name="username" autofocus="autofocus" required="required" autocomplete="on"/>
 							</div>
 							<div class="single-login">
 								<label>mật khẩu <span>*</span></label>
 								<input type="password" name="password" maxlength="12" required="required" autocomplete="off"/>
 							</div>
-							<div class="single-login single-login-2">
-								
-								<input type="submit" value="đăng nhập">
-							<!-- <input id="rememberme" type="checkbox" name="rememberme" value="forever">  -->	
-								<span>ghi nhớ</span>
+							<div class="single-login single-login-2">							 
+								<input type="submit" value="đăng nhập" id="onload_submit" onclick="loading()">
+							
 							</div>
-							<a href="#">quên mật khẩu</a>
+							<a href="#modelId" data-toggle="modal">quên mật khẩu</a>
 						</div>
 						</form>
 					</div>
@@ -398,6 +345,27 @@
 			</div>
 		</div>
 		<!-- user-login-area-end -->
+		<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" style="padding:50px">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group">      
+                        
+                        <label for="forget">Email</label>
+                        <input type="email" name="user_email" id="forget" class="form-control" aria-describedby="helpId" form="forget-password" required>
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <form action="userController" method="get" id="forget-password">
+                       	<input type="hidden" name="action" value="forget">
+                       	<i class="fa fa-spinner fa-spin" id="loading_icon" style="display: none;"></i> 
+                        <input type="submit" class="btn btn-primary" onclick="loading()"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 		<!-- footer-area-start -->
 		<footer>
 			<!-- footer-top-start -->

@@ -11,7 +11,8 @@
 
         <!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- all css here -->
 		<!-- bootstrap v3.3.6 css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -35,46 +36,42 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body class="product-details">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
+    	<c:if test="${product == null }">
+    		<c:redirect url="shop.jsp" />
+    	</c:if>
+    	<!--  thong bao start -->
+		<div class="modal-msg" style="display: none;">
+	
+	        <div class="msg-header">
+	            <h6 class="msg-icon"><i class="fas fa-exclamation-circle"></i></h6>
+	            <p  class="text-light text-center msg-text">${msg }</p>
+	        </div>
+	    </div>
+	    <% session.removeAttribute("msg"); %>
+		<!-- thong bao end -->
 		<!-- header-area-start -->
         <header>
 			<!-- header-top-area-start -->
 			<div class="header-top-area">
 				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="language-area">
-								<ul>
-									<li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub">
-											<ul>
-												<li><a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a></li>
-												<li><a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a></li>
-											</ul>
-										</div>
-									</li>
-									<li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub dolor">
-											<ul>
-												<li><a href="#">EUR €</a></li>
-												<li><a href="#">USD $</a></li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="row">		
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="account-area text-right">
-								<ul>
-									<li><a href="register.html">My Account</a></li>
-									<li><a href="checkout.html">Checkout</a></li>
-									<li><a href="login.html">Sign in</a></li>
-								</ul>
+									<ul>                        
+	                               	<c:choose>
+	                               		<c:when test="${user !=null }">
+	                               			<li><a href="my-account.jsp">tài khoản</a></li>
+			                                <li><a href="checkout.html">Checkout</a></li>
+			                                <li><a href="logoutController">Đăng xuất</a></li>
+	                               		</c:when>
+	                               		
+	                               		<c:when test="${user == null }">
+	                               			<li><a href="register.jsp">đăng ký</a></li>
+			                                <li><a href="checkout.html">Checkout</a></li>
+			                                <li><a href="login.jsp">Đăng nhập</a></li>
+	                               		</c:when>
+	                               	</c:choose>
+	                            </ul>
 							</div>
 						</div>
 					</div>
@@ -101,44 +98,62 @@
 						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 							<div class="my-cart">
 								<ul>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
-										<span>2</span>
-										<div class="mini-cart-sub">
-											<div class="cart-product">
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Joust Duffle Bag</a></h5>
-														<p>1 x £60.00</p>
-													</div>
-													<div class="cart-icon">
-													    <a href="#"><i class="fa fa-remove"></i></a>
-													</div>
-												</div>
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/3.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-														<p>1 x £52.00</p>
-													</div>
-													<div class="cart-icon">
-                                                        <a href="#"><i class="fa fa-remove"></i></a>
-                                                    </div>
-												</div>
-											</div>
-											<div class="cart-totals">
-												<h5>Total <span>£12.00</span></h5>
-											</div>
-											<div class="cart-bottom">
-												<a class="view-cart" href="cart.html">view cart</a>
-												<a href="checkout.html">Check out</a>
-											</div>
-										</div>
-									</li>
+									<li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
+                                
+                                	<c:set var="number_cart" value="${user.getCartTotal() }"/> <%-- lấy số sản phẩm trong giỏ hàng --%>
+                                	<c:if test="${number_cart>0 }">					
+                                		 <span class='cart_quantify-product' >${ number_cart }</span>
+                                	</c:if>
+                                   
+                                    <div class="mini-cart-sub">
+                                       <c:choose>
+                                       	<c:when test="${user !=null }">
+                                       	                                  		
+	                                       	<div class="cart-product">
+	                                       		
+	                                       		<c:forEach var="cart" items="${cart_model}" begin="0" end="2">
+	                                       			
+	                                       			<div class="single-cart">
+		                                                <div class="cart-img">
+		                                                    <a  href="productController?page=shop&product_id=${ cart.value.getProd().getProduct_id()}">
+		                                             
+		                                                    	<img src="img/product/${cart.value.getProd().getProduct_image() }" alt="book" />
+		                                                    </a>
+		                                                </div>
+		                                                <div class="cart-info">
+		                                                    <h5><a href="productController?page=shop&product_id=${ cart.value.getProd().getProduct_id()}">${cart.value.getProd().getProduct_name() }</a></h5>
+		                                                    <p class='cart-info-price'> ${cart.value.getCart_quantify() } * ${  cart.value.getProd().getProductSaleFormat() } đ</p>
+		                                                                                                      		
+		                                                </div>
+		                                                <div class="cart-icon">
+		                                                    <a href="" product-id='${cart.value.getProd().getProduct_id() }'><i class="fa fa-remove"></i></a>
+		                                                </div>
+	                                           		 </div>                                            	
+	                                       		</c:forEach>                                           
+	                                          	
+	                                        </div>
+	                                        
+                                        <div class="cart-totals">                                        
+                                            <c:set var='total' value="${cart_model.getPriceTotal() }"/>                       
+                                            <h5 style="font-family: Arial, Helvetica, sans-serif;">Tổng <span>${ total } đ</span></h5>
+                                        </div>
+                                        <div class="cart-bottom">
+                                            <a class="view-cart" href="cartController?page=cart&action=viewcart">xem giỏ hàng</a>
+                                            <a href="checkout.html">Check out</a>
+                                        </div>
+                                       	</c:when>
+                                       	
+                                       	<c:when test="${user == null }">
+                                       	   <h4>bạn chưa đăng nhập</h4>
+                                     	   <div class="cart-bottom">
+                                          	  <a class="view-cart" href="login.jsp">đăng nhập</a>
+                                         	   <a href="register.jsp">đăng ký</a>
+                                     	   </div>
+                                       	</c:when>
+                                       </c:choose>                            
+                                        
+                                    </div>
+                                </li>
 								</ul>
 							</div>
 						</div>
@@ -353,8 +368,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">product-details</a></li>
+								<li><a href="shop.jsp">Trang chủ</a></li>
+								<li><a href="#" class="active">Chi tiết sản phẩm</a></li>
 							</ul>
 						</div>
 					</div>
@@ -372,6 +387,13 @@
 							<div class="row">
 								<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 									<div class="flexslider">
+									
+										<c:if test="${product.getProduct_status() == 0 }">
+											<div class="product-off">
+                                       	 		<span class="product-off-text">Hết hàng</span>
+                     	               		</div>
+										</c:if>
+											
 										<ul class="slides">
 											
 											<c:forEach var="index" items="${productImageAll }">
@@ -388,13 +410,7 @@
 										<div class="page-title">
 											<h1>${product.getProduct_name() }</h1>
 										</div>
-										<div class="product-info-stock-sku">
-											<span>In stock</span>
-											<div class="product-attribute">
-												<span>SKU</span>
-												<span class="value">24-WB05</span>
-											</div>
-										</div>
+									
 										<div class="product-reviews-summary">
 											<div class="rating-summary">
 												<a href="#"><i class="fa fa-star"></i></a>
@@ -415,19 +431,32 @@
 										</c:if>
 										<div class="product-info-price">
 											<div class="price-final">
-												<span>${product.checkProductSale()}đ</span>
+												<span>${product.getProductSaleFormat()}đ</span>
 												
 												<c:if test="${product.getProduct_price() != product.checkProductSale()}">                                                	
-                                                    	<span class="old-price">${product.getProduct_price() }đ</span>
+                                                    	<span class="old-price">${product.getProductPriceFormat() }đ</span>
                                                     </c:if>
 											</div>
 										</div>
 										<div class="product-add-form">
-											<form action="#">
+											<form id='form-details' action="cartController" method="get">
 												<div class="quality-button">
-													<input class="qty" type="number" value="1" min="1">
+													<input class="qty" name="quantify" type="number" value="1" min="1">											
 												</div>
-												<a href="#">Add to cart</a>
+												<input type='hidden' name='action' value='add'/>	
+												<input type='hidden' name='page' value=''/>												
+												<input type='hidden' name='product_id' value='${ product.getProduct_id()}'/>
+												
+												<c:choose>
+													<c:when test="${product.getProduct_status() == 0 }">
+														
+														<input type="submit" value="thêm vào giỏ" disabled="disabled" title="Hết hàng" style="cursor: no-drop;"></input>
+													</c:when>
+													<c:otherwise>
+														<input type="submit" value="thêm vào giỏ" ></input>
+													</c:otherwise>
+												</c:choose>
+												
 											</form>
 										</div>
 										<div class="product-social-links">
@@ -591,7 +620,7 @@
 						<!-- new-book-area-start -->
 						<div class="new-book-area mt-60">
 							<div class="section-title text-center mb-30">
-								<h3>upsell products</h3>
+								<h3>các sản phẩm khác</h3>
 							</div>
 							<div class="tab-active-2 owl-carousel">
 								<!-- single-product-start -->
@@ -795,7 +824,7 @@
 									<div class="product-total-2">
 										<div class="single-most-product bd mb-18">
 											<div class="most-product-img">
-												<a href="#"><img src="img/product/20.jpg" alt="book" /></a>
+												<a href="#"><img src="img/product/21.jpg" alt="book" /></a>
 											</div>
 											<div class="most-product-content">
 												<div class="product-rating">

@@ -4,10 +4,10 @@ import com.view.BO.cartBO;
 
 public class userBEAN {
 	private String user_id, user_name, user_email, user_password, user_telephone, user_birthday, user_role;
-	private boolean user_gender;
+	private String user_gender;
 
 	public userBEAN(String user_id, String user_name, String user_email, String user_password, String user_telephone,
-			String user_birthday, String user_role, boolean user_gender) {
+			String user_birthday, String user_role, String user_gender) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
@@ -80,11 +80,11 @@ public class userBEAN {
 		this.user_role = user_role;
 	}
 
-	public boolean isUser_gender() {
+	public String getUser_gender() {
 		return user_gender;
 	}
 
-	public void setUser_gender(boolean user_gender) {
+	public void setUser_gender(String user_gender) {
 		this.user_gender = user_gender;
 	}
 
@@ -97,4 +97,5 @@ public class userBEAN {
 	public double getCartPriceTotal() {
 		return cartBO.getCartPriceTotal(user_id);
 	}
+
 }

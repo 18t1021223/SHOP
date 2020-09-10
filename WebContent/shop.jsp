@@ -10,10 +10,12 @@
     <title>Koparion – Book Shop Bootstrap 4 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
+	<!--  -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -38,57 +40,38 @@
 </head>
 
 <body class="shop">
+	<c:if test="${product_list == null|| category_list == null ||producer_list==null  }">
+		<c:import url="run"/>
+	</c:if>
 	
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    <!-- Add your site or application content here -->
+<!--  thong bao start -->
+		<div class="modal-msg" style="display: none;">
+	
+	        <div class="msg-header">
+	            <h6 class="msg-icon"><i class="fas fa-exclamation-circle"></i></h6>
+	            <p  class="text-light text-center msg-text">${msg }</p>
+	        </div>
+	    </div>
+	    <% session.removeAttribute("msg"); %>
+		<!-- thong bao end -->
     <!-- header-area-start -->
     <header>
         <!-- header-top-area-start -->
         <div class="header-top-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="language-area">
-                            <ul>
-                                <li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-                                    <div class="header-sub">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-                                    <div class="header-sub dolor">
-                                        <ul>
-                                            <li><a href="#">EUR €</a></li>
-                                            <li><a href="#">USD $</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="account-area text-right">
-                            <ul>
-                            
+                            <ul>                        
                                	<c:choose>
                                		<c:when test="${user !=null }">
-                               			<li><a href="my-account.jsp">tài khoản</a></li>
+                               			<li><a href="userController?action=account">tài khoản</a></li>
 		                                <li><a href="checkout.html">Checkout</a></li>
-		                                <li><a href="login.jsp">Đăng xuất</a></li>
+		                                <li><a href="userController?action=logout">Đăng xuất</a></li>
                                		</c:when>
                                		
                                		<c:when test="${user == null }">
-                               			<li><a href="register.html">đăng ký</a></li>
+                               			<li><a href="register.jsp">đăng ký</a></li>
 		                                <li><a href="checkout.html">Checkout</a></li>
 		                                <li><a href="login.jsp">Đăng nhập</a></li>
                                		</c:when>
@@ -114,50 +97,53 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
                         <div class="logo-area text-center logo-xs-mrg">
-                            <a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
+                            <a href="shop.jsp"><img src="img/logo/logo.png" alt="logo" /></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="my-cart">
                             <ul>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                                <li class='my-cart-item'><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                                 
-                                	<c:set var="number_cart" value="${user.getCartTotal() }"/>
-                                	<c:if test="${number_cart>0 }">
-                                		 <span>${ number_cart }</span>
+                                	<c:set var="number_cart" value="${user.getCartTotal() }"/> <%-- lấy số sản phẩm trong giỏ hàng --%>
+                                	<c:if test="${number_cart>0 }">					
+                                		 <span class='cart_quantify-product'>${ number_cart }</span>
                                 	</c:if>
                                    
                                     <div class="mini-cart-sub">
                                        <c:choose>
                                        	<c:when test="${user !=null }">
-                                       	
-                                       		<c:set var="total" value="${cart_total }"></c:set>
+                                       	                                  		
 	                                       	<div class="cart-product">
 	                                       		
-	                                       		<c:forEach var="cart" items="${cart_list}" begin="0" end="2">
+	                                       		<c:forEach var="cart" items="${cart_model}" begin="0" end="2">
 	                                       			
 	                                       			<div class="single-cart">
 		                                                <div class="cart-img">
-		                                                    <a href="controller_direction?infoProduct=${ cart.getProd().getProduct_id()}"><img src="img/product/${cart.getProd().getProduct_image() }" alt="book" /></a>
+		                                                    <a  href="productController?page=shop&product_id=${ cart.value.getProd().getProduct_id()}">
+		                                             
+		                                                    	<img src="img/product/${cart.value.getProd().getProduct_image() }" alt="book" />
+		                                                    </a>
 		                                                </div>
 		                                                <div class="cart-info">
-		                                                    <h5><a href="controller_direction?infoProduct=${ cart.getProd().getProduct_id()}">${cart.getProd().getProduct_name() }</a></h5>
-		                                                    <p> ${cart.getCart_quantify() } * ${  cart.getProd().checkProductSale() }đ</p>
+		                                                    <h5><a href="productController?page=shop&product_id=${ cart.value.getProd().getProduct_id()}">${cart.value.getProd().getProduct_name() }</a></h5>
+		                                                    <p class='cart-info-price'> ${cart.value.getCart_quantify() } * ${  cart.value.getProd().getProductSaleFormat() } đ</p>
 		                                                                                                      		
 		                                                </div>
 		                                                <div class="cart-icon">
-		                                                    <a href="#"><i class="fa fa-remove"></i></a>
+		                                                    <a href="" product-id='${cart.value.getProd().getProduct_id() }'><i class="fa fa-remove"></i></a>
 		                                                </div>
 	                                           		 </div>                                            	
 	                                       		</c:forEach>                                         
 	                                          	
 	                                        </div>
 	                                        
-                                        <div class="cart-totals">
-                                            <h5>Tổng <span>${ total }đ</span></h5>
+                                        <div class="cart-totals">                 
+                                     	   <c:set var='total' value="${cart_model.getPriceTotal() }"/>                       
+                                            <h5 style="font-family: Arial, Helvetica, sans-serif;">Tổng <span>${ total } đ</span></h5>
                                         </div>
                                         <div class="cart-bottom">
-                                            <a class="view-cart" href="cart.jsp">xem giỏ hàng</a>
+                                            <a class="view-cart" href="cartController?page=cart&action=viewcart">xem giỏ hàng</a>
                                             <a href="checkout.html">Check out</a>
                                         </div>
                                        	</c:when>
@@ -188,10 +174,10 @@
                         <div class="menu-area">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="index.html">Trang chủ</a>
+                                    <li><a href="index.html">Trang chủ</a>
                                         
                                     </li>
-                                    <li><a href="product-details.html">Sách<i class="fa fa-angle-down"></i></a>
+                                    <li class="active"><a href="product-details.html">Sách<i class="fa fa-angle-down"></i></a>
                                         <div class="mega-menu">
                                             <span>
 													<a href="#" class="title">Jackets</a>
@@ -407,8 +393,8 @@
                         </div>
                         <div class="left-menu mb-30">
                             <ul>
-                            	<c:forEach var="index" items="${category_list }">
-                                	<li><a href="#">${index.getCategory_name() }<span>(${index.getProduct() })</span></a></li>
+                            	<c:forEach var="index" items="${ category_list }">
+                                	<li><a href="controller_direction?page=shop&category_id=${index.getCategory_id() }" class="category_list">${index.getCategory_name() }</a></li>
                                 </c:forEach>
                                
                             </ul>
@@ -420,7 +406,7 @@
                         <div class="left-menu mb-30">
                             <ul>
                          	   <c:forEach var="index" items="${producer_list }">
-                       	  	 	  <li><a href="#">${index.getProducer_name() }<span>(${index.getProduct() })</span></a></li>
+                       	  	 	  <li><a href="controller_direction?page=shop&producer_id=${index.getProducer_id() }" class="producer_list">${index.getProducer_name() }</a></li>
                         	   </c:forEach>           
                             </ul>
                         </div>
@@ -429,12 +415,17 @@
                         </div>
                         <div class="left-menu mb-30">
                             <ul>
-                                <li><a href="#">0-50000đ<span>(1)</span></a></li>
-                                <li><a href="#">50000-100000đ<span>(11)</span></a></li>
-                                <li><a href="#">100000-200000đ<span>(2)</span></a></li>                               
-                                <li><a href="#">trên 200000đ<span>(1)</span></a></li>
+                                <li><a href="controller_direction?page=shop&product_price=thap">0 - 100000đ</a></li>
+                                <li><a href="controller_direction?page=shop&product_price=trungbinh">100000 - 200000đ</a></li>
+                                <li><a href="controller_direction?page=shop&product_price=vua">200000 - 400000đ</a></li>                               
+                                <li><a href="controller_direction?page=shop&product_price=cao">trên 400000đ</a></li>
                             </ul>
                         </div>
+                        
+                        <div class="left-title mb-20">
+                            <input type="submit" class="btn-filter" value="lọc" />
+                        </div>
+    <%-- end form filter --%>                    
                         <div class="left-title mb-20">
                             <h4>Xem thêm</h4>
                         </div>
@@ -444,7 +435,7 @@
                                     <div class="single-most-product bd mb-18">
                                         <div class="most-product-img">
                                             <a href="#">
-                                          	  <img src="img/product/20.jpg" alt="book" />
+                                          	  <img src="img/product/21.jpg" alt="book" />
                                             </a>
                                         </div>
                                         <div class="most-product-content">
@@ -584,8 +575,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                    
+                                         
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
@@ -596,13 +586,7 @@
                         <h2>Sách</h2>
                     </div>
                     <div class="toolbar mb-30">
-                        <div class="shop-tab">
-                            <div class="tab-3">
-                                <ul>
-                                    <li class="active"><a href="#th" data-toggle="tab"><i class="fa fa-th-large"></i></a></li>                                   
-                                </ul>
-                            </div>                      
-                        </div>
+                        
                         <div class="field-limiter">
                             <div class="control">
                                 <span>hiển thị</span>
@@ -637,12 +621,13 @@
                                     <!-- single-product-start -->
                                     <div class="product-wrapper mb-40">
                                         <div class="product-img">
-                                            <a href="controller_direction?infoProduct=${ index.getProduct_id()}">
+                                            <a href="productController?page=shop&product_id=${ index.getProduct_id()}">
+                                            
                                                 <img src="img/product/${index.getProduct_image() }" alt="book" class="primary" />
                                             </a>
                                             <div class="quick-view">
-                                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
-                                                    <i class="fa fa-search-plus"></i>
+                                                <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Xem nhanh" product-id='${ index.getProduct_id()}'>
+                                                    <i class="fa fa-search-plus quick-view-icon"></i>
                                                 </a>
                                             </div>
                                             <div class="product-flag">
@@ -668,12 +653,12 @@
                                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h4><a href="#">${index.getProduct_name() }</a></h4>
+                                            <h4><a href="productController?page=shop&product_id=${ index.getProduct_id()}">${index.getProduct_name() }</a></h4>
                                             <div class="product-price">
                                                 <ul>
-                                                    <li>${index.checkProductSale()}đ</li>
+                                                    <li>${index.getProductSaleFormat() }đ</li>
                                                     <c:if test="${index.getProduct_price() != index.checkProductSale()}">
-                                                    	<li class="old-price">${index.getProduct_price() }đ</li>
+                                                    	<li class="old-price">${index.getProductPriceFormat() }đ</li>
                                                     </c:if>
                                                     
                                                 </ul>
@@ -681,11 +666,11 @@
                                         </div>
                                         <div class="product-link">
                                             <div class="product-button">
-                                                <a href="#" title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                <a href="" title="Thêm vào giỏ" product-id='${index.getProduct_id()}'><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                             </div>
                                             <div class="add-to-link">
                                                 <ul>
-                                                    <li><a href="controller_direction?infoProduct=${ index.getProduct_id()}" title="Details"><i class="fa fa-external-link"></i></a></li>
+                                                    <li><a href="productController?page=shop&product_id=${ index.getProduct_id()}" title="Xem chi tiết"><i class="fa fa-external-link"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -701,9 +686,7 @@
                     <!-- pagination-area-start -->
  <%-- Phân trang --%>          
                     <c:set var="limit" value="5"/>
-                    <c:set var="numberPage" value="${sessionScope.numberPage}"/>
-                   
-                   
+                    <c:set var="numberPage" value="${sessionScope.numberPage}"/>            
 					<c:set var="totalPage" value="${sessionScope.totalPage }"/>
 					<c:choose>
 						<c:when test="${ numberPage - 2 < 1 }">
@@ -880,45 +863,26 @@
                 </div>
                 
       <%-- quick view --%>
-                <c:set var="quickView" value="${quickView }"/>
+             
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12">
-                            <div class="modal-tab">
-                                <div class="product-details-large tab-content">
-                                    <div class="tab-pane active" id="image-1">
-                                        <img src="img/product/${quickView.product_image}" alt="image" />
-                                    </div>
-                                    <div class="tab-pane" id="image-2">
-                                        <img src="img/product/quickview-l2.jpg" alt="" />
-                                    </div>
-                                    <div class="tab-pane" id="image-3">
-                                        <img src="img/product/quickview-l3.jpg" alt="" />
-                                    </div>
-                                    <div class="tab-pane" id="image-4">
-                                        <img src="img/product/quickview-l5.jpg" alt="" />
-                                    </div>
-                                </div>
-                                <div class="product-details-small quickview-active owl-carousel">
-                                    <a class="active" href="#image-1"><img src="img/product/quickview-s4.jpg" alt="" /></a>
-                                    <a href="#image-2"><img src="img/product/quickview-s2.jpg" alt="" /></a>
-                                    <a href="#image-3"><img src="img/product/quickview-s3.jpg" alt="" /></a>
-                                    <a href="#image-4"><img src="img/product/quickview-s5.jpg" alt="" /></a>
-                                </div>
+                            <div class="modal-tab">                             
+                                <img src="" alt="" />
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-12">
                             <div class="modal-pro-content">
          
-                                <h3>${quickView.product_name }</h3>
+                                <h3 id='quick-view-name'></h3>
                                 <div class="price">
-                                    <span>${quickView.checkProductSale() }</span>
+                                    <span id='quick-view-sale'></span>
                                 </div>
-                                <p>${quickView.product_content }</p>
+                                <p id='quick-view-content'></p>
                               
-                                <form action="#">
-                                    <input type="number" value="1" min='1' />
-                                    <button>Thêm vào giỏ</button>
+                               <form action="#">
+	                                <input id='quick-view-quantify' type="number" value="1" min='1' />
+	                                <button id='quick-view-id' product_id=''>Thêm vào giỏ</button>
                                 </form>
                                 <span><i class="fa fa-check"></i> In stock</span>
                             </div>

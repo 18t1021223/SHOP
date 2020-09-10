@@ -1,33 +1,45 @@
 package com.view.BEAN;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
+import com.view.BO.imageBO;
+import com.view.controller.utils;
+
 public class productBEAN {
-	private String product_id, product_name, product_type, product_description, product_image, product_date,
-			product_content, category_id, producer_id;
+	private String product_id, product_name, product_type, product_description, product_date, product_content,
+			category_id, producer_id, product_status;
 	private double product_price;
 	private float product_sale;
 
 	public productBEAN(String product_id, String product_name, String product_type, String product_description,
-			String product_image, String product_date, String product_content, String category_id, String producer_id,
-			double product_price, float product_sale) {
+			String product_date, String product_content, String category_id, String producer_id, double product_price,
+			float product_sale, String product_status) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
 		this.product_type = product_type;
 		this.product_description = product_description;
-		this.product_image = product_image;
 		this.product_date = product_date;
 		this.product_content = product_content;
 		this.category_id = category_id;
 		this.producer_id = producer_id;
 		this.product_price = product_price;
 		this.product_sale = product_sale;
+		this.product_status = product_status;
 	}
 
 	public productBEAN() {
-		// TODO Auto-generated constructor stub
+		
+	}
+
+	public String getProduct_status() {
+		return product_status;
+	}
+
+	public void setProduct_status(String product_status) {
+		this.product_status = product_status;
 	}
 
 	public String getProduct_id() {
@@ -60,14 +72,6 @@ public class productBEAN {
 
 	public void setProduct_description(String product_description) {
 		this.product_description = product_description;
-	}
-
-	public String getProduct_image() {
-		return product_image;
-	}
-
-	public void setProduct_image(String product_image) {
-		this.product_image = product_image;
 	}
 
 	public String getProduct_date() {
@@ -118,15 +122,6 @@ public class productBEAN {
 		this.product_sale = product_sale;
 	}
 
-	@Override
-	public String toString() {
-		return "productBEAN [product_id=" + product_id + ", product_name=" + product_name + ", product_type="
-				+ product_type + ", product_description=" + product_description + ", product_image=" + product_image
-				+ ", product_date=" + product_date + ", product_content=" + product_content + ", category_id="
-				+ category_id + ", producer_id=" + producer_id + ", product_price=" + product_price + ", product_sale="
-				+ product_sale + "]";
-	}
-
 	public boolean checkProductNew() {
 
 		if (this.product_date != null) {
@@ -147,11 +142,31 @@ public class productBEAN {
 		}
 		return false;
 	}
+
+	// lấy hình ảnh đầu tiên của sản phẩm
+	public String getProduct_image() {
+		return imageBO.getImageFirst(product_id);
+	}
+
 	// giá tiền sau khi giảm giá
 	public float checkProductSale() {
 		float rs = (float) product_price * (100 - product_sale) / 100;
-
 		return rs;
+	}
+
+	public String getProductSaleFormat() {
+		double tien = checkProductSale();
+		return utils.formatNumber(tien);
+	}
+
+	// chuyen
+	public String getProductPriceFormat() {
+		return utils.formatNumber(product_price);
+	}
+
+	// laay taat ca hinh anh
+	public ArrayList<imageBEAN> getProduct_imageAll() {
+		return (ArrayList<imageBEAN>) imageBO.getImageAll(product_id);
 	}
 
 }

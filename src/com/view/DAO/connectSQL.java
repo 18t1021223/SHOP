@@ -36,7 +36,7 @@ public class connectSQL {
 			if (con != null)
 				con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("closeConnect -loi: " + e.getMessage());
 		}
 	}
 
@@ -44,7 +44,24 @@ public class connectSQL {
 		try {
 			con.rollback();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("rollbackConnect -loi: " + e.getMessage());
+		}
+	}
+
+	public static void autoCommit(Connection con, boolean b) {
+
+		try {
+			con.setAutoCommit(b);
+		} catch (SQLException e) {
+			System.out.println("autoCommit - loi: " + e.getMessage());
+		}
+	}
+
+	public static void commit(Connection con) {
+		try {
+			con.commit();
+		} catch (SQLException e) {
+			System.out.println("commit -loi: " + e.getMessage());
 		}
 	}
 }

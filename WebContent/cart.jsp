@@ -11,7 +11,8 @@
 
         <!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- all css here -->
 		<!-- bootstrap v3.3.6 css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -35,45 +36,32 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body class="cart">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
+    	<c:if test="${user == null }">
+    		<c:redirect url="login.jsp" />
+    	</c:if>
+       <!--  thong bao start -->
+		<div class="modal-msg" style="display: none;">
+	
+	        <div class="msg-header">
+	            <h6 class="msg-icon"><i class="fas fa-exclamation-circle"></i></h6>
+	            <p  class="text-light text-center msg-text">${msg }</p>
+	        </div>
+	    </div>
+	    <% session.removeAttribute("msg"); %>
+		<!-- thong bao end -->
 		<!-- header-area-start -->
         <header>
 			<!-- header-top-area-start -->
 			<div class="header-top-area">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="language-area">
-								<ul>
-									<li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub">
-											<ul>
-												<li><a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a></li>
-												<li><a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a></li>
-											</ul>
-										</div>
-									</li>
-									<li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub dolor">
-											<ul>
-												<li><a href="#">EUR €</a></li>
-												<li><a href="#">USD $</a></li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="account-area text-right">
 								<ul>
-									<li><a href="register.html">My Account</a></li>
-									<li><a href="checkout.html">Checkout</a></li>
-									<li><a href="login.html">Sign in</a></li>
+									<li><a href="userController?action=account">Tài khoản</a></li>
+									<li><a href="checkout.html">Thanh toán</a></li>
+									<li><a href="userController?action=logout">Đăng xuất</a></li>
 								</ul>
 							</div>
 						</div>
@@ -88,60 +76,17 @@
 						<div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
 							<div class="header-search">
 								<form action="#">
-									<input type="text" placeholder="Search entire store here..." />
+									<input type="text" placeholder="Tìm kiếm sản phẩm..." />
 									<a href="#"><i class="fa fa-search"></i></a>
 								</form>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
 							<div class="logo-area text-center logo-xs-mrg">
-								<a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
+								<a href="shop.jsp"><img src="img/logo/logo.png" alt="logo" /></a>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-							<div class="my-cart">
-								<ul>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
-										<span>2</span>
-										<div class="mini-cart-sub">
-											<div class="cart-product">
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Joust Duffle Bag</a></h5>
-														<p>1 x £60.00</p>
-													</div>
-													<div class="cart-icon">
-													    <a href="#"><i class="fa fa-remove"></i></a>
-													</div>
-												</div>
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/3.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-														<p>1 x £52.00</p>
-													</div>
-													<div class="cart-icon">
-                                                        <a href="#"><i class="fa fa-remove"></i></a>
-                                                    </div>
-												</div>
-											</div>
-											<div class="cart-totals">
-												<h5>Total <span>£12.00</span></h5>
-											</div>
-											<div class="cart-bottom">
-												<a class="view-cart" href="cart.html">view cart</a>
-												<a href="checkout.html">Check out</a>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -154,12 +99,10 @@
 							<div class="menu-area">
 								<nav>
 									<ul>
-										<li class="active"><a href="index.html">Home</a>
-											<div class="sub-menu">
-												
-											</div>
+										<li><a href="shop.jsp">Home</a>
+										
 										</li>
-										<li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
+										<li><a href="run">sách<i class="fa fa-angle-down"></i></a>
 											<div class="mega-menu">
 												<span>
 													<a href="#" class="title">Jackets</a>
@@ -355,7 +298,7 @@
 						<div class="breadcrumbs-menu">
 							<ul>
 								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">cart</a></li>
+								<li><a href="#" class="active">Giỏ hàng</a></li>
 							</ul>
 						</div>
 					</div>
@@ -383,6 +326,7 @@
 					<div class="col-lg-12">
 						<form action="#">
 							<div class="table-content table-responsive">
+							
 								<table>
 									<thead>
 										<tr>
@@ -391,26 +335,35 @@
 											<th class="product-price">giá</th>
 											<th class="product-quantity">số lượng</th>
 											<th class="product-subtotal">tổng tiền</th>
-											<th class="product-remove">xóa</th>
+											<th class="product-remove"></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="img/cart/1.jpg" alt="man" /></a></td>
-											<td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-											<td class="product-price"><span class="amount">£165.00</span></td>
-											<td class="product-quantity"><input type="number" value="1" min='1'></td>
-											<td class="product-subtotal">£165.00</td>
-											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-										</tr>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="img/cart/2.jpg" alt="man" /></a></td>
-											<td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-											<td class="product-price"><span class="amount">£50.00</span></td>
-											<td class="product-quantity"><input type="number" value="1" min='1'></td>
-											<td class="product-subtotal">£50.00</td>
-											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-										</tr>
+										<c:forEach var="cart_model" items="${ cart_model }">
+										<c:set var="sp" value="${cart_model.value.getProd() }"/>
+											<tr>
+												<td class="product-thumbnail">
+													<a href="productController?page=cart&product_id=${ sp.getProduct_id()}">
+														<img src="img/product/${sp.getProduct_image() }" alt="sp" />
+													</a>
+												</td>
+												<td class="product-name">
+													<a href="productController?page=cart&product_id=${ sp.getProduct_id()}">${sp.getProduct_name() }</a>
+												</td>
+												<td class="product-subtotal">
+													<p class="amount">${sp.getProductSaleFormat() } đ</p>
+													<span class="old-price" style="text-decoration: line-through;font-size: 15px;color:#666;">${sp.getProductPriceFormat() } đ</span>
+												</td>
+												<td class="product-quantity">
+													<input class='product-quantity-input' type="number" product-id='${cart_model.key }' value="${cart_model.value.getCart_quantify() }" min='1'>
+												</td>
+												<td class="product-subtotal product-text">${cart_model.value.getPriceTotalFormat() } đ</td>
+												<td class="product-remove">
+													<a href="" product-id='${cart_model.key }'><i class="fa fa-times"></i></a>
+												</td>
+											</tr>
+										</c:forEach>
+						
 									</tbody>
 								</table>
 							</div>
@@ -421,61 +374,54 @@
                     <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                         <div class="buttons-cart mb-30">
                             <ul>
-                                <li><a href="#">Update Cart</a></li>
-                                <li><a href="#">Continue Shopping</a></li>
+                           <%--      <li><a href="#">Update Cart</a></li> --%>
+                                <li><a href="shop.jsp">Tiếp tục mua sắm</a></li>
                             </ul>
                         </div>
                         <div class="coupon">
-                            <h3>Coupon</h3>
-                            <p>Enter your coupon code if you have one.</p>
+                            <h3>Phiếu mua hàng</h3>
+                            <p>Nhập mã giảm giá ,nếu có</p>
                             <form action="#">
-                                <input type="text" placeholder="Coupon code">
-                                <a href="#">Apply Coupon</a>
+                                <input type="text" placeholder="Mã giảm giá">
+                                <a href="#">Ap dụng</a>
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="cart_totals">
-                            <h2>Cart Totals</h2>
+                            <h2>Tổng tiền </h2>
                             <table>
                                 <tbody>
                                     <tr class="cart-subtotal">
-                                        <th>Subtotal</th>
+                                        <th>Tạm tính</th>
                                         <td>
-                                            <span class="amount">£215.00</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="shipping">
-                                        <th>Shipping</th>
-                                        <td>
-                                            <ul id="shipping_method">
-                                                <li>
-                                                    <input type="radio">
-                                                    <label>
-                                                        Flat Rate:
-                                                        <span class="amount">£7.00</span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio">
-                                                    <label> Free Shipping </label>
-                                                </li>
-                                            </ul>
-                                            <a href="#">Calculate Shipping</a>
+                                            <span class="amount cart-temp">${cart_model.getPriceTotal()} đ</span>
                                         </td>
                                     </tr>
                                     <tr class="order-total">
-                                        <th>Total</th>
+                                        <th>Phí vận chuyển</th>
+                                        <td>
+                                      		
+                                            <ul id="shipping_method">
+                                                <li>                                                                                         
+                                                    <span class="amount">20.500 đ</span>                                  
+                                                </li>                                         
+                                            </ul>
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Tổng</th>
                                         <td>
                                             <strong>
-                                                <span class="amount">£215.00</span>
+                                                <span class="amount"></span>
                                             </strong>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="wc-proceed-to-checkout">
-                                <a href="#">Proceed to Checkout</a>
+                                <a href="#">Đi đến thanh toán</a>
                             </div>
                         </div>
                     </div>

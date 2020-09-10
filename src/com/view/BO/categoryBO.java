@@ -9,7 +9,8 @@ import com.view.BEAN.categoryBEAN;
 import com.view.DAO.connectSQL;
 
 public class categoryBO {
-
+	
+	// lấy tát cả record 
 	public static List<categoryBEAN> getCategoryAll() {
 		List<categoryBEAN> ds = new ArrayList<>();
 
@@ -27,7 +28,8 @@ public class categoryBO {
 		}
 		return ds;
 	}
-
+	
+	// đếm số category
 	public static int getProductTotal(String category_id) {
 		String sql = " SELECT COUNT(P.Producer_id) FROM Category C JOIN  Product P ON C.Category_id = P.Category_id WHERE P.Category_id = ?";
 		try {
@@ -43,4 +45,6 @@ public class categoryBO {
 		}
 		return 0;
 	}
+	
+	//
 }

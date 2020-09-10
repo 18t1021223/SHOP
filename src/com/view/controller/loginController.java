@@ -14,6 +14,7 @@ import com.view.BEAN.cartBEAN;
 import com.view.BEAN.userBEAN;
 import com.view.BO.cartBO;
 import com.view.BO.userBO;
+import com.view.MODEL.cartModel;
 
 @WebServlet(urlPatterns = { "/loginController" })
 public class loginController extends HttpServlet {
@@ -26,25 +27,35 @@ public class loginController extends HttpServlet {
 		check_login(req, resp, username, password);
 	}
 
-	public void check_login(HttpServletRequest req, HttpServletResponse resp, String username, String password)
+	public void check_login(HttpServletRequest req, HttpServletResponse resp, String email, String password)
 			throws ServletException, IOException {
 		HttpSession hs = req.getSession();
 
-		userBEAN u = userBO.checkLogin(username, password);
+		userBEAN u = userBO.checkLogin(email, password);
 		if (u != null) {
-			hs.setAttribute("user", u);
-
-			ArrayList<cartBEAN> ds = (ArrayList<cartBEAN>) cartBO.getCart(u.getUser_id());
-			hs.setAttribute("cart_list", ds);
-			//lấy ra tổng số tiền
-			hs.setAttribute("cart_total", cartBO.getCartPriceTotal(u.getUser_id()));
-			// xóa
-			hs.setMaxInactiveInterval(5);
-			req.getRequestDispatcher("/controller_direction?page=shop&numberPage=1&init=init&user=exists").forward(req,
-					resp);
 			
+			hs.setAttribute("user", u);
+			khoitaoAttribute(req, resp);
+			resp.sendRedirect("run");
 		} else {
-			resp.sendRedirect("login.jsp");
+			req.setAttribute("notify", 3);
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
+	}
+
+	public static void khoitaoAttribute(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		userBEAN u = (userBEAN) hs.getAttribute("user");
+		
+		ArrayList<cartBEAN> ds = (ArrayList<cartBEAN>) cartBO.getCart(u.getUser_id());
+		// lấy giỏ hàng trong DB
+		cartModel cart = new cartModel();
+
+		for (cartBEAN cartBEAN : ds) {
+			cart.addProduct(cartBEAN);
+		}
+		hs.setAttribute("cart_model", cart);
+		// thoi gian song
+		hs.setMaxInactiveInterval(120);
 	}
 }
