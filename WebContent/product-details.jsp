@@ -122,7 +122,7 @@
 		                                                </div>
 		                                                <div class="cart-info">
 		                                                    <h5><a href="productController?page=shop&product_id=${ cart.value.getProd().getProduct_id()}">${cart.value.getProd().getProduct_name() }</a></h5>
-		                                                    <p class='cart-info-price'> ${cart.value.getCart_quantify() } * ${  cart.value.getProd().getProductSaleFormat() } đ</p>
+		                                                    <p class='cart-info-price'> ${cart.value.getCart_quantify() } * ${  cart.value.getProd().getProductSaleFormat() } ₫</p>
 		                                                                                                      		
 		                                                </div>
 		                                                <div class="cart-icon">
@@ -135,7 +135,7 @@
 	                                        
                                         <div class="cart-totals">                                        
                                             <c:set var='total' value="${cart_model.getPriceTotal() }"/>                       
-                                            <h5 style="font-family: Arial, Helvetica, sans-serif;">Tổng <span>${ total } đ</span></h5>
+                                            <h5 style="font-family: Arial, Helvetica, sans-serif;">Tổng <span>${ total } ₫</span></h5>
                                         </div>
                                         <div class="cart-bottom">
                                             <a class="view-cart" href="cartController?page=cart&action=viewcart">xem giỏ hàng</a>

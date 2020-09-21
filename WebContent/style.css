@@ -143,7 +143,9 @@ input[type="checkbox"]:focus {
     outline: medium none;
     outline-offset: -2px;
 }
-
+input[type="radio"]{
+	margin: 0 10px 0 0 ;
+}
 ul {
     list-style: outside none none;
     margin: 0;
@@ -5251,10 +5253,8 @@ nav.menu .cr-dropdown ul {
     color: #202020;
     font-size: 36px;
     font-weight: 700;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    text-transform: capitalize;
-    
+
+    text-transform: capitalize;   
     font-weight: 400;
 }
 
@@ -5354,7 +5354,7 @@ nav.menu .cr-dropdown ul {
     font-weight: 400;
 }
 
-.single-register form input {
+.single-register form input , .single-register form button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
     box-shadow: none;
@@ -5364,6 +5364,7 @@ nav.menu .cr-dropdown ul {
     padding-left: 10px;
     width: 100%;
     font-weight: 400;
+    margin: 10px 0;
 }
 
 .single-register .chosen-select {
@@ -5405,7 +5406,7 @@ nav.menu .cr-dropdown ul {
 }
 
 
-.single-register form input[type='submit'] {
+.single-register form button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #eceff8;
     box-shadow: none;
@@ -5413,14 +5414,14 @@ nav.menu .cr-dropdown ul {
     display: inline-block;
     font-size: 14px;
     margin-top: 6px;
-    padding: 12px 48px;
+ 
     text-decoration: none;
     transition: .3s;
     font-weight: 400;
     width: 150px;
 }
 
-.single-register form input[type='submit']:hover {
+.single-register form button:hover {
     background-color: #F07C29;
     color: #fff;
     border: 1px solid #F07C29;
@@ -6118,15 +6119,20 @@ nav.menu .cr-dropdown ul {
 
 /*  27. Checkout
 /*----------------------------------------*/
-
+.login-false{
+	display:none;
+	margin-top:10px;
+}
+.btn , .modal-content{
+	border-radius:0;
+}
 .coupon-area,
 .checkout-area {
     background: #fff;
     overflow: hidden;
 }
-
-.different-address {
-    margin-top: 30px;
+.cart_item .product-thumbnail a img{
+	width:100px;
 }
 
 .coupon-accordion h3 {
@@ -6143,15 +6149,6 @@ nav.menu .cr-dropdown ul {
     width: auto;
 }
 
-.coupon-accordion h3::before {
-    color: #1e85be;
-    content: "?";
-    display: inline-block;
-    font-family: fontawesome;
-    left: 1.5em;
-    position: absolute;
-    top: 1em;
-}
 
 .coupon-accordion span {
     color: #6f6f6f;
@@ -6188,16 +6185,14 @@ p.lost-password a:hover {
 
 .coupon-accordion span {
     color: #333;
-    cursor: pointer;
-    
+    cursor: pointer;   
     font-weight: 400;
 }
 
 .coupon-info p.form-row-first label span.required,
 .coupon-info p.form-row-last label span.required {
     color: #FF1111;
-    font-weight: 700;
-    
+    font-weight: 700;    
     font-weight: 400;
 }
 
@@ -6252,8 +6247,7 @@ p.lost-password {
 }
 
 p.lost-password a {
-    color: #333;
-    
+    color: #333;  
     font-weight: 400;
 }
 
@@ -6266,6 +6260,7 @@ p.checkout-coupon input[type="text"] {
     height: 36px;
     padding-left: 10px;
     width: 170px;
+    margin-right:6px;
 }
 
 p.checkout-coupon input[type="submit"] {
@@ -6274,7 +6269,6 @@ p.checkout-coupon input[type="submit"] {
     border-radius: 0;
     color: #fff;
     height: 36px;
-    margin-left: 6px;
     padding: 5px 10px;
     transition: all 0.3s ease 0s;
     
@@ -6296,8 +6290,7 @@ p.lost-password a:hover {
     font-size: 30px;
     margin: 0 0 20px;
     padding-bottom: 10px;
-    text-transform: uppercase;
-    
+    text-transform: uppercase;  
     font-weight: 400;
 }
 
@@ -6306,21 +6299,45 @@ p.lost-password a:hover {
     position: relative;
 }
 
+#option-address{
+	font-size:16px;
+}
+
+.btn-add-address{
+	margin:20px 0;
+	text-align: right;
+}
+
+.btn-confirm-address{
+	margin: 20px 0 40px;
+}
+.option-address-div{
+}
+
+.option-address-chooser {
+	font-size: 16px;
+}
+.to{
+	margin-bottom:0;
+	margin-left:27px;
+}
+.font-address{
+	font-weight: 400;
+}
+
 .country-select label,
 .checkout-form-list label {
     color: #333;
     display: block;
     font-size: 14px;
     font-weight: 600;
-    margin: 0 0 5px;
-    
+    margin: 2px 0 5px;  
     font-weight: 400;
 }
 
 .country-select label span.required,
 .checkout-form-list label span.required {
-    color: #FF1111;
-    
+    color: #FF1111;   
     font-weight: 400;
 }
 
@@ -6329,8 +6346,8 @@ p.lost-password a:hover {
     width: 100%;
     border: 1px solid #ddd;
     padding-left: 10px;
-    font-size: 13px;
-    
+    font-size: 16px;
+    color:#333;
     font-weight: 400;
 }
 
@@ -6346,7 +6363,7 @@ p.lost-password a:hover {
     height: 42px;
     padding: 0 0 0 10px;
     width: 100%;
-    
+    color:#666;
     font-weight: 400;
 }
 
@@ -6374,19 +6391,6 @@ p.lost-password a:hover {
     width: 80%;
     padding-left: 14px;
 }
-
-.create-account p {
-    font-size: 13px;
-    color: #777;
-    
-    font-weight: 400;
-}
-
-.ship-different-title label {
-    padding-right: 22px;
-    font-size: 19px;
-}
-
 .order-notes textarea {
     height: 90px;
     padding: 15px;
@@ -6396,7 +6400,7 @@ p.lost-password a:hover {
 
 .your-order {
     background: #f2f2f2 none repeat scroll 0 0;
-    padding: 30px 40px 45px;
+    padding: 30px 20px 45px ;
 }
 
 .your-order h3 {
@@ -6406,8 +6410,7 @@ p.lost-password a:hover {
     padding-bottom: 10px;
     text-transform: uppercase;
     width: 100%;
-    color: #252525;
-    
+    color: #252525;   
     font-weight: 400;
 }
 
@@ -6419,8 +6422,6 @@ p.lost-password a:hover {
 
 .your-order-table table th {
     font-weight: normal;
-    text-align: center;
-    text-transform: uppercase;
     vertical-align: middle;
     white-space: nowrap;
     width: 250px;
@@ -6430,21 +6431,17 @@ p.lost-password a:hover {
 .your-order-table table td {
     border-bottom: 1px solid #d8d8d8;
     border-right: medium none;
-    font-size: 14px;
-    padding: 15px 0;
-    text-align: center;
+    font-size: 16px;
+    padding: 10px 0;
     color: #333;
-    
     font-weight: 400;
+    text-align: CENTER;
 }
-
-.your-order-table table .shipping ul li input {
-    position: relative;
-    top: 2px;
+tfoot th{
+	text-align:right;
 }
-
-.your-order-table table .shipping th {
-    vertical-align: top;
+tfoot td{
+	text-align:center;
 }
 
 .your-order-table table .order-total th {
@@ -6458,8 +6455,7 @@ p.lost-password a:hover {
 
 .your-order-table table tr.order-total td span {
     color: #ec4445;
-    font-size: 20px;
-    
+    font-size: 20px;   
     font-weight: 400;
 }
 
@@ -6476,63 +6472,27 @@ p.lost-password a:hover {
     box-shadow: none;
     margin-bottom: 10px;
 }
+.order-payment{
+	text-align:right;
+	margin: 30px 20px 45px;
+	
+}
+.order-payment h4 {
+    padding: 20px 0;
+    border-bottom: 1px solid #d8d8d8;
+    width: 100%;
+    color: #252525;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+    
+}
+.order-payment input{
+	font-size:16px;	
+}
 
-.payment-method {
+.order-button-payment {
     margin-top: 40px;
-}
-
-.payment-accordion .panel-group .panel {
-    background: transparent;
-}
-
-.payment-accordion .panel-title a {
-    color: #333;
-    font-size: 16px;
-    padding-left: 25px;
-    position: relative;
-    text-decoration: none;
-    text-transform: capitalize;
-    margin-bottom: 10px;
-    display: inline-block;
-    
-    font-weight: 400;
-}
-
-.payment-accordion .panel-body {
-    border-top: medium none !important;
-    padding: 0;
-}
-
-.payment-accordion .panel-body p {
-    font-size: 14px;
-    margin-bottom: 0;
-    color: #333;
-    
-    font-weight: 400;
-}
-
-.payment-accordion .panel-title a img {
-    height: 35px;
-    margin-left: 15px;
-}
-
-.payment-accordion .panel-heading a::before {
-    content: "?";
-    cursor: pointer;
-    display: block;
-    font-family: fontawesome;
-    font-size: 20px;
-    left: 0;
-    position: absolute;
-    top: 0px;
-}
-
-.payment-accordion .panel-heading a.collapsed::before {
-    content: " ?";
-}
-
-.payment-accordion .panel-group .panel {
-    margin-bottom: 20px;
+    text-align: center;
 }
 
 .order-button-payment input:hover {
@@ -6550,15 +6510,10 @@ p.lost-password a:hover {
     padding: 0;
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
-    width: 100%;
-    
+    width: 50%;
+    font-family: 'Rufina', serif;
     font-weight: 400;
 }
-
-.your-order {
-    margin-bottom: 0px;
-}
-
 
 /*----------------------------------------*/
 
@@ -6880,7 +6835,7 @@ p.lost-password a:hover {
     font-size: 18px;
 }
 
-.modal-pro-content>form {
+.modal-pro-content>div {
     margin: 100px 0 16px;
 }
 
@@ -6984,3 +6939,5 @@ p.lost-password a:hover {
 /*input:disabled {
 	 cursor: not-allowed;	
 }*/
+
+	

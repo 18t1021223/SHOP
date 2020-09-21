@@ -35,9 +35,9 @@ public class userFilter implements Filter {
 		if (u != null) {
 			chain.doFilter(request, response);
 		} else {
-			HttpServletResponse resp = (HttpServletResponse) response;			
-			resp.sendRedirect("login.jsp");
+			HttpServletResponse resp = (HttpServletResponse) response;	
 			
+			resp.getWriter().write("login.jsp");
 		}
 	}
 

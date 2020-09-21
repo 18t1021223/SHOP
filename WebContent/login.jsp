@@ -45,7 +45,10 @@
 					<div class="row">						
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="account-area text-right">	
-								<ul><li><a href="register.jsp">đăng ký</a></li></ul>																															
+								<ul>
+									<li><a href="checkout.jsp">Thanh toán</a></li>
+									<li><a href="register.jsp">Đăng ký</a></li>
+								</ul>																															
 							</div>
 						</div>
 					</div>
@@ -58,7 +61,7 @@
 						
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="logo-area text-center logo-xs-mrg">
-								<a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
+								<a href="shop.jsp"><img src="img/logo/logo.png" alt="logo" /></a>
 							</div>
 						</div>
 						
@@ -274,7 +277,7 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">trang chủ</a></li>
+								<li><a href="shop.jsp">trang chủ</a></li>
 								<li><a href="#" class="active">đăng nhập</a></li>
 							</ul>
 						</div>
@@ -288,34 +291,10 @@
 			
 			<div class="container">
 				<div class="row">	
-   	
-  					<c:choose>
-   					 <c:when test="${notify == 1 }">
-	   						 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> yêu cầu thiết lập lại mật khẩu thành công , kiểm tra email của bạn </strong>
-	  						</div>
-  						</c:when>
-  						 <c:when test="${notify == 2 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Email chưa được đăng ký , vui lòng nhập lại Email </strong>
-    				 		</div>
-  						</c:when> 	
-  						 <c:when test="${notify == 3 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Sai tài khoản hoặc mật khẩu , vui lòng nhập lại  </strong>
-    				 		</div>
-  						</c:when> 	
-  						 <c:when test="${notify == 4 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Email đã tồn tại , vui lòng nhập lại  </strong>
-    				 		</div>
-  						</c:when> 						
- 					</c:choose>
-
+   					 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible login-false"> 				 		
+    				 		<strong class='alert-text'> </strong>
+    				 </div>
+  					
 					<div class="col-lg-12">
 						<div class="login-title text-center mb-30">
 							<h2>đăng nhập</h2>
@@ -323,7 +302,7 @@
 						</div>
 					</div>
 					<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
-						<form action="loginController" method="get">
+						<form action="loginController" method="post" class='form-login'>
 							<div class="login-form">
 							<div class="single-login">
 								<label>email<span>*</span></label>
@@ -331,10 +310,10 @@
 							</div>
 							<div class="single-login">
 								<label>mật khẩu <span>*</span></label>
-								<input type="password" name="password" maxlength="12" required="required" autocomplete="off"/>
+								<input type="password" name="password"  required="required" autocomplete="off"/>
 							</div>
 							<div class="single-login single-login-2">							 
-								<input type="submit" value="đăng nhập" id="onload_submit" onclick="loading()">
+								<input type="submit" value="đăng nhập">
 							
 							</div>
 							<a href="#modelId" data-toggle="modal">quên mật khẩu</a>
@@ -345,27 +324,25 @@
 			</div>
 		</div>
 		<!-- user-login-area-end -->
+		<!--  modal quen mat khau start -->
 		<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" style="padding:50px">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="form-group">      
-                        
-                        <label for="forget">Email</label>
-                        <input type="email" name="user_email" id="forget" class="form-control" aria-describedby="helpId" form="forget-password" required>
-                        <small id="helpId" class="text-muted"></small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <form action="userController" method="get" id="forget-password">
-                       	<input type="hidden" name="action" value="forget">
-                       	<i class="fa fa-spinner fa-spin" id="loading_icon" style="display: none;"></i> 
-                        <input type="submit" class="btn btn-primary" onclick="loading()"/>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	        <div class="modal-dialog" role="document">
+	            <div class="modal-content">
+	                <div class="modal-body">
+	                   	 <form action="userController" method="get" class="forget-password">
+		                     <div class="form-group">                          
+		                        <label for="forget">Email</label>
+		                        <input type="email" name="user_email" id="forget" class="form-control" aria-describedby="helpId" required>
+		                        <small id="helpId" class="text-muted"></small>
+		                    </div>                    	                      
+	                       	<input type="hidden" name="action" value="forget">                                         
+	                   		<button class="btn btn-primary confirm">Xác nhận</button>        			  
+	                    </form>
+	                </div>           
+	            </div>
+	        </div>
+    	</div>
+    <!--  modal quen mat khau end -->
 		<!-- footer-area-start -->
 		<footer>
 			<!-- footer-top-start -->

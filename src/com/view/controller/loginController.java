@@ -22,31 +22,24 @@ public class loginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		check_login(req, resp, username, password);
 	}
 
-	public void check_login(HttpServletRequest req, HttpServletResponse resp, String email, String password)
+	public boolean check_login(HttpServletRequest req, HttpServletResponse resp, String email, String password)
 			throws ServletException, IOException {
 		HttpSession hs = req.getSession();
-
 		userBEAN u = userBO.checkLogin(email, password);
 		if (u != null) {
-			
 			hs.setAttribute("user", u);
 			khoitaoAttribute(req, resp);
-			resp.sendRedirect("run");
-		} else {
-			req.setAttribute("notify", 3);
-			req.getRequestDispatcher("login.jsp").forward(req, resp);
+			return true;
 		}
+		return false;
 	}
 
 	public static void khoitaoAttribute(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession hs = req.getSession();
 		userBEAN u = (userBEAN) hs.getAttribute("user");
-		
+
 		ArrayList<cartBEAN> ds = (ArrayList<cartBEAN>) cartBO.getCart(u.getUser_id());
 		// lấy giỏ hàng trong DB
 		cartModel cart = new cartModel();
@@ -56,6 +49,20 @@ public class loginController extends HttpServlet {
 		}
 		hs.setAttribute("cart_model", cart);
 		// thoi gian song
-		hs.setMaxInactiveInterval(120);
+		hs.setMaxInactiveInterval(240);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/hmtl");
+		if ( check_login(req, resp, username, password) == false) {
+			resp.getWriter().write("3");
+		} else{
+			resp.getWriter().write("shop.jsp");
+		}
 	}
 }

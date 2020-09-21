@@ -1,6 +1,9 @@
 package com.view.BEAN;
 
+import java.util.ArrayList;
+
 import com.view.BO.cartBO;
+import com.view.BO.userBO;
 
 public class userBEAN {
 	private String user_id, user_name, user_email, user_password, user_telephone, user_birthday, user_role;
@@ -96,6 +99,11 @@ public class userBEAN {
 	// tính tổng số tiền san phẩm trong giỏ hàng
 	public double getCartPriceTotal() {
 		return cartBO.getCartPriceTotal(user_id);
+	}
+
+	// lay dia chi
+	public ArrayList<addressToBEAN> getAddressAll() {
+		return userBO.getAddressAll(this.user_id);
 	}
 
 }

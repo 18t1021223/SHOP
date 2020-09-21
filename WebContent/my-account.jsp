@@ -9,7 +9,8 @@
 	    <title>Koparion – Book Shop Bootstrap 4 Template</title>
 	    <meta name="description" content="">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	    <!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 		<!--  -->
@@ -44,49 +45,24 @@
     <c:if test="${user == null }">
 		<c:import url="login.jsp" />
 	</c:if>
-	<!--  thong bao start -->
-	<div class="modal-msg" style="display: none;">
-
-        <div class="msg-header">
-            <h6 class="text-danger display-4"><i class="fas fa-exclamation-circle"></i></h6>
-            <p  class="text-light text-center my-account-msg msg-text">${msg }</p>
-        </div>
-    </div>
-	<!-- thong bao end -->
+		<!--  thong bao start -->
+		<div class="modal-msg" style="display: none;">
+	
+	        <div class="msg-header">
+	            <h6 class="msg-icon"><i class="fas fa-exclamation-circle"></i></h6>
+	            <p  class="text-light text-center msg-text">${msg }</p>
+	        </div>
+	    </div>
+	    <% session.removeAttribute("msg"); %>
+		<!-- thong bao end -->
 	
    <!-- header-area-start -->
 <header>
     <!-- header-top-area-start -->
   <div class="header-top-area">
       <div class="container">
-          <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <div class="language-area">
-                      <ul>
-                          <li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-                              <div class="header-sub">
-                                  <ul>
-                                      <li>
-                                          <a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a>
-                                      </li>
-                                      <li>
-                                          <a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </li>
-                          <li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-                              <div class="header-sub dolor">
-                                  <ul>
-                                      <li><a href="#">EUR €</a></li>
-                                      <li><a href="#">USD $</a></li>
-                                  </ul>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="row">             
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="account-area text-right">
                       <ul>
                           <li><a href="checkout.jsp">Checkout</a></li>
@@ -118,7 +94,7 @@
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                   <div class="my-cart">
                       <ul>
-                          <li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                          <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                               <span>2</span>
                               <div class="mini-cart-sub">
                                   <div class="cart-product">
@@ -177,94 +153,94 @@
                                 <li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu">
                                         <span>
-	<a href="#" class="title">Jackets</a>
-	<a href="shop.html">Tops & Tees</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Graphic T-Shirts</a>
-	<a href="shop.html">Jackets & Coats</a>
-	<a href="shop.html">Fashion Jackets</a>
-</span>
-                                        <span>
-	<a href="#" class="title">weaters</a>
-	<a href="shop.html">Crochet</a>
-	<a href="shop.html">Sleeveless</a>
-	<a href="shop.html">Stripes</a>
-	<a href="shop.html">Sweaters</a>
-	<a href="shop.html">hoodies</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Bottoms</a>
-	<a href="shop.html">Heeled sandals</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Flat sandals</a>
-	<a href="shop.html">Short Sleeve</a>
-	<a href="shop.html">Long Sleeve</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Jeans Pants</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Sleeveless</a>
-	<a href="shop.html">Graphic T-Shirts</a>
-	<a href="shop.html">Hoodies</a>
-	<a href="shop.html">Jackets</a>
-</span>
+										<a href="#" class="title">Jackets</a>
+										<a href="shop.html">Tops & Tees</a>
+										<a href="shop.html">Polo Short Sleeve</a>
+										<a href="shop.html">Graphic T-Shirts</a>
+										<a href="shop.html">Jackets & Coats</a>
+										<a href="shop.html">Fashion Jackets</a>
+									</span>
+									                                        <span>
+										<a href="#" class="title">weaters</a>
+										<a href="shop.html">Crochet</a>
+										<a href="shop.html">Sleeveless</a>
+										<a href="shop.html">Stripes</a>
+										<a href="shop.html">Sweaters</a>
+										<a href="shop.html">hoodies</a>
+									</span>
+									                                        <span>
+										<a href="#" class="title">Bottoms</a>
+										<a href="shop.html">Heeled sandals</a>
+										<a href="shop.html">Polo Short Sleeve</a>
+										<a href="shop.html">Flat sandals</a>
+										<a href="shop.html">Short Sleeve</a>
+										<a href="shop.html">Long Sleeve</a>
+									</span>
+									                                        <span>
+										<a href="#" class="title">Jeans Pants</a>
+										<a href="shop.html">Polo Short Sleeve</a>
+										<a href="shop.html">Sleeveless</a>
+										<a href="shop.html">Graphic T-Shirts</a>
+										<a href="shop.html">Hoodies</a>
+										<a href="shop.html">Jackets</a>
+									</span>
                                     </div>
                                 </li>
                                 <li><a href="product-details.html">Audio books<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu">
                                         <span>
-	<a href="#" class="title">Shirts</a>
-	<a href="shop.html">Tops & Tees</a>
-	<a href="shop.html">Sweaters </a>
-	<a href="shop.html">Hoodies</a>
-	<a href="shop.html">Jackets & Coats</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Tops & Tees</a>
-	<a href="shop.html">Long Sleeve </a>
-	<a href="shop.html">Short Sleeve</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Sleeveless</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Jackets</a>
-	<a href="shop.html">Sweaters</a>
-	<a href="shop.html">Hoodies</a>
-	<a href="shop.html">Wedges</a>
-	<a href="shop.html">Vests</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Jeans Pants</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Sleeveless</a>
-	<a href="shop.html">Graphic T-Shirts</a>
-	<a href="shop.html">Hoodies</a>
-</span>
+											<a href="#" class="title">Shirts</a>
+											<a href="shop.html">Tops & Tees</a>
+											<a href="shop.html">Sweaters </a>
+											<a href="shop.html">Hoodies</a>
+											<a href="shop.html">Jackets & Coats</a>
+										</span>
+										                                        <span>
+											<a href="#" class="title">Tops & Tees</a>
+											<a href="shop.html">Long Sleeve </a>
+											<a href="shop.html">Short Sleeve</a>
+											<a href="shop.html">Polo Short Sleeve</a>
+											<a href="shop.html">Sleeveless</a>
+										</span>
+										                                        <span>
+											<a href="#" class="title">Jackets</a>
+											<a href="shop.html">Sweaters</a>
+											<a href="shop.html">Hoodies</a>
+											<a href="shop.html">Wedges</a>
+											<a href="shop.html">Vests</a>
+										</span>
+										                                        <span>
+											<a href="#" class="title">Jeans Pants</a>
+											<a href="shop.html">Polo Short Sleeve</a>
+											<a href="shop.html">Sleeveless</a>
+											<a href="shop.html">Graphic T-Shirts</a>
+											<a href="shop.html">Hoodies</a>
+										</span>
                                     </div>
                                 </li>
                                 <li><a href="product-details.html">children’s books<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu mega-menu-2">
                                         <span>
-	<a href="#" class="title">Tops</a>
-	<a href="shop.html">Shirts</a>
-	<a href="shop.html">Florals</a>
-	<a href="shop.html">Crochet</a>
-	<a href="shop.html">Stripes</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Bottoms</a>
-	<a href="shop.html">Shorts</a>
-	<a href="shop.html">Dresses</a>
-	<a href="shop.html">Trousers</a>
-	<a href="shop.html">Jeans</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Shoes</a>
-	<a href="shop.html">Heeled sandals</a>
-	<a href="shop.html">Flat sandals</a>
-	<a href="shop.html">Wedges</a>
-	<a href="shop.html">Ankle boots</a>
-</span>
+											<a href="#" class="title">Tops</a>
+											<a href="shop.html">Shirts</a>
+											<a href="shop.html">Florals</a>
+											<a href="shop.html">Crochet</a>
+											<a href="shop.html">Stripes</a>
+										</span>
+										                                        <span>
+											<a href="#" class="title">Bottoms</a>
+											<a href="shop.html">Shorts</a>
+											<a href="shop.html">Dresses</a>
+											<a href="shop.html">Trousers</a>
+											<a href="shop.html">Jeans</a>
+										</span>
+										                                        <span>
+											<a href="#" class="title">Shoes</a>
+											<a href="shop.html">Heeled sandals</a>
+											<a href="shop.html">Flat sandals</a>
+											<a href="shop.html">Wedges</a>
+											<a href="shop.html">Ankle boots</a>
+										</span>
                                     </div>
                                 </li>
 
@@ -368,7 +344,7 @@
                <div class="col-lg-12">
                    <div class="breadcrumbs-menu">
                        <ul>
-                           <li><a href="#">Home</a></li>
+                           <li><a href="shop.jsp">Trang chủ</a></li>
                            <li><a href="#" class="active">Tài khoản của tôi</a></li>
                        </ul>
                    </div>
@@ -408,7 +384,7 @@
                    <h3 class="font-weight-normal py-5">Thông tin tài khoản</h3>
                    <div class="row">
                        <div class="col-lg-6 col-md-12 col-sm-12">
-                           <form action="userController" method="get">
+                           <form action="userController" method="get"  id='form-thongtin-taikhoan'>
 
                                <div class="form-group">
                                    <label for="user_name">Họ tên</label>
@@ -423,7 +399,7 @@
 
                                <div class="form-group">
                                    <label for="user_telephone">Số điện thoại</label>
-                                   <input type="text" class="form-control" name="user_telephone" id="user_telephone" pattern="(\+84|0)\d{9,10}"  aria-describedby="helpId" value="${user.getUser_telephone() }">
+                                   <input type="text" class="form-control" name="user_telephone" id="user_telephone" pattern="(\+84|0)\d{9,10}"  aria-describedby="helpId" value="${user.getUser_telephone() }" minlength="9" >
                                    <small id="helpId" class="form-text text-muted"></small>
                                </div>
 
@@ -460,10 +436,8 @@
                                    <input type="text" class="form-control" name="user_birthday" id="user_birthday" min="1930-01-01" placeholder="2020/01/01" value="${user.getUser_birthday() }" onfocus="(this.type='date')">
                                    <!--onblur="(this.type='text')"-->
                                </div>
-                               <input type="hidden" name="user_id" value="${user.getUser_id() }">
-                               <input type='hidden' name='user_password' id="user_password" value="${user.getUser_password() }">
                                <input type="hidden" name="action" value="update">
-                               <input type="submit" value="lưu" class="btn btn-warning w-25 my-5">
+                               <input type="submit" value="lưu" class="btn btn-warning w-25 my-5" id='submit-thongtin-taikhoan'>
                                <a href="#recovery-pass" data-toggle="modal" class="ml-5">Thay đổi mật khẩu</a>
                            </form>
                        </div>
@@ -476,7 +450,7 @@
 
                    <div class="col-lg-12 col-md-12 col-sm-12">
                        <h3 class="font-weight-normal py-5">Địa chỉ giao hàng</h3>
-                       <span data-target="#modelId" data-toggle="modal" class="btn btn-danger" id='add-address'>Thêm địa chỉ</span>
+                       <span data-target="#modelId" data-toggle="modal" class="btn btn-danger add-address" >Thêm địa chỉ</span>
                    
                        <c:forEach var="i" items="${address_list }" varStatus="x">
 	
@@ -502,8 +476,8 @@
 									 <p>Đia chi</p>
 								</div>
 								 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-9">
-	                                <c:forTokens items="${i.getAddress_description() }" delims="||" var='arr'>
-	                                    <p class='_description'>${arr }</p>
+	                                <c:forTokens items="${i.getAddress_description() }" delims="|" var='arr'>
+	                                    <span class='_description'>${arr },</span>
 	                                </c:forTokens>
                           		  </div>
 							</div>
@@ -513,7 +487,7 @@
                                 
                                 <c:if test="${x.index > 0 }">
                               	  <span data-target="#modelConfirm" class="white-primary d-block mb-3 btn btn-danger w-50 remove" data-toggle="modal" address_id='${i.getAddress_id()}'>Xóa</span>                             	                       
-                              	  	<a href='userController?action=addressDefault&address_id=${i.getAddress_id()}' class="white-primary d-block mb-3 btn btn-light w-50 default">Mặc định</a>                             	
+                              	  <span class="white-primary d-block mb-3 btn btn-light w-50 default" address_id='${i.getAddress_id()}'>Mặc định</span>                             	
                                 </c:if>                
 							</div>                       		                         
                        </div>
@@ -657,31 +631,31 @@
           				     </button>
                            </div>
                            <div class="modal-body">
-                               <form action="userController" method="GET">
+                               <form action="userController" method="GET" id='form-thongtin-diachi'>
                                    <div class="form-group">
-                                       <input type="text" class="form-control" id="address_user" name="address_user" placeholder="Họ tên" required>
+                                       <input type="text" class="form-control address_user" name="address_user" placeholder="Họ tên" required>
                                        <small id="nameHelpId" class="form-text text-muted"></small>
                                    </div>
                                    <div class="form-group">
-                                       <input type="text" class="form-control" id="address_telephone" name='address_telephone' placeholder="Số điện thoại" pattern="(\+84|0)\d{9,10}" required minlength="9">
+                                       <input type="text" class="form-control address_telephone" name='address_telephone' placeholder="Số điện thoại" pattern="(\+84|0)\d{9,10}" required minlength="9">
                                        <small id="telephoneHelpId" class="form-text text-muted"></small>
                                    </div>
 
-                                   <select class="form-control mb-4" id="province" name="province" required> 
+                                   <select class="form-control mb-4 province"  name="province" required> 
                					       <option hidden value=''>Tỉnh/thành phố</option>
 								     		          
          						     </select>
 
-				                  <select class="form-control mb-4" id="district" name='district' required>
+				                  <select class="form-control mb-4 district"  name='district' required>
 				                      <option hidden  value="">Quận/huyện</option>     	            	        
 				           	     </select>
 				
-				                  <select class="form-control mb-4" id="ward" name='ward' required>   
+				                  <select class="form-control mb-4 ward" name='ward' required>   
 				                     <option hidden  value="">Phường/xã</option>                                 
 				                 
 				            	   </select>
 
-                                   <textarea name="address_description" id="address_description" placeholder="Địa chỉ" class="w-100" wrap="soft" rows="5" required="required"></textarea>
+                                   <textarea name="address_description" placeholder="Địa chỉ" class="w-100 address_description" wrap="soft" rows="5" required="required"></textarea>
 
                                    <div class="modal-footer">
                                        <input type='hidden' id='address_id' name= 'address_id' value=''>
@@ -698,13 +672,12 @@
                <div class="modal fade" id="modelConfirm" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                    <div class="modal-dialog modal-sm" role="document">
                        <div class="modal-content">
-
                            <div class="modal-body">
                                Xác nhận xóa địa chỉ này
                            </div>
                            <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                               <a href="userController" id='address-remove' type="button" class="btn btn-danger">xác nhận </a>
+                               <span id='address-remove' type="button" class="btn btn-danger">xác nhận </span>
                            </div>
                        </div>
                    </div>
@@ -720,13 +693,12 @@
                                <div class="form-group">
 
                                    <label for="pass-current">Mật khẩu hiện tại</label>
-
                                    <input type="password" name="pass-current" id="pass-current" class="form-control" aria-describedby="helpId" form="recovery-form" required>
                                    <small id="msg-pass-current" class="text-muted"></small>
                                </div>
                                <div class="form-group">
                                    <label for="password">Mật khẩu mới</label>
-                                   <input type="password" name="password" id="password" class="form-control" aria-describedby="helpId" form="recovery-form" minlength="8" required>
+                                   <input type="password" name="password" id="password" class="form-control" aria-describedby="helpId" form="recovery-form"  required>
                                    <small id="helpId" class="text-muted"></small>
                                </div>
                                <div class="form-group">
@@ -736,11 +708,10 @@
                                </div>
                            </div>
                            <div class="modal-footer">
-                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                               <form action="userController" method="get" id="recovery-form" onsubmit="return run2()">
-                                   <input type='hidden' name="user_id" value="${user.getUser_id() }">
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                               <form action="userController" method="get" id="recovery-form">                                 
                                    <input type='hidden' name="action" value="editPassword">
-                                   <input type="submit" class="btn btn-primary"></input>
+                                   <input type="submit" class="btn btn-primary" value='Xác nhận' />
                                </form>
                            </div>
                        </div>
@@ -748,149 +719,148 @@
                </div>
                <!-- modal thay đổi mat khau end -->
 
-
                <!-- footer-area-start -->
-<footer>
-    <!-- footer-top-start -->
-<div class="footer-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="footer-top-menu bb-2">
-                    <nav>
-                        <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">Enable Cookies</a></li>
-                            <li><a href="#">Privacy and Cookie Policy</a></li>
-                            <li><a href="#">contact us</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- footer-top-start -->
-<!-- footer-mid-start -->
-<div class="footer-mid ptb-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-footer br-2 xs-mb">
-                            <div class="footer-title mb-20">
-                                <h3>Products</h3>
-                            </div>
-                            <div class="footer-mid-menu">
-                                <ul>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="#">Prices drop </a></li>
-                                    <li><a href="#">New products</a></li>
-                                    <li><a href="#">Best sales</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-footer br-2 xs-mb">
-                            <div class="footer-title mb-20">
-                                <h3>Our company</h3>
-                            </div>
-                            <div class="footer-mid-menu">
-                                <ul>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">Stores</a></li>
-                                    <li><a href="register.html">My account </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="single-footer br-2 xs-mb">
-                            <div class="footer-title mb-20">
-                                <h3>Your account</h3>
-                            </div>
-                            <div class="footer-mid-menu">
-                                <ul>
-                                    <li><a href="contact.html">Addresses</a></li>
-                                    <li><a href="#">Credit slips </a></li>
-                                    <li><a href="#"> Orders</a></li>
-                                    <li><a href="#">Personal info</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="single-footer mrg-sm">
-                    <div class="footer-title mb-20">
-                        <h3>STORE INFORMATION</h3>
-                    </div>
-                    <div class="footer-contact">
-                        <p class="adress">
-                            <span>My Company</span> 42 avenue des Champs Elysées 75000 Paris France
-                        </p>
-                        <p><span>Call us now:</span> (+1)866-540-3229</p>
-                        <p><span>Email:</span> support@hastech.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- footer-mid-end -->
-<!-- footer-bottom-start -->
-<div class="footer-bottom">
-    <div class="container">
-        <div class="row bt-2">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="copy-right-area">
-                    <p>Copyright ©<a href="#">Koparion</a>. All Right Reserved.</p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="payment-img text-right">
-                    <a href="#"><img src="img/1.png" alt="payment" /></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- footer-bottom-end -->
-</footer>
-<!-- footer-area-end -->
-
-
-<!-- all js here -->
-<!-- jquery latest version -->
-<script src="js/vendor/jquery-1.12.0.min.js"></script>
-<!-- bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- owl.carousel js -->
-<script src="js/owl.carousel.min.js"></script>
-<!-- meanmenu js -->
-<script src="js/jquery.meanmenu.js"></script>
-<!-- wow js -->
-<script src="js/wow.min.js"></script>
-<!-- jquery.parallax-1.1.3.js -->
-<script src="js/jquery.parallax-1.1.3.js"></script>
-<!-- jquery.countdown.min.js -->
-<script src="js/jquery.countdown.min.js"></script>
-<!-- jquery.flexslider.js -->
-<script src="js/jquery.flexslider.js"></script>
-<!-- chosen.jquery.min.js -->
-<script src="js/chosen.jquery.min.js"></script>
-<!-- jquery.counterup.min.js -->
-<script src="js/jquery.counterup.min.js"></script>
-<!-- waypoints.min.js -->
-<script src="js/waypoints.min.js"></script>
-<!-- plugins js -->
-<script src="js/plugins.js"></script>
-<!-- main js -->
-    <script src="js/main.js"></script>
-</body>
+		<footer>
+		    <!-- footer-top-start -->
+		<div class="footer-top">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-lg-12">
+		                <div class="footer-top-menu bb-2">
+		                    <nav>
+		                        <ul>
+		                            <li><a href="#">home</a></li>
+		                            <li><a href="#">Enable Cookies</a></li>
+		                            <li><a href="#">Privacy and Cookie Policy</a></li>
+		                            <li><a href="#">contact us</a></li>
+		                        </ul>
+		                    </nav>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- footer-top-start -->
+		<!-- footer-mid-start -->
+		<div class="footer-mid ptb-50">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-lg-8 col-md-8 col-sm-12">
+		                <div class="row">
+		                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		                        <div class="single-footer br-2 xs-mb">
+		                            <div class="footer-title mb-20">
+		                                <h3>Products</h3>
+		                            </div>
+		                            <div class="footer-mid-menu">
+		                                <ul>
+		                                    <li><a href="about.html">About us</a></li>
+		                                    <li><a href="#">Prices drop </a></li>
+		                                    <li><a href="#">New products</a></li>
+		                                    <li><a href="#">Best sales</a></li>
+		                                </ul>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		                        <div class="single-footer br-2 xs-mb">
+		                            <div class="footer-title mb-20">
+		                                <h3>Our company</h3>
+		                            </div>
+		                            <div class="footer-mid-menu">
+		                                <ul>
+		                                    <li><a href="contact.html">Contact us</a></li>
+		                                    <li><a href="#">Sitemap</a></li>
+		                                    <li><a href="#">Stores</a></li>
+		                                    <li><a href="register.html">My account </a></li>
+		                                </ul>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		                        <div class="single-footer br-2 xs-mb">
+		                            <div class="footer-title mb-20">
+		                                <h3>Your account</h3>
+		                            </div>
+		                            <div class="footer-mid-menu">
+		                                <ul>
+		                                    <li><a href="contact.html">Addresses</a></li>
+		                                    <li><a href="#">Credit slips </a></li>
+		                                    <li><a href="#"> Orders</a></li>
+		                                    <li><a href="#">Personal info</a></li>
+		                                </ul>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-lg-4 col-md-4 col-sm-12">
+		                <div class="single-footer mrg-sm">
+		                    <div class="footer-title mb-20">
+		                        <h3>STORE INFORMATION</h3>
+		                    </div>
+		                    <div class="footer-contact">
+		                        <p class="adress">
+		                            <span>My Company</span> 42 avenue des Champs Elysées 75000 Paris France
+		                        </p>
+		                        <p><span>Call us now:</span> (+1)866-540-3229</p>
+		                        <p><span>Email:</span> support@hastech.com</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- footer-mid-end -->
+		<!-- footer-bottom-start -->
+		<div class="footer-bottom">
+		    <div class="container">
+		        <div class="row bt-2">
+		            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		                <div class="copy-right-area">
+		                    <p>Copyright ©<a href="#">Koparion</a>. All Right Reserved.</p>
+		                </div>
+		            </div>
+		            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		                <div class="payment-img text-right">
+		                    <a href="#"><img src="img/1.png" alt="payment" /></a>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- footer-bottom-end -->
+		</footer>
+		<!-- footer-area-end -->
+		
+		
+		<!-- all js here -->
+		<!-- jquery latest version -->
+		<script src="js/vendor/jquery-1.12.0.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- owl.carousel js -->
+		<script src="js/owl.carousel.min.js"></script>
+		<!-- meanmenu js -->
+		<script src="js/jquery.meanmenu.js"></script>
+		<!-- wow js -->
+		<script src="js/wow.min.js"></script>
+		<!-- jquery.parallax-1.1.3.js -->
+		<script src="js/jquery.parallax-1.1.3.js"></script>
+		<!-- jquery.countdown.min.js -->
+		<script src="js/jquery.countdown.min.js"></script>
+		<!-- jquery.flexslider.js -->
+		<script src="js/jquery.flexslider.js"></script>
+		<!-- chosen.jquery.min.js -->
+		<script src="js/chosen.jquery.min.js"></script>
+		<!-- jquery.counterup.min.js -->
+		<script src="js/jquery.counterup.min.js"></script>
+		<!-- waypoints.min.js -->
+		<script src="js/waypoints.min.js"></script>
+		<!-- plugins js -->
+		<script src="js/plugins.js"></script>
+		<!-- main js -->
+		    <script src="js/main.js"></script>
+		</body>
 
 </html>

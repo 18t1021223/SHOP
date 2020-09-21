@@ -44,36 +44,11 @@
         <div class="header-top-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="language-area">
-                            <ul>
-                                <li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-                                    <div class="header-sub">
-                                        <ul>
-                                            <li>
-                                                <a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-                                    <div class="header-sub dolor">
-                                        <ul>
-                                            <li><a href="#">EUR €</a></li>
-                                            <li><a href="#">USD $</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="account-area text-right">
                             <ul>
-                
+                				<li><a href="checkout.jsp">Thanh toán</a></li>
                                 <li><a href="login.jsp">Đăng nhập</a></li>
                             </ul>
                         </div>
@@ -300,7 +275,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumbs-menu">
                         <ul>
-                            <li><a href="#">Home</a></li>
+                            <li><a href="shop.jsp">Trang chủ</a></li>
                             <li><a href="#" class="active">đăng ký</a></li>
                         </ul>
                     </div>
@@ -313,88 +288,38 @@
     <div class="user-login-area mb-70">
         <div class="container">
             <div class="row">
-
-            <c:choose>
-   					 <c:when test="${notify == 1 }">
-	   						 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> yêu cầu thiết lập lại mật khẩu thành công , kiểm tra email của bạn </strong>
-	  						</div>
-  						</c:when>
-  						 <c:when test="${notify == 2 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Email chưa được đăng ký , vui lòng nhập lại Email </strong>
-    				 		</div>
-  						</c:when> 	
-  						 <c:when test="${notify == 3 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Sai tài khoản hoặc mật khẩu , vui lòng nhập lại  </strong>
-    				 		</div>
-  						</c:when> 	
-  						 <c:when test="${notify == 4 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Email đã tồn tại , vui lòng nhập lại  </strong>
-    				 		</div>
-  						</c:when> 						
- 					</c:choose>
- 					
-                <div class="col-lg-12">
+             <div class="col-lg-12">
                     <div class="login-title text-center mb-30">
-                        <h2>Đăng ký</h2>
-                        <p>doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo<br>inventore veritatis et quasi architecto beat</p>
+                        <h2>Đăng ký</h2>                    
                     </div>
                 </div>
+                 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible login-false"> 				 		
+    				 <strong class='alert-text'> </strong>
+    			 </div>
                 <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
                     <div class="billing-fields">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="single-register">
-                                    <form action="#">
-                                        <label>Họ tên<span>*</span></label>
-                                        <input type="text" required form="f1" name="user_name"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="single-register">
-                                    <form action="#">
-                                        <label>Email<span>*</span></label>
-                                        <input type="email" required form="f1" name='user_email'/>
-                                        <p>${ email_exists }</p>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="single-register">
-                            <form action="#">
-                                <label>Mật khẩu<span>*</span></label>
-                                <input type="password" name='user_password' placeholder="mật khẩu" required form="f1" id="password" minlength="8" />
-                            </form>
-                        </div>
+          
                         <div class="single-register">
-                            <form action="#">
-                                <label>Xác thực mật khẩu<span>*</span></label>
-                                <input type="password" placeholder="Xác thực" id="again-password" required/>
-                                <span id="msg-apw" style="color: red;"></span>
-                            </form>
-                        </div>
-                        
-                        <div class="single-register">
-                            <form action="userController" method="GET" id="f1" onsubmit="return run()">
-                            	<input type='hidden' name='action' value='register' />
-                                <input type="submit" value="Đăng ký" id="submit" onclick="loading()"/>
-                                <i class="fa fa-spinner fa-spin" id="loading_icon" style="display: none;"></i>
-                            </form>
-                        </div>
+                            <form action="userController" method="GET" id='f1'>
+                            	 <label>Họ tên<span>*</span></label>
+                                 <input type="text" required  name="user_name"/>                         
+                                 <!--  -->
+                                 <label>Email<span>*</span></label>
+                                 <input type="email" required  name='user_email'/> 
+                           		 <!--  -->
+                           		 <label>Mật khẩu<span>*</span></label>
+                                 <input type="password" name='user_password' placeholder="mật khẩu" required  id="password" minlength="8"  />
+                            	 <!--  -->
+                            	 <label>Xác thực mật khẩu<span>*</span></label>
+                                 <input type="password" placeholder="Xác thực" id="again-password" required/>
+                                 <p id="msg-apw" style="color: red;"></p>
+                                 <!--  -->                             
+                            	 <input type='hidden' name='action' value='register' />
+                                 <button  value="Đăng ký" id="btn-register" class='btn'>Xác nhận</button>                         
+                            </form>                          
+                        </div>                        
                     </div>
-                </div>
+                </div>               
             </div>
         </div>
     </div>

@@ -49,37 +49,11 @@
     <!-- header-top-area-start -->
   <div class="header-top-area">
       <div class="container">
-          <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <div class="language-area">
-                      <ul>
-                          <li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-                              <div class="header-sub">
-                                  <ul>
-                                      <li>
-                                          <a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a>
-                                      </li>
-                                      <li>
-                                          <a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a>
-                                      </li>
-                                  </ul>
-                              </div>
-                          </li>
-                          <li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-                              <div class="header-sub dolor">
-                                  <ul>
-                                      <li><a href="#">EUR €</a></li>
-                                      <li><a href="#">USD $</a></li>
-                                  </ul>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="row">              
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="account-area text-right">
                       <ul>
-                          <li><a href="checkout.jsp">Checkout</a></li>
+                          <li><a href="checkout.jsp">Thanh toán</a></li>
                           <li><a href="userController?action=logout">Đăng xuất</a></li>
                       </ul>
                   </div>
@@ -102,13 +76,13 @@
               </div>
               <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
                   <div class="logo-area text-center logo-xs-mrg">
-                      <a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
+                      <a href="shop.jsp"><img src="img/logo/logo.png" alt="logo" /></a>
                   </div>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                   <div class="my-cart">
                       <ul>
-                          <li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                          <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                               <span>2</span>
                               <div class="mini-cart-sub">
                                   <div class="cart-product">
@@ -161,106 +135,105 @@
                     <div class="menu-area">
                         <nav>
                             <ul>
-                                <li class="active"><a href="index.html">Home</a>
+                                <li class="active"><a href="shop.jsp">Trang chủ</a>
 
                                 </li>
                                 <li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu">
                                         <span>
-	<a href="#" class="title">Jackets</a>
-	<a href="shop.html">Tops & Tees</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Graphic T-Shirts</a>
-	<a href="shop.html">Jackets & Coats</a>
-	<a href="shop.html">Fashion Jackets</a>
-</span>
-                                        <span>
-	<a href="#" class="title">weaters</a>
-	<a href="shop.html">Crochet</a>
-	<a href="shop.html">Sleeveless</a>
-	<a href="shop.html">Stripes</a>
-	<a href="shop.html">Sweaters</a>
-	<a href="shop.html">hoodies</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Bottoms</a>
-	<a href="shop.html">Heeled sandals</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Flat sandals</a>
-	<a href="shop.html">Short Sleeve</a>
-	<a href="shop.html">Long Sleeve</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Jeans Pants</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Sleeveless</a>
-	<a href="shop.html">Graphic T-Shirts</a>
-	<a href="shop.html">Hoodies</a>
-	<a href="shop.html">Jackets</a>
-</span>
+										<a href="#" class="title">Jackets</a>
+										<a href="shop.html">Tops & Tees</a>
+										<a href="shop.html">Polo Short Sleeve</a>
+										<a href="shop.html">Graphic T-Shirts</a>
+										<a href="shop.html">Jackets & Coats</a>
+										<a href="shop.html">Fashion Jackets</a>
+									</span>
+									                                        <span>
+										<a href="#" class="title">weaters</a>
+										<a href="shop.html">Crochet</a>
+										<a href="shop.html">Sleeveless</a>
+										<a href="shop.html">Stripes</a>
+										<a href="shop.html">Sweaters</a>
+										<a href="shop.html">hoodies</a>
+									</span>
+									                                        <span>
+										<a href="#" class="title">Bottoms</a>
+										<a href="shop.html">Heeled sandals</a>
+										<a href="shop.html">Polo Short Sleeve</a>
+										<a href="shop.html">Flat sandals</a>
+										<a href="shop.html">Short Sleeve</a>
+										<a href="shop.html">Long Sleeve</a>
+									</span>
+									                                        <span>
+										<a href="#" class="title">Jeans Pants</a>
+										<a href="shop.html">Polo Short Sleeve</a>
+										<a href="shop.html">Sleeveless</a>
+										<a href="shop.html">Graphic T-Shirts</a>
+										<a href="shop.html">Hoodies</a>
+										<a href="shop.html">Jackets</a>
+									</span>
                                     </div>
                                 </li>
                                 <li><a href="product-details.html">Audio books<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu">
                                         <span>
-	<a href="#" class="title">Shirts</a>
-	<a href="shop.html">Tops & Tees</a>
-	<a href="shop.html">Sweaters </a>
-	<a href="shop.html">Hoodies</a>
-	<a href="shop.html">Jackets & Coats</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Tops & Tees</a>
-	<a href="shop.html">Long Sleeve </a>
-	<a href="shop.html">Short Sleeve</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Sleeveless</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Jackets</a>
-	<a href="shop.html">Sweaters</a>
-	<a href="shop.html">Hoodies</a>
-	<a href="shop.html">Wedges</a>
-	<a href="shop.html">Vests</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Jeans Pants</a>
-	<a href="shop.html">Polo Short Sleeve</a>
-	<a href="shop.html">Sleeveless</a>
-	<a href="shop.html">Graphic T-Shirts</a>
-	<a href="shop.html">Hoodies</a>
-</span>
-                                    </div>
+									<a href="#" class="title">Shirts</a>
+									<a href="shop.html">Tops & Tees</a>
+									<a href="shop.html">Sweaters </a>
+									<a href="shop.html">Hoodies</a>
+									<a href="shop.html">Jackets & Coats</a>
+								</span>
+								                                        <span>
+									<a href="#" class="title">Tops & Tees</a>
+									<a href="shop.html">Long Sleeve </a>
+									<a href="shop.html">Short Sleeve</a>
+									<a href="shop.html">Polo Short Sleeve</a>
+									<a href="shop.html">Sleeveless</a>
+								</span>
+								                                        <span>
+									<a href="#" class="title">Jackets</a>
+									<a href="shop.html">Sweaters</a>
+									<a href="shop.html">Hoodies</a>
+									<a href="shop.html">Wedges</a>
+									<a href="shop.html">Vests</a>
+								</span>
+								                                        <span>
+									<a href="#" class="title">Jeans Pants</a>
+									<a href="shop.html">Polo Short Sleeve</a>
+									<a href="shop.html">Sleeveless</a>
+									<a href="shop.html">Graphic T-Shirts</a>
+									<a href="shop.html">Hoodies</a>
+								</span>
+								                                    </div>
                                 </li>
                                 <li><a href="product-details.html">children’s books<i class="fa fa-angle-down"></i></a>
                                     <div class="mega-menu mega-menu-2">
                                         <span>
-	<a href="#" class="title">Tops</a>
-	<a href="shop.html">Shirts</a>
-	<a href="shop.html">Florals</a>
-	<a href="shop.html">Crochet</a>
-	<a href="shop.html">Stripes</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Bottoms</a>
-	<a href="shop.html">Shorts</a>
-	<a href="shop.html">Dresses</a>
-	<a href="shop.html">Trousers</a>
-	<a href="shop.html">Jeans</a>
-</span>
-                                        <span>
-	<a href="#" class="title">Shoes</a>
-	<a href="shop.html">Heeled sandals</a>
-	<a href="shop.html">Flat sandals</a>
-	<a href="shop.html">Wedges</a>
-	<a href="shop.html">Ankle boots</a>
-</span>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div>
+											<a href="#" class="title">Tops</a>
+											<a href="shop.html">Shirts</a>
+											<a href="shop.html">Florals</a>
+											<a href="shop.html">Crochet</a>
+											<a href="shop.html">Stripes</a>
+										</span>
+										<span>
+											<a href="#" class="title">Bottoms</a>
+											<a href="shop.html">Shorts</a>
+											<a href="shop.html">Dresses</a>
+											<a href="shop.html">Trousers</a>
+											<a href="shop.html">Jeans</a>
+										</span>
+										 <span>
+											<a href="#" class="title">Shoes</a>
+											<a href="shop.html">Heeled sandals</a>
+											<a href="shop.html">Flat sandals</a>
+											<a href="shop.html">Wedges</a>
+											<a href="shop.html">Ankle boots</a>
+										</span>
+							 		</div>
+								</li>
+							</ul>
+						</nav>
+					</div>
                     <div class="safe-area">
                         <a href="product-details.html">sales off</a>
                     </div>
@@ -358,7 +331,7 @@
                <div class="col-lg-12">
                    <div class="breadcrumbs-menu">
                        <ul>
-                           <li><a href="#">Home</a></li>
+                           <li><a href="shop.jsp">Trang chủ</a></li>
                            <li><a href="#" class="active">Tài khoản của tôi</a></li>
                        </ul>
                    </div>

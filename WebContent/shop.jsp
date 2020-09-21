@@ -44,7 +44,7 @@
 		<c:import url="run"/>
 	</c:if>
 	
-<!--  thong bao start -->
+	<!--  thong bao start -->
 		<div class="modal-msg" style="display: none;">
 	
 	        <div class="msg-header">
@@ -66,13 +66,13 @@
                                	<c:choose>
                                		<c:when test="${user !=null }">
                                			<li><a href="userController?action=account">tài khoản</a></li>
-		                                <li><a href="checkout.html">Checkout</a></li>
+		                                <li><a href="checkout.jsp">Checkout</a></li>
 		                                <li><a href="userController?action=logout">Đăng xuất</a></li>
                                		</c:when>
                                		
                                		<c:when test="${user == null }">
                                			<li><a href="register.jsp">đăng ký</a></li>
-		                                <li><a href="checkout.html">Checkout</a></li>
+		                                <li><a href="checkout.jsp">Checkout</a></li>
 		                                <li><a href="login.jsp">Đăng nhập</a></li>
                                		</c:when>
                                	</c:choose>
@@ -143,8 +143,8 @@
                                             <h5 style="font-family: Arial, Helvetica, sans-serif;">Tổng <span>${ total } đ</span></h5>
                                         </div>
                                         <div class="cart-bottom">
-                                            <a class="view-cart" href="cartController?page=cart&action=viewcart">xem giỏ hàng</a>
-                                            <a href="checkout.html">Check out</a>
+                                            <a class="view-cart" href="cart.jsp">xem giỏ hàng</a>
+                                            <a href="checkout.jsp">Thanh toán</a>
                                         </div>
                                        	</c:when>
                                        	
@@ -369,9 +369,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumbs-menu">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#" class="active">shop</a></li>
+                        <ul>                         
+                            <li><a href="shop.jsp" class="active">shop</a></li>
                         </ul>
                     </div>
                 </div>
@@ -854,7 +853,7 @@
     <!-- footer-area-end -->
     <!-- Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -862,8 +861,7 @@
                     </button>
                 </div>
                 
-      <%-- quick view --%>
-             
+      <%-- quick view --%>            
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12">
@@ -878,12 +876,13 @@
                                 <div class="price">
                                     <span id='quick-view-sale'></span>
                                 </div>
-                                <p id='quick-view-content'></p>
+                                <p id='quick-view-content'></p>                  
+                             
+                               <div>
+                            		<input id='quick-view-quantify' type="number" value="1" min='1' />
+                           		 	<button id='quick-view-id' product_id=''>Thêm vào giỏ</button>
+                               </div>
                               
-                               <form action="#">
-	                                <input id='quick-view-quantify' type="number" value="1" min='1' />
-	                                <button id='quick-view-id' product_id=''>Thêm vào giỏ</button>
-                                </form>
                                 <span><i class="fa fa-check"></i> In stock</span>
                             </div>
                         </div>

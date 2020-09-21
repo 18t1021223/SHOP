@@ -9,6 +9,10 @@ public class messengerUTILS {
 		if (msg.equals(systemCONSTANT.INSERT_SUCCESS)) {
 			msg_resp = "Thêm thành công";
 
+		} else if (msg.equals("CORRECT_SYSTEM")) {
+			msg_resp = "correct";
+		} else if (msg.equals("FAIL_SYSTEM")) {
+			msg_resp = "fail";
 		} else if (msg.equals(systemCONSTANT.UPDATE_SUCCESS)) {
 			msg_resp = "Cập nhật thành công";
 
@@ -22,7 +26,6 @@ public class messengerUTILS {
 			alert = " <i class='fas fa-exclamation-circle'></i> ";
 		}
 
-	
 		return msg_resp;
 	}
 }

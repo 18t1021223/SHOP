@@ -3,6 +3,7 @@ package com.view.BO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 import com.sun.javafx.binding.StringFormatter;
@@ -154,7 +155,6 @@ public class userBO {
 			pr.setString(2, id);
 			pr.executeUpdate();
 			con.commit();
-			System.err.println("update mat khau thanh cong");
 			return true;
 		} catch (Exception e) {
 			System.err.println("updateUser - loi: " + e.getMessage());
@@ -186,8 +186,31 @@ public class userBO {
 		connectSQL.autoCommit(con, true);
 		return false;
 	}
-	// update user địa chỉ giao hàng
-//	public static boolean updateUserAddress(addressToBEAN a){
-//		return false;
-//	}
+
+	// LẤY THÔNG TIN CÁC ĐỊA CHỈ GIAO HÀNG CỦA USER
+	public static ArrayList<addressToBEAN> getAddressAll(String user_id) {
+		ArrayList<addressToBEAN> ds = new ArrayList<>();
+		String sql = "SELECT A.Address_id, A.Address_user,  A.Address_telephone , A.Address_description  " + " FROM [User] U "
+				+ " JOIN AddressTo A ON A.User_id = U.User_id " + " WHERE A.User_id= ? "
+				+ " order by A.Address_type desc";
+		try {
+			PreparedStatement pr = connectSQL.getConnect().prepareStatement(sql);
+			pr.setString(1, user_id);
+			ResultSet rs = pr.executeQuery();
+			while (rs.next()) {
+				addressToBEAN a = new addressToBEAN();
+				a.setAddress_id(rs.getString("address_id"));
+				a.setAddress_user(rs.getString("Address_user"));
+				a.setAddress_telephone(rs.getString("address_telephone"));
+				a.setAddress_description(rs.getString("address_description").replaceAll("[|]", ","));
+				ds.add(a);
+			}
+			return ds;
+		} catch (Exception e) {
+			System.out.println("getAddressAll(String user_id)- loi: " + e.getMessage());
+		}
+		return null;
+	}
+	
+	
 }

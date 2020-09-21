@@ -486,7 +486,7 @@
         margin-bottom: 0;
     }
     .your-order {
-        padding: 30px 25px 45px;
+        padding: 30px 10px 45px;
     }
     .most-product-content h4 a {
         font-size: 15px;
@@ -1317,7 +1317,10 @@
     }
     .your-order-table table th {
         width: 110px;
+        text-align:left;
     }
+  
+   	
     .slider-content h3 {
         color: #333;
     }

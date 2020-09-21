@@ -563,7 +563,7 @@ for (i = 0; i < producer.length; i++) {
 		}
 	};
 };
-
+// <<----->>
 $(function() {
 	// lấy dc vị trí của layout do server tra ve
 	var index = $('#index-layout').attr('index');
@@ -589,63 +589,159 @@ function layout_click(n){
 		$('.layout:eq(' + count + ')').fadeIn(300);
 	}	
 }
-// ;--------------------------------------------
-function run() {
-	var pw = document.getElementById('password');
-	var apw = document.getElementById('again-password');
-	if (pw.value != apw.value) {
-		apw.focus();
-		document.getElementById('msg-apw').innerHTML = 'Chứng thực mật khẩu không khớp'
-		return false;
-	}
-	return true;
-};
+//<<----->>
+// <<----------ĐĂNG KÝ START------>>
+$('#btn-register').click(function(){
+	$('#msg-apw').text("")
+	var pw = $('#password').val();
+	var apw = $('#again-password').val();
 
-// ----------------------------------------
-function check_old_email() {
-	var old_email = document.getElementById('old-email');
-	var new_email = document.getElementById('new-email');
-	if (old_email.value == new_email.value) {
-		document.getElementById('helpId').innerHTML = 'Email đã sử dụng'
-		return false;
+	if (pw != apw || pw=="" ||pw.length<8) {
+		$('#again-password').focus();
+		document.getElementById('msg-apw').innerHTML = 'Chứng thực mật khẩu không khớp.'	
+	}else{
+	
+		$('#f1').submit(function(e){
+			e.preventDefault()
+			var form = $('#f1');
+			console.log(form.serialize())
+			$('#btn-register').attr('disabled','true')
+			$('#btn-register').html('<i class="fa fa-spinner fa-pulse "></i> Vui lòng đợi...')
+			$.ajax({
+				url: form.attr('action'),
+				type: form.attr('method'),
+				dataType: 'html',
+				data: form.serialize()
+			}).done(function(result){
+				console.log(result)
+				if(result == '4'){				
+					$('.login-false').css('display','block')
+					$('.alert-text').text('Email đã tồn tại , vui lòng thử lại.')
+				}else{				
+					window.location = result
+				}
+				$('#btn-register').removeAttr('disabled')
+				$('#btn-register').html('Xác nhận')
+			})
+		})		
 	}
-	return true;
-};
-// loading_icon
-function loading() {
-	document.getElementById('loading_icon').style.display = "inline-block";
-};
+})
 
-// -----
-// kiểm tra mật khẩu đúng k để đổi mật khẩu
-function run2() {
-	var user_password = document.getElementById('user_password');
-	var current = document.getElementById('pass-current');
-	var pw = document.getElementById('password');
-	var apw = document.getElementById('again-password');
-	if (pw.value != apw.value) {
-		apw.focus();
-		document.getElementById('msg-apw').innerHTML = 'Chứng thực mật khẩu không khớp'
-		return false;
-	} else if (user_password.value != current.value) {
-		current.focus();
-		document.getElementById('msg-pass-current').innerHTML = 'Sai mật khẩu'
-		return false;
-	}
-	return true;
-};
+//<<----------ĐĂNG KÝ END------>>
 
 // select
 function select(number) {
 	var ds = document.querySelectorAll('.form-control.mb-4');
 	for (i = number + 1; i < ds.length; i++) {
 		ds[i].selectedIndex = 0;
-
 	}
 };
 
-// //////ajax cap nhat dia chi nguoi dung
-$(document).on('change', '#province', function(event) {
+//<<--Quên mật khẩu START-->>
+$('.confirm').click(function(){
+	$(".forget-password").submit(function(e){
+		var form = $('.forget-password')
+		e.preventDefault()
+		var dataform = form.serialize()
+		
+		$('.confirm').html('<i class="fa fa-spinner fa-pulse "></i> Vui lòng đợi...')
+		$('.confirm').attr('disabled','true')
+		$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			dataType:'html',
+			data: dataform
+		}).done(function(result){
+			$('.login-false').css('display','block')
+			if(result =='2'){		
+				$('.alert-text').text('Email chưa được đăng ký , vui lòng nhập lại Email.')
+				
+			}else{
+				$('.alert-text').text('Yêu cầu cấp mật khẩu thành công, kiểm tra Email của bạn.')				
+			}
+			$('#modelId').modal('hide')
+			$('.confirm').html('Xác nhận')
+			$('.confirm').removeAttr('disabled')		
+		})
+	})	
+})
+
+
+//<<_- QUÊN MẬT KHẨU END-->>
+//<<-- thong tin tai khoan start-->>
+$('#submit-thongtin-taikhoan').click(function(e){
+	
+	var form = $('#form-thongtin-taikhoan');
+	form.submit(function(e){
+		e.preventDefault();
+		$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			dataType:'html',
+			data: form.serialize()
+		}).done(function(){
+			 location.reload()
+		})
+	})	
+})
+//<<-- thong tin tai khoan end -->>
+//<<-- thay doi mat khau  start-->>
+$("#recovery-form").submit(function(e){
+	e.preventDefault();
+	var current = document.getElementById('pass-current');
+	var pw = $('#password');
+	var apw = $('#again-password');
+	if (pw.val() != apw.val() ) {
+		apw.focus();
+		document.getElementById('msg-apw').innerHTML = 'Chứng thực mật khẩu không khớp'
+
+	} else {
+		$.ajax({
+			url: $(this).attr('action'),
+			type: $(this).attr('method'),
+			dataTpye:'html',
+			data: $(this).serialize()
+			
+		}).done(function(result){
+			if( result == 'fail'){
+				current.focus();
+				document.getElementById('msg-pass-current').innerHTML = 'Sai mật khẩu'		
+			}else{
+				location.reload()
+			}
+		})
+	}
+	
+});
+//<<-- RHAY ĐỔI MẬT KHẨU END -->
+//<<--THÔNG TIN ĐỊA CHỈ START -->>
+$('#form-thongtin-diachi').submit(function(e){
+	e.preventDefault()
+	$.ajax({
+		url: $(this).attr('action'),
+		type: $(this).attr('method'),
+		dataType: 'html',
+		data: $(this).serialize()
+	}).done(function(result){
+		location.reload()
+	})
+})
+// <<---- THEM DIA CHỈ Ở PAGE CHECKOUT START --->>
+$('#checkout-form-add-address').submit(function(e){
+	e.preventDefault()
+	$.ajax({
+		url: $(this).attr('action'),
+		type: $(this).attr('method'),
+		dataType: 'html',
+		data: $(this).serialize()
+	}).done(function(result){
+		location.reload()
+	})
+})
+//<<--THÔNG TIN ĐỊA CHỈ END -->>
+
+//---ajax cap nhat dia chi nguoi dung
+$('.province').change( function(event) {
 	var temp = this.value;
 
 	$.ajax({
@@ -655,16 +751,15 @@ $(document).on('change', '#province', function(event) {
 		data : {
 			province : temp,
 			action : 'address'
-
 		}
 	}).done(function(ketqua) {
 
-		$('#district').html(ketqua);
-		$('#ward').val('');
+		$('.district').html(ketqua);
+		$('.ward').val('');
 	});
 });
 
-$(document).on('change', '#district', function() {
+$('.district').change( function() {
 	var temp = this.value;
 
 	$.ajax({
@@ -677,13 +772,12 @@ $(document).on('change', '#district', function() {
 		}
 	}).done(function(ketqua) {
 		if (ketqua == "") {
-			$('#ward').html(ketqua);
-			$('#ward').attr('disabled', 'true')
+			$('.ward').html(ketqua);
+			$('.ward').attr('disabled', 'true')
 		} else {
-			$('#ward').removeAttr('disabled')
-			$('#ward').html(ketqua);
+			$('.ward').removeAttr('disabled')
+			$('.ward').html(ketqua);
 		}
-
 	});
 });
 
@@ -700,22 +794,21 @@ var add = function() {
 		}
 	}).done(function(ketqua) {
 
-		$('#province').html(ketqua);
-		$('#district').val('')
-		$('#ward').val('');
-		$('#address_user').val('');
-		$('#address_telephone').val('');
-		$('#address_description').val('');
+		$('.province').html(ketqua);
+		$('.district').val('')
+		$('.ward').val('');
+		$('.address_user').val('');
+		$('.address_telephone').val('');
+		$('.address_description').val('');
 		$('#action').val('addAddress');
-
 	});
 }
 
-$(document).on('click', '#add-address', add);
+$(document).on('click', '.add-address', add);
 
 // ------------------------------------
 // khi click vào sửa địa chỉ thì load tỉnh thành
-
+//<<-- SỬA ĐỊA CHỈ START-->>
 $(document).on('click', 'span.edit', function() {
 
 	var id = $(this).attr('address_id');
@@ -730,14 +823,14 @@ $(document).on('click', 'span.edit', function() {
 			action : 'address'
 		}
 	}).done(function(addressBEAN) {
-		// selected
+		console.log(addressBEAN)
 		var info = JSON.parse(addressBEAN);
 		var code_string = info.address_code;
 		var code = code_string.split(' ');
 		var temp = info.address_description;
-		var arr = temp.split('||')
-		$('#address_description').val(arr[0]);
-
+		var arr = temp.split('|')
+		$('.address_description').val(arr[0]);
+	
 		// ----------------------------------------------
 		$.ajax({
 			url : 'userController',
@@ -748,33 +841,55 @@ $(document).on('click', 'span.edit', function() {
 				action : 'address'
 			}
 		}).done(function(ketqua) {
-			$('#province').html(ketqua);
+			$('.province').html(ketqua);
+			$('.province').val(code[2])
+			$('.province').change()
+			$('.district').val(code[1])
+			$('.district').change()
+			$('.ward').val(code[0]);
 		});
-		// -----------------------------------------------
-		// $('#province').val(code[2])
-		// $('#province').change()
-		//		
-		// $("#district").val(code[1])
-		//		
-		// $('#district').change()
-		// $('#ward').val(code[0]);
-
-		$('#address_user').val(info.address_user);
-		$('#address_telephone').val(info.address_telephone);
-
+		$('.address_user').val(info.address_user);
+		$('.address_telephone').val(info.address_telephone);
 		$('#action').val('editAddress');
-
 	})
 });
+//<<-- SỬA ĐỊA CHỈ END -->>
+// <<-- XÓA ĐỊA CHỈ  START-->
+var id = '';
+$('#address-remove').click(function(){		 
+	 $.ajax({
+			url: 'userController',
+			type: 'get' ,
+			dataType : 'html',
+			data:{
+				address_id : id ,
+				action: 'addressRemove'
+			}
+		}).done(function(){
+			location.reload()
+		})		
+	})	
 
-// xoa dia chi
-$('.remove').click(
-		function() {
-			var id = $(this).attr('address_id');
-
-			$('#address-remove').attr('href',
-					"userController?action=addressRemove&address_id=" + id)
-})			
+$('.remove').click(function() {
+	 id = $(this).attr('address_id');	
+})
+// <<-- XÓA ĐỊA CHỈ  END-->
+//<<-- MẶC ĐỊNH ĐỊA CHỈ START-->>
+$('.default').click(function(){
+	var id = $(this).attr('address_id');
+	$.ajax({
+		url: 'userController',
+		type: 'get' ,
+		dataType : 'html',
+		data:{
+			address_id : id ,
+			action: 'addressDefault'
+		}
+	}).done(function(){
+		location.reload()
+	})
+})
+//<<-- MẶC ĐỊNH ĐỊA CHỈ END-->>
 
 // ---------------------------------------
 // đơn hàng
@@ -802,10 +917,10 @@ $('span.bill-detail').click(function(){
 		$('#detail-bill_number').text(address[1])
 		$('#detail-bill_description').text(address[2])
 		$('#detail-bill-payment').text(a.payment_name)
-		$('#detail-bill-temp').text(a.bill_temp+' đ')
-		$('#detail-bill-costs').text(a.bill_costs+' đ')
-		$('#detail-bill-costsSale').text(a.bill_costsSale+' đ')
-		$('#detail-bill-total').text(a.bill_total+' đ')
+		$('#detail-bill-temp').text(a.bill_temp+' ₫')
+		$('#detail-bill-costs').text(a.bill_costs+' ₫')
+		$('#detail-bill-costsSale').text(a.bill_costsSale+' ₫')
+		$('#detail-bill-total').text(a.bill_total+' ₫')
 // $('#detail-product-buy').attr('href'
 // ,'productController?'+b[index].product_id )
 		var b = JSON.parse(temp[1]);
@@ -816,9 +931,9 @@ $('span.bill-detail').click(function(){
 			'<tr><td class="table_img px-0 pr-5 "> <a class="detail-product-id" href="" ><img class="detail-img" src="" alt="anh"></a> </td>'			
 			string+= 
 			'<td>  <div> <p class="detail-name"></p> </div> <p class="detail-quantify">x</p> </td> '
-			string+=    ' <td class="detail-price">đ</td> '
-			string+=    '<td class="detail-sale">đ</td>'
-			string+=    '<td class="detail-total">đ</td> </tr>'
+			string+=    ' <td class="detail-price">₫</td> '
+			string+=    '<td class="detail-sale">₫</td>'
+			string+=    '<td class="detail-total">₫</td> </tr>'
 		}
 		$('#table-body').html(string)
 		
@@ -840,15 +955,15 @@ $('span.bill-detail').click(function(){
 		})
 		
 		$('.detail-price').each(function(index,value){
-		     $(value).text(  b[index].billdetail_price+' đ' )		     
+		     $(value).text(  b[index].billdetail_price+' ₫' )		     
 		})
 		
 		$('.detail-sale').each(function(index,value){
-		     $(value).text(  b[index].billdetail_sale +' đ')	     
+		     $(value).text(  b[index].billdetail_sale +' ₫')	     
 		})
 		
 		$('.detail-total').each(function(index,value){
-		     $(value).text(  b[index].billdetail_total+' đ' )		     
+		     $(value).text(  b[index].billdetail_total+' ₫' )		     
 		})
 	})
 	
@@ -877,7 +992,7 @@ $('input[value="thêm vào giỏ"]').click(function(e){
 	})
 })
 
-// xem nhanh = ajax
+// <<-- QUICK VIEW START-->>
 $('.quick-view .action-view').click(function(){
 	$('#quick-view-quantify').val(1);
 	var id = $(this).attr('product-id');
@@ -893,15 +1008,14 @@ $('.quick-view .action-view').click(function(){
 		var prod = JSON.parse(object);
 		// quick-view-image
 		$('#quick-view-name').text(prod.product_name);
-		$("#quick-view-sale").text(prod.product_sale+" đ");
+		$("#quick-view-sale").text(prod.product_sale+" ₫");
 		$('#quick-view-content').text(prod.product_content)
 		$('#quick-view-id').attr('product_id',prod.product_id)
 		$('.modal-tab img').attr('src', 'img/product/'+prod.product_image[0])
 	})
 })
-
-
-// <<----------------thanh thong bao--------------------->>
+// <<-- QUICK VIEW END---->>
+// <<---------------THANH THOONG BAO START----------->>
 $(function(){
 	showmsg()
 })
@@ -911,20 +1025,19 @@ function showmsg(){
 
 	if(msg != ''){
 		$('.modal-msg').fadeIn(200)
-	    setTimeout(() => {
-	    
+	    setTimeout(() => {    
 	        $('.modal-msg').fadeOut()
 	       location.reload()
 	    }, 1500);
 	}	
 }
+//<<---------------THANH THOONG BAO END------------------->>
 
-// -<<-------------------------->>
-
-// <<------------ click vào ' them vào giỏ ' trong quick view---->>
-$('#quick-view-id').click(function(){
+// <<-- THÊM SẢN PHẨM TRONG QUICK VIEW START ---->>
+$('#quick-view-id').click(function(e){
 	var id = $(this).attr('product_id');
 	var sl = $('#quick-view-quantify').val()
+	e.preventDefault();
 
 	$.ajax({
 		url : 'cartController',
@@ -935,15 +1048,14 @@ $('#quick-view-id').click(function(){
 			product_id : id,
 			action : 'add'
 		}
-	}).done(function(object){
-		
+	}).done(function(object){	
 		setcart(object)	
 	})
 })
-// -------- them san pham o shop
+// <<---- THÊM SẢN PHẨM TRONG QUICK VIEW END ---->>
+// <<------ THÊM SẢN PHẨM Ở SHOP  START-->>
 $('.product-button a').click(function(e){
-	e.preventDefault();
-
+	e.preventDefault()
 	var id = $(this).attr('product-id');
 	$.ajax({
 		url : 'cartController',
@@ -959,7 +1071,8 @@ $('.product-button a').click(function(e){
 	})
 
 })
-// ------- xóa sản phẩm trên icon
+//<<-- THÊM SẢN PHẨM Ở SHOP END -->>
+// ------- XÓA SẢN PHẨM TRÊN ICON START -->>
 $('.cart-icon a').click(function(e){
 	e.preventDefault();
 	$.ajax({
@@ -974,7 +1087,8 @@ $('.cart-icon a').click(function(e){
 			setcart(object)		
 		})
 })
-// set cart
+// ------- XÓA SẢN PHẨM TRÊN ICON END -->>
+// <<---------- SET CART START --------->>
 function setcart(object){
 	try{
 		var map = JSON.parse(object);
@@ -1008,7 +1122,7 @@ function setcart(object){
 				+'</div>'
 				+'<div class="cart-info">'
 					+'<h5><a href="productController?page=shop&product_id='+key+'">'+prod.product_name+'</a></h5>'
-					+'<p class="cart-info-price">'+cart.cart_quantify+" * "+prod.product_sale +" đ"+'</p>'
+					+'<p class="cart-info-price">'+cart.cart_quantify+" * "+prod.product_sale +" ₫"+'</p>'
 																			
 				+'</div>'
 				+'<div class="cart-icon">'
@@ -1019,17 +1133,22 @@ function setcart(object){
 			 index++;		
 		}		
 			 $('.cart-product').html(layout)
-			// Math.round(total)
+	
 			$('.cart-totals h5 span').text( nf.format(total) )	
+			location.reload();	
 	}catch(e){
-		$('html').html(object);
+		window.location = object
 	}
-	location.reload();	
+	
 }
-
+//<<--------------------- SET CART END ------------------>>
 var nf = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' })
 
-// <<----- giỏ hàng -- >
+// <<-----  XEM GIỎ HÀNG START -------- >>
+$().click(function(){
+	
+})
+//<<--------XEM GIỎ HÀNG END ---------->>
 // cập nhật tiền khi thay đổi số lượng trong gio hang
 $('.product-quantity .product-quantity-input').bind('change blur',function(e){
 	id =  $(this).attr('product-id') ;
@@ -1062,8 +1181,8 @@ $('.product-quantity .product-quantity-input').bind('change blur',function(e){
 			}		 
 			$('.cart-temp').text( nf.format(total) )				
 		}catch(e){
-			$('html').html(result);
-			location.reload()	
+			// NẾU TÀI KHOẢN HẾT PHIÊN LÀM VIỆC THÌ QUAY LẠI LOGIN
+			window.location = result ;
 		}
 		location.reload(true);
 	})
@@ -1083,10 +1202,79 @@ $('.product-remove a').click(function(e){
 		}).done(function(object){	
 			try{
 				JSON.parse(object)
-			}catch(e){
-				$('html').html(object);
 				location.reload()	
-			}
-			location.reload()		
+			}catch(e){
+				window.location = object ;				
+			}		
 		})
 })
+
+//----- ĐĂNG NHẬP START --->>
+$('.form-login').submit(function(e){
+	e.preventDefault();
+	
+	$.ajax({
+		url: $(this).attr('action'),
+		type: $(this).attr('method'),
+		dataType: 'html',
+		data: $(this).serialize()
+	}).done(function(result){	
+		$('.login-false').css('display','block')
+		if( result == '3'){	
+			$('.alert-text').text('Sai thông tin tài khoản hoặc mật khẩu.')		
+		}else if(result== '1'){
+			$('.alert-text').text('Yêu cầu cấp mật khẩu thành công ,Hãy kiểm tra Email của bạn.')
+		}else{
+			window.location = result
+		}
+	})
+})
+//----- ĐĂNG NHẬP END --->>
+// <<----THAY DỔI ĐỊA CHỈ START-->>
+$('#btn-confirm-address-next').click(function(){
+	$('.address-radio').each(function(index,value){
+		if( $(value).is(':checked')){
+			$.ajax({
+				url : 'billController',
+				type: 'get',
+				dataType:'html',
+				data:{
+					address_id : $(value).val(),
+					action : 'getAddress'
+				}
+			}).done(function(result){
+				try{
+					var address =JSON.parse(result)
+					$("#checkout-address_user").val( address.address_user )
+					$('#checkout-address_telephone').val( address.address_telephone )
+					$("#checkout-address_description").val( address.address_description.replaceAll('|',',') )
+					
+				}catch(e){	
+					window.location = result
+				}			
+			})
+		}
+	})
+	$('#btn-confirm-address-close').click()
+})
+// <<----THAY DỔI ĐỊA CHỈ END-->>
+// ĐÓNG
+$('#btn-confirm-address-close').click(function(){
+	$('#option-address').click()
+})
+
+// <<-- THÊM ĐƠN HÀNG START-->>
+$('#form-add-bill').submit(function(e){
+	e.preventDefault();
+	$.ajax({
+		url: 'billController',
+		type: 'get',
+		dataType: 'html',
+		data:{
+			action: 'addBill'
+		}
+	}).done(function(){
+		
+	})
+})
+

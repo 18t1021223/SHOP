@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
@@ -9,7 +11,8 @@
 
         <!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- all css here -->
 		<!-- bootstrap v3.3.6 css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -33,45 +36,38 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body class="checkout">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
+        <!--  thong bao start -->
+		<div class="modal-msg" style="display: none;">
+	
+	        <div class="msg-header">
+	            <h6 class="msg-icon"><i class="fas fa-exclamation-circle"></i></h6>
+	            <p  class="text-light text-center msg-text">${msg }</p>
+	        </div>
+	    </div>
+	    <% session.removeAttribute("msg"); %>
+		<!-- thong bao end -->
+   		 <!-- header-area-start -->
 		<!-- header-area-start -->
         <header>
 			<!-- header-top-area-start -->
 			<div class="header-top-area">
 				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="language-area">
-								<ul>
-									<li><img src="img/flag/1.jpg" alt="flag" /><a href="#">English<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub">
-											<ul>
-												<li><a href="#"><img src="img/flag/2.jpg" alt="flag" />france</a></li>
-												<li><a href="#"><img src="img/flag/3.jpg" alt="flag" />croatia</a></li>
-											</ul>
-										</div>
-									</li>
-									<li><a href="#">USD $<i class="fa fa-angle-down"></i></a>
-										<div class="header-sub dolor">
-											<ul>
-												<li><a href="#">EUR €</a></li>
-												<li><a href="#">USD $</a></li>
-											</ul>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="row">						
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="account-area text-right">
 								<ul>
-									<li><a href="register.html">My Account</a></li>
-									<li><a href="checkout.html">Checkout</a></li>
-									<li><a href="login.html">Sign in</a></li>
+									<c:choose>
+										<c:when test="${user ==null }">
+											<li><a href="register.jsp">Đăng ký</a></li>																						
+											<li><a href="userController?action=logout">Đăng nhập</a></li>
+										</c:when>
+									
+										<c:otherwise>
+											<li><a href="userController?action=account">Tài khoản</a></li>
+											<li><a href="userController?action=logout">Đăng xuất</a></li>
+										</c:otherwise>
+									</c:choose>
+									
 								</ul>
 							</div>
 						</div>
@@ -79,71 +75,7 @@
 				</div>
 			</div>
 			<!-- header-top-area-end -->
-			<!-- header-mid-area-start -->
-			<div class="header-mid-area ptb-40">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
-							<div class="header-search">
-								<form action="#">
-									<input type="text" placeholder="Search entire store here..." />
-									<a href="#"><i class="fa fa-search"></i></a>
-								</form>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
-							<div class="logo-area text-center logo-xs-mrg">
-								<a href="index.html"><img src="img/logo/logo.png" alt="logo" /></a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-							<div class="my-cart">
-								<ul>
-									<li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
-										<span>2</span>
-										<div class="mini-cart-sub">
-											<div class="cart-product">
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/1.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Joust Duffle Bag</a></h5>
-														<p>1 x £60.00</p>
-													</div>
-													<div class="cart-icon">
-													    <a href="#"><i class="fa fa-remove"></i></a>
-													</div>
-												</div>
-												<div class="single-cart">
-													<div class="cart-img">
-														<a href="#"><img src="img/product/3.jpg" alt="book" /></a>
-													</div>
-													<div class="cart-info">
-														<h5><a href="#">Chaz Kangeroo Hoodie</a></h5>
-														<p>1 x £52.00</p>
-													</div>
-													<div class="cart-icon">
-                                                        <a href="#"><i class="fa fa-remove"></i></a>
-                                                    </div>
-												</div>
-											</div>
-											<div class="cart-totals">
-												<h5>Total <span>£12.00</span></h5>
-											</div>
-											<div class="cart-bottom">
-												<a class="view-cart" href="cart.html">view cart</a>
-												<a href="checkout.html">Check out</a>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- header-mid-area-end -->
+		
 			<!-- main-menu-area-start -->
 			<div class="main-menu-area hidden-sm hidden-xs sticky-header-1" id="header-sticky">
 				<div class="container">
@@ -152,16 +84,7 @@
 							<div class="menu-area">
 								<nav>
 									<ul>
-										<li class="active"><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-											<div class="sub-menu">
-												<ul>
-													<li><a href="index-2.html">Home-2</a></li>
-													<li><a href="index-3.html">Home-3</a></li>
-													<li><a href="index-4.html">Home-4</a></li>
-													<li><a href="index-5.html">Home-5</a></li>
-													<li><a href="index-6.html">Home-6</a></li>
-												</ul>
-											</div>
+										<li class="active"><a href="index.html">Home</a>											
 										</li>
 										<li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
 											<div class="mega-menu">
@@ -256,14 +179,7 @@
 												</span>
 											</div>
 										</li>
-										<li><a href="#">blog<i class="fa fa-angle-down"></i></a>
-											<div class="sub-menu sub-menu-2">
-												<ul>
-													<li><a href="blog.html">blog</a></li>
-													<li><a href="blog-details.html">blog-details</a></li>
-												</ul>
-											</div>
-										</li>
+										
 										<li><a href="#">pages<i class="fa fa-angle-down"></i></a>
 											<div class="sub-menu sub-menu-2">
 												<ul>
@@ -301,14 +217,7 @@
 							<div class="mobile-menu">
 								<nav id="mobile-menu-active">
 									<ul id="nav">
-										<li><a href="index.html">Home</a>
-											<ul>
-												<li><a href="index-2.html">Home-2</a></li>
-												<li><a href="index-3.html">Home-3</a></li>
-												<li><a href="index-4.html">Home-4</a></li>
-												<li><a href="index-5.html">Home-5</a></li>
-												<li><a href="index-6.html">Home-6</a></li>
-											</ul>
+										<li><a href="index.html">Home</a>										
 										</li>
 										<li><a href="product-details.html">Book</a>
 											<ul>
@@ -369,13 +278,7 @@
 												<li><a href="shop.html">Wedges</a></li>
 												<li><a href="shop.html">Ankle boots</a></li>
 											</ul>
-										</li>
-										<li><a href="#">blog</a>
-											<ul>
-												<li><a href="blog.html">Blog</a></li>
-												<li><a href="blog-details.html">blog-details</a></li>
-											</ul>
-										</li>
+										</li>										
 										<li><a href="product-details.html">Page</a>
 											<ul>
 												<li><a href="shop.html">Shop</a></li>
@@ -409,8 +312,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">checkout</a></li>
+								<li><a href="shop.jsp">Trang chủ</a></li>
+								<li><a href="" class="active">Thanh toán</a></li>
 							</ul>
 						</div>
 					</div>
@@ -424,7 +327,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="entry-header-title">
-							<h2>Checkout</h2>
+							<h2>Thanh toán</h2>
 						</div>
 					</div>
 				</div>
@@ -437,39 +340,49 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="coupon-accordion">
-							<h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
+							<c:if test="${ user == null }">
+								<h3>Bạn chưa đăng nhập?
+									<span id="showlogin">Ấn vào đây để đăng nhập</span>
+								</h3>
+							</c:if>
+							
 							<div class="coupon-content" id="checkout-login">
+								
 								<div class="coupon-info">
-									<p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
-									<form action="#">
+									<p class="coupon-text">Nếu bạn chưa có tài khoản. Vui lòng <a href='register.jsp'>đăng ký</a> tài khoản</p>
+									<form action="loginController"  method="post" class='form-login'>
 										<p class="form-row-first">
-											<label>Username or email <span class="required">*</span></label>
-											<input type="text">
+											<label>email<span class="required">*</span></label>
+											<input type="text" name='username' autocomplete="on">
 										</p>
 										<p class="form-row-last">
-											<label>Password  <span class="required">*</span></label>
-											<input type="text">
+											<label>Mật khẩu  <span class="required">*</span></label>
+											<input type="password" name='password' required="required" >
 										</p>
-										<p class="form-row">					
-											<input type="submit" value="Login">
-											<label>
-												<input type="checkbox">
-												 Remember me 
-											</label>
+										<p class="checkout-coupon">
+											<input type="submit" value="Đăng nhập">											
 										</p>
-										<p class="lost-password">
-											<a href="#">Lost your password?</a>
+										<div class="mt-20 alert alert-success alert-dismissible login-false" >	
+																		 
+										 	 <strong class='alert-text'></strong>
+										</div>
+										
+										<p class="lost-password">											
+											<a href="#modelId-address" data-toggle="modal">Quên mật khẩu?</a>
 										</p>
 									</form>
 								</div>
 							</div>
-							<h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
+							<c:if test="${user !=null }">
+								<h3>Bạn có mã ưu đãi? <span id="showcoupon">Ấn vào đây để nhập mã.</span></h3>
+							</c:if>
+							
 							<div class="coupon-checkout-content" id="checkout_coupon">
 								<div class="coupon-info">
 									<form action="#">
 										<p class="checkout-coupon">
-											<input type="text" placeholder="Coupon code">
-											<input type="submit" value="Apply Coupon">
+											<input type="text" placeholder="Mã ưu đãi">
+											<input type="submit" value="Áp dụng">
 										</p>
 									</form>
 								</div>
@@ -480,306 +393,145 @@
 			</div>
 		</div>
 		<!-- coupon-area-area-end -->
+		<c:if test="${user!=null }">
 		<!-- checkout-area-start -->
 		<div class="checkout-area mb-70">
 			<div class="container">
 				<div class="row">
-					<form action="#">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<form action="billController" method="post" id='form-add-bill'>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 							<div class="checkbox-form">						
-								<h3>Billing Details</h3>
+								<h3>Thông tin thanh toán</h3>
 								<div class="row">
-									<div class=" col-lg-12">
-										<div class="country-select">
-											<label>Country <span class="required">*</span></label>
-											<select>
-											  <option value="volvo">bangladesh</option>
-											  <option value="saab">Algeria</option>
-											  <option value="mercedes">Afghanistan</option>
-											  <option value="audi">Ghana</option>
-											  <option value="audi2">Albania</option>
-											  <option value="audi3">Bahrain</option>
-											  <option value="audi4">Colombia</option>
-											  <option value="audi5">Dominican Republic</option>
-											</select> 										
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-										<div class="checkout-form-list">
-											<label>First Name <span class="required">*</span></label>										
-											<input type="text" placeholder="">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Last Name <span class="required">*</span></label>										
-											<input type="text" placeholder="">
-										</div>
-									</div>
+									
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Company Name</label>
-											<input type="text" placeholder="">
-										</div>
+											<a href='#address' data-toggle="collapse" id='option-address'>Thay đổi địa chỉ</a>
+											<div id="address" class="collapse option-address-div">
+												<div class='btn-add-address'>
+													<span class='btn btn-default add-address' data-target="#modelId" data-toggle="modal" >Thêm địa chỉ mới</span>
+												</div>
+											   <div class='option-address-chooser'>	
+											   
+												  <c:forEach var="i" items="${ user.getAddressAll() }" begin="0" varStatus="first">
+												   		<label>
+												   			<c:choose>
+												   			<c:when test="${ first.index == 0 }">
+												   				<input type="radio" checked="checked" name="address_description" class='address-radio' value='${i.getAddress_id()}'>
+												   			</c:when>
+												   				
+											   				 <c:otherwise>
+											   					 <input type="radio" name="address_description" class='address-radio'  value='${i.getAddress_id() }'>
+											   				 </c:otherwise>
+												   			</c:choose>								
+											   				
+											   				<span class="getAddress_user">${i.getAddress_user() }</span> 
+											   				<p class="to getAddress_telephone">${ i.getAddress_telephone() }</p> 
+											   				<p class="to font-address getAddress_description">${i.getAddress_description() }</p> 
+											   			</label>	
+												   </c:forEach>									   		
+										   												   			
+											   </div>
+											   <div class='btn-confirm-address'>
+													<span class='btn btn-danger' id='btn-confirm-address-next'>Xác nhận</span>
+													<span class='btn btn-default' id='btn-confirm-address-close'>Đóng</span>
+												</div>
+										  </div>
+				
 									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Address <span class="required">*</span></label>
-											<input type="text" placeholder="Street address">
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="checkout-form-list">									
-											<input type="text" placeholder="Apartment, suite, unit etc. (optional)">
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Town / City <span class="required">*</span></label>
-											<input type="text" placeholder="Town / City">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="checkout-form-list">
-											<label>State / County <span class="required">*</span></label>										
-											<input type="text" placeholder="">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Postcode / Zip <span class="required">*</span></label>										
-											<input type="text" placeholder="Postcode / Zip">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Email Address <span class="required">*</span></label>										
-											<input type="email" placeholder="">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="checkout-form-list">
-											<label>Phone  <span class="required">*</span></label>										
-											<input type="text" placeholder="Postcode / Zip">
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="checkout-form-list create-acc">	
-											<input type="checkbox" id="cbox">
-											<label>Create an account?</label>
-										</div>
-										<div class="checkout-form-list create-account" id="cbox_info" style="display: none;">
-											<p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-											<label>Account password  <span class="required">*</span></label>
-											<input type="password" placeholder="password">	
-										</div>
-									</div>								
-								</div>
-								<div class="different-address">
-										<div class="ship-different-title">
-											<h3>
-												<label>Ship to a different address?</label>
-												<input type="checkbox" id="ship-box">
-											</h3>
-										</div>
-									<div class="row" id="ship-box-info" style="display: none;">
-										<div class="col-lg-12">
-											<div class="country-select">
-												<label>Country <span class="required">*</span></label>
-												<select>
-												  <option value="volvo">bangladesh</option>
-												  <option value="saab">Algeria</option>
-												  <option value="mercedes">Afghanistan</option>
-												  <option value="audi">Ghana</option>
-												  <option value="audi2">Albania</option>
-												  <option value="audi3">Bahrain</option>
-												  <option value="audi4">Colombia</option>
-												  <option value="audi5">Dominican Republic</option>
-												</select> 										
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									
+									<c:forEach var="index" items="${ user.getAddressAll() }" begin="0" end="0">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">	
 											<div class="checkout-form-list">
-												<label>First Name <span class="required">*</span></label>										
-												<input type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<div class="checkout-form-list">
-												<label>Last Name <span class="required">*</span></label>										
-												<input type="text" placeholder="">
+												<label>Họ tên *</label>											
+												<input type="text" readonly="readonly" id='checkout-address_user' value='${index.getAddress_user() }'>
 											</div>
 										</div>
 										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<div class="checkout-form-list">
-												<label>Company Name</label>
-												<input type="text" placeholder="">
+												<label>Số điện thoại<span class="required">*</span></label>										
+												<input type="text" readonly="readonly" id='checkout-address_telephone' value='${index.getAddress_telephone() }'/>
 											</div>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<div class="checkout-form-list">
-												<label>Address <span class="required">*</span></label>
-												<input type="text" placeholder="Street address">
-											</div>
-										</div>
+										</div>																	
 										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<div class="checkout-form-list">									
-												<input type="text" placeholder="Apartment, suite, unit etc. (optional)">
+												<input type="text"  readonly="readonly" id='checkout-address_description' value='${index.getAddress_description() }'>
 											</div>
 										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<div class="checkout-form-list">
-												<label>Town / City <span class="required">*</span></label>
-												<input type="text" placeholder="Town / City">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<div class="checkout-form-list">
-												<label>State / County <span class="required">*</span></label>										
-												<input type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<div class="checkout-form-list">
-												<label>Postcode / Zip <span class="required">*</span></label>										
-												<input type="text" placeholder="Postcode / Zip">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<div class="checkout-form-list">
-												<label>Email Address <span class="required">*</span></label>										
-												<input type="email" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<div class="checkout-form-list">
-												<label>Phone  <span class="required">*</span></label>										
-												<input type="text" placeholder="Postcode / Zip">
-											</div>
-										</div>								
-									</div>
-									<div class="order-notes">
-										<div class="checkout-form-list">
-											<label>Order Notes</label>
-											<textarea placeholder="Notes about your order, e.g. special notes for delivery." rows="10" cols="30" id="checkout-mess"></textarea>
-										</div>									
-									</div>
-								</div>													
+									</c:forEach>
+																																					
+								</div>
+																	
+								<div class="order-notes">
+									<div class="checkout-form-list">
+										<label>Ghi chú về đơn hàng </label>
+										<textarea rows="10" cols="30" id="checkout-mess" style="resize: none"></textarea>
+									</div>									
+								</div>
+																				
 							</div>
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 							<div class="your-order">
-								<h3>Your order</h3>
+								<h3>Đơn hàng của bạn</h3>
 								<div class="your-order-table table-responsive">
 									<table>
 										<thead>
-											<tr>
-												<th class="product-name">Product</th>
-												<th class="product-total">Total</th>
+											<tr>											
+												<th class="product-name" >Sản phẩm</th>
+												<th></th>
+												<th class="product-total">Tổng</th>
 											</tr>							
 										</thead>
 										<tbody>
-											<tr class="cart_item">
-												<td class="product-name">
-													Vestibulum suscipit <strong class="product-quantity"> × 1</strong>
-												</td>
-												<td class="product-total">
-													<span class="amount">£165.00</span>
-												</td>
-											</tr>
-											<tr class="cart_item">
-												<td class="product-name">
-													Vestibulum suscipit	<strong class="product-quantity"> × 1</strong>
-												</td>
-												<td class="product-total">
-													<span class="amount">£50.00</span>
-												</td>
-											</tr>
+											<c:forEach var="cart_model" items="${cart_model }">
+												<c:set var="sp" value="${cart_model.value.getProd() }"/>
+												<tr class="cart_item">
+													<td class="product-thumbnail">
+														<a href="productController?page=cart&product_id=${ sp.getProduct_id()}">
+															<img src="img/product/${sp.getProduct_image() }" alt="san pham" />
+														</a>
+													</td>
+													<td class="product-name">
+														${sp.getProduct_name() } 
+														<strong class="product-quantity"> × ${cart_model.value.getCart_quantify() }</strong>
+													</td>
+													<td class="product-total">
+														<span class="amount">${cart_model.value.getPriceTotalFormat() } ₫</span>
+													</td>
+												</tr>
+											</c:forEach>
+																				
 										</tbody>
-										<tfoot>
-											<tr class="cart-subtotal">
-												<th>Cart Subtotal</th>
-												<td><span class="amount">£215.00</span></td>
+										<tfoot >
+											<tr class="cart-subtotal" >
+												<th></th>
+												<th >Tạm tính</th>
+												<td><span class="amount">${ cart_model.getPriceTotal()} ₫</span></td>
 											</tr>
-											<tr class="shipping">
-												<th>Shipping</th>
-												<td>
-													<ul>
-														<li>
-															<input type="radio">
-															<label>
-																Flat Rate: <span class="amount">£7.00</span>
-															</label>
-														</li>
-														<li>
-															<input type="radio">
-															<label>Free Shipping:</label>
-														</li>
-														<li></li>
-													</ul>
-												</td>
+											<tr class="cart-subtotal">
+												<th></th>
+												<th >Phí vận chuyển</th>
+												<td><span class="amount">0 ₫</span></td>
 											</tr>
 											<tr class="order-total">
-												<th>Order Total</th>
-												<td><strong><span class="amount">£215.00</span></strong>
+												<th></th>
+												<th >Tổng</th>
+												<td><strong><span class="amount">${cart_model.getPriceTotal() } ₫</span></strong>
 												</td>
 											</tr>								
 										</tfoot>
 									</table>
 								</div>
-								<div class="payment-method">
-									<div class="payment-accordion">
-										<div class="collapses-group">
-											<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-												<div class="panel panel-default">
-													<div class="panel-heading" role="tab" id="headingOne">
-														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-															  Direct Bank Transfer
-															</a>
-														</h4>
-													</div>
-													<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-														<div class="panel-body">
-															<p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-														</div>
-													</div>
-												</div>
-												<div class="panel panel-default">
-													<div class="panel-heading" role="tab" id="headingTwo">
-														<h4 class="panel-title">
-															<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-															  Cheque Payment
-															</a>
-														</h4>
-													</div>
-													<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-														<div class="panel-body">
-															<p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-														</div>
-													</div>
-												</div>
-												<div class="panel panel-default">
-													<div class="panel-heading" role="tab" id="headingThree">
-														<h4 class="panel-title">
-															<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-															 PayPal <img src="img/2.png" alt="payment" />
-															</a>
-														</h4>
-													</div>
-													<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-													  <div class="panel-body">
-															<p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-													  </div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="order-button-payment">
-										<input type="submit" value="Place order">
-									</div>
+								
+								 <div class="order-payment">
+	                                <h4>Phương thức thanh toán</h4>
+	                                <input type="radio" name="" id="onl" class="payment-onl" checked><label for="onl">Thanh toán khi nhận hàng</label>
+                           		 </div>
+                            
+								<div class="order-button-payment">
+									<input type="submit" value="Đặt hàng">
 								</div>
+								
 							</div>
 						</div>
 					</form>
@@ -787,6 +539,70 @@
 			</div>
 		</div>
 		<!-- checkout-area-end -->
+		</c:if>
+		<!--  modal quen mat khau start -->
+		<div class="modal fade" id="modelId-address" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" style="padding:50px">
+	        <div class="modal-dialog" role="document">
+	            <div class="modal-content">
+	                <div class="modal-body">
+	                   	 <form action="userController" method="get" class="forget-password">
+		                     <div class="form-group">                          
+		                        <label for="forget">Email</label>
+		                        <input type="email" name="user_email" id="forget" class="form-control" aria-describedby="helpId" required>
+		                        <small id="helpId" class="text-muted"></small>
+		                    </div>                    	                      
+	                       	<input type="hidden" name="action" value="forget">                                      
+	                   		<button class="btn btn-primary confirm">Xác nhận</button>         			  
+	                    </form>
+	                </div>           
+	            </div>
+	        </div>
+    	</div>
+    <!--  modal quen mat khau end -->
+		<!-- modal edit and add address start -->
+               <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                   <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <h5 class="modal-title">Thông tin địa chỉ</h5>
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             				      <span aria-hidden="true">&times;</span>
+          				     </button>
+                           </div>
+                           <div class="modal-body">
+                               <form action="userController" method="GET" id='checkout-form-add-address'>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control address_user"  name="address_user" placeholder="Họ tên" required>                                    
+                                   </div>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control address_telephone"  name='address_telephone' placeholder="Số điện thoại" pattern="(\+84|0)\d{9,10}" required minlength="9">                                      
+                                   </div>
+
+                                   <select class="form-control mb-4 province"  name="province" required> 
+               					       <option hidden value=''>Tỉnh/thành phố</option>				     		          
+         						     </select>
+
+				                  <select class="form-control mb-4 district"  name='district' required>
+				                      <option hidden  value="">Quận/huyện</option>     	            	        
+				           	     </select>
+				
+				                  <select class="form-control mb-4 ward" name='ward' required>   
+				                     <option hidden  value="">Phường/xã</option>                                 				                 
+				            	   </select>
+
+                                   <textarea name="address_description" placeholder="Địa chỉ" class="w-100 address_description" wrap="soft" rows="5" required="required"></textarea>
+
+                                   <div class="modal-footer">
+                                       <input type='hidden' id='address_id' name= 'address_id' value=''>
+                                       <input type='hidden' id='action' name='action' value="addAddress" />
+                                       <input type="submit" class="btn btn-primary" value="Lưu">
+                                   </div>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <!-- modal edit and add address end -->
 		<!-- footer-area-start -->
 		<footer>
 			<!-- footer-top-start -->
@@ -800,8 +616,7 @@
 										<li><a href="#">home</a></li>
 										<li><a href="#">Enable Cookies</a></li>
 										<li><a href="#">Privacy and Cookie Policy</a></li>
-										<li><a href="#">contact us</a></li>
-										<li><a href="#">blog</a></li>
+										<li><a href="#">contact us</a></li>									
 									</ul>
 								</nav>
 							</div>
@@ -902,8 +717,7 @@
 			<!-- footer-bottom-end -->
 		</footer>
 		<!-- footer-area-end -->
-		
-		
+				
 		<!-- all js here -->
 		<!-- jquery latest version -->
         <script src="js/vendor/jquery-1.12.0.min.js"></script>

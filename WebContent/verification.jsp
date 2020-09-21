@@ -300,7 +300,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumbs-menu">
                         <ul>
-                            <li><a href="#">Home</a></li>
+                            <li><a href="shop.jsp">Trang chủ</a></li>
                             <li><a href="#" class="active">tài khoản</a></li>
                         </ul>
                     </div>
@@ -313,59 +313,30 @@
     <div class="user-login-area mb-70">
         <div class="container">
             <div class="row">
-            
-            	 <c:choose>
-   					 <c:when test="${notify == 1 }">
-	   						 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> yêu cầu thiết lập lại mật khẩu thành công , kiểm tra email của bạn </strong>
-	  						</div>
-  						</c:when>
-  						 <c:when test="${notify == 2 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Email chưa được đăng ký , vui lòng nhập lại Email </strong>
-    				 		</div>
-  						</c:when> 	
-  						 <c:when test="${notify == 3 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Sai tài khoản hoặc mật khẩu , vui lòng nhập lại  </strong>
-    				 		</div>
-  						</c:when> 	
-  						 <c:when test="${notify == 4 }">
-  							 <div class="col-lg-6 mb-40 mt-20 col-lg-offset-3 col-md-offset-3 alert alert-success alert-dismissible">
-	    				 		<button type="button" class="close" data-dismiss="alert">&times;</button>
-	    				 		<strong> Email đã tồn tại , vui lòng nhập lại  </strong>
-    				 		</div>
-  						</c:when> 						
- 					</c:choose>
- 					
+                    
                 <div class="col-lg-12">
                     <div class="login-title text-center mb-30">
                         <h2>Xác nhận tài khoản</h2>
-                        <p>Mã xấc minh đã gửi đến [${user_email }] , <a href="#modelId" data-toggle="modal">Thay đổi</a>
+                        <p>Mã xấc minh đã gửi đến [${user_email }] , 
                             <br> bạn hãy kiểm tra Email và điền mã xác minh để hoàn thành</p>
                         <p>thời gian hiệu lực: 2 phút </p>
                     </div>
                 </div>
                 <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
                     <div class="billing-fields">
-
-                        <div class="single-register">
-                            <form action="#">
-                                <label>Mã xác minh</label>
-                                <input type="text" name="verification_code" placeholder="Xác thực" id="verification" required form="verification-form" required/>
-                            </form>
-                        </div>
-
+                
                         <div class="single-register">
                             <form action="userController" method="GET" id="verification-form">
+                             	<label for="verification">Mã xác minh</label>
+                             	
+                                <input type="text" name="verification_code" placeholder="Xác thực" id="verification" required form="verification-form" required autofocus="autofocus"/>
                             	<input type="hidden" value="verification" name="action">
-                                <input type="submit" value="Xác minh" />
+                            	 
+                                <button class="btn btn-primary" >Xác minh</button> 
+                                                        
                             </form>
+                                                     
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -374,27 +345,7 @@
     <!-- user-login-area-end -->
     <!-- Button trigger modal -->
 
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="hidden" id="old-email" value="${email_to }">
-                        <!-- dùng js để kieem tra email mới có giống cũ k , nếu có thì bắt nhập lại -->
-                        <label for="new-email">Email mới</label>
-                        <input type="email" name="new_email" id="new-email" class="form-control" aria-describedby="helpId" form="recovery-email" required>
-                        <small id="helpId" class="text-muted"></small>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <form action="userController" method="get" id="recovery-email" onsubmit="return check_old_email()">
-                       	<input type="hidden" name="action" value="recovery_email">
-                        <input type="submit" class="btn btn-primary"></input>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
     <!-- footer-area-start -->
     <footer>
         <!-- footer-top-start -->

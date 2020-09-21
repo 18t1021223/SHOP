@@ -60,7 +60,7 @@
 							<div class="account-area text-right">
 								<ul>
 									<li><a href="userController?action=account">Tài khoản</a></li>
-									<li><a href="checkout.html">Thanh toán</a></li>
+									<li><a href="checkout.jsp">Thanh toán</a></li>
 									<li><a href="userController?action=logout">Đăng xuất</a></li>
 								</ul>
 							</div>
@@ -351,13 +351,13 @@
 													<a href="productController?page=cart&product_id=${ sp.getProduct_id()}">${sp.getProduct_name() }</a>
 												</td>
 												<td class="product-subtotal">
-													<p class="amount">${sp.getProductSaleFormat() } đ</p>
-													<span class="old-price" style="text-decoration: line-through;font-size: 15px;color:#666;">${sp.getProductPriceFormat() } đ</span>
+													<p class="amount">${sp.getProductSaleFormat() } ₫</p>
+													<span class="old-price" style="text-decoration: line-through;font-size: 15px;color:#666;">${sp.getProductPriceFormat() } ₫</span>
 												</td>
 												<td class="product-quantity">
 													<input class='product-quantity-input' type="number" product-id='${cart_model.key }' value="${cart_model.value.getCart_quantify() }" min='1'>
 												</td>
-												<td class="product-subtotal product-text">${cart_model.value.getPriceTotalFormat() } đ</td>
+												<td class="product-subtotal product-text">${cart_model.value.getPriceTotalFormat() } ₫</td>
 												<td class="product-remove">
 													<a href="" product-id='${cart_model.key }'><i class="fa fa-times"></i></a>
 												</td>
@@ -392,36 +392,25 @@
                             <h2>Tổng tiền </h2>
                             <table>
                                 <tbody>
-                                    <tr class="cart-subtotal">
+                                  <!--    <tr class="cart-subtotal">
                                         <th>Tạm tính</th>
                                         <td>
                                             <span class="amount cart-temp">${cart_model.getPriceTotal()} đ</span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
+                                    
                                     <tr class="order-total">
-                                        <th>Phí vận chuyển</th>
-                                        <td>
-                                      		
-                                            <ul id="shipping_method">
-                                                <li>                                                                                         
-                                                    <span class="amount">20.500 đ</span>                                  
-                                                </li>                                         
-                                            </ul>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr class="order-total">
-                                        <th>Tổng</th>
+                                        <th>Tạm tính</th>
                                         <td>
                                             <strong>
-                                                <span class="amount"></span>
+                                                <span class="amount cart-temp">${cart_model.getPriceTotal()} ₫</span>
                                             </strong>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="wc-proceed-to-checkout">
-                                <a href="#">Đi đến thanh toán</a>
+                                <a href="checkout.jsp">Đi đến thanh toán</a>
                             </div>
                         </div>
                     </div>

@@ -37,18 +37,12 @@ public class cartController extends HttpServlet {
 		cartModel cart = (cartModel) hs.getAttribute("cart_model");
 		userBEAN user = (userBEAN) hs.getAttribute("user");
 		/*------------*/
-
 		// xóa theo mã sản phẩm (product_id)
 		if (action.equals("remove")) {
 			String id = req.getParameter("product_id");
 			if (!cartBO.removeCart(id)) {
 				hs.setAttribute("msg", messengerUTILS.showMSG(systemCONSTANT.ERROR_SYSTEM));
 			}
-
-		} else if (action.equals("viewcart")) {
-			loginController.khoitaoAttribute(req, resp);
-			req.getRequestDispatcher("cart.jsp").forward(req, resp);
-
 		} else if (action.equals("add")) {
 
 			String product_id = req.getParameter("product_id");
@@ -67,9 +61,9 @@ public class cartController extends HttpServlet {
 					cartBO.insertProduct(quantify, product_id, user.getUser_id());
 				}
 
-				msg = messengerUTILS.showMSG("INSERT_SUCCESS");
+				msg = messengerUTILS.showMSG(systemCONSTANT.INSERT_SUCCESS);
 			} else {
-				msg = messengerUTILS.showMSG("ERROR_SYSTEM");
+				msg = messengerUTILS.showMSG(systemCONSTANT.ERROR_SYSTEM);
 			}
 			hs.setAttribute("msg", msg);
 
@@ -98,4 +92,8 @@ public class cartController extends HttpServlet {
 		productAjax.getCartJson(req, resp, cm);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+	}
 }

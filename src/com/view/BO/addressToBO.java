@@ -83,7 +83,7 @@ public class addressToBO {
 		return null;
 	}
 
-	// -----------------------------
+	// -----------------------------convert
 	public static String getName(int province_id, int district_id) {
 		String sql = "SELECT d.District_prefix+' '+d.District_name ,  p.Province_name  FROM  province p "
 				+ "	join district d on p.Province_id=d.Province_id "
@@ -198,7 +198,6 @@ public class addressToBO {
 		} catch (Exception e) {
 			System.out.println("getAddress(String user_id)-loi: " + e.getMessage());
 		}
-
 		return null;
 	}
 

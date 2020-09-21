@@ -18,8 +18,6 @@ import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
 
 import com.google.gson.Gson;
-import com.sun.javafx.binding.StringFormatter;
-import com.sun.xml.internal.fastinfoset.util.StringArray;
 import com.view.BEAN.addressToBEAN;
 import com.view.BEAN.billBEAN;
 import com.view.BEAN.userBEAN;
@@ -27,18 +25,17 @@ import com.view.BO.addressToBO;
 import com.view.BO.billBO;
 import com.view.BO.userBO;
 import com.view.MODEL.my_accountAjax;
+import com.view.constan.systemCONSTANT;
 import com.view.utils.messengerUTILS;
-
-import sun.security.mscapi.CKeyPairGenerator.RSA;
 
 @WebServlet("/userController")
 public class userController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String EMAIL_NAME = "quanlybanhang000@gmail.com";
-	private final String EMAIL_PASSWORD = "31029054";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");
 		String action = req.getParameter("action");
 		HttpSession hs = req.getSession();
 		if (action.equals("logout"))
@@ -47,8 +44,8 @@ public class userController extends HttpServlet {
 			String EMAIL_TO = req.getParameter("user_email");
 			// nếu email đã tồn tại thi báo lỗi
 			if (userBO.checkEmail(EMAIL_TO) == 1) {
-				req.setAttribute("notify", 4);
-				req.getRequestDispatcher("register.jsp").forward(req, resp);
+				resp.getWriter().write("4");
+				resp.getWriter().close();
 				return;
 			}
 			register(req, resp, EMAIL_TO);
@@ -58,17 +55,6 @@ public class userController extends HttpServlet {
 			hs.setAttribute("user_email", EMAIL_TO);
 		} else if (action.equals("verification")) {
 			verification(req, resp);
-		} else if (action.equals("recovery_email")) {
-
-			String new_email = req.getParameter("new_email");
-			if (userBO.checkEmail(new_email) == 1) {
-				req.setAttribute("notify", 4);
-				req.getRequestDispatcher("verification.jsp").forward(req, resp);
-				return;
-			}
-
-			hs.setAttribute("user_email", new_email);
-			register(req, resp, new_email);
 		} else if (action.equals("forget")) {
 			String EMAIL_TO = req.getParameter("user_email");
 			forget(req, resp, EMAIL_TO);
@@ -100,19 +86,21 @@ public class userController extends HttpServlet {
 	public void register(HttpServletRequest req, HttpServletResponse resp, String EMAIL_TO) throws IOException {
 
 		try {
-			Email email = new SimpleEmail();
-			email.setAuthentication(EMAIL_NAME, EMAIL_PASSWORD);
+			HtmlEmail email = new HtmlEmail();
+			email.setAuthentication(systemCONSTANT.EMAIL_NAME, systemCONSTANT.EMAIL_PASSWORD);
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
 			email.setSSLOnConnect(true);
 			email.setCharset("utf-8");
 			// Người gửi
-			email.setFrom(EMAIL_NAME);
+			email.setFrom(systemCONSTANT.EMAIL_NAME);
 			UUID u = UUID.randomUUID();
 			// Tiêu đề
 			email.setSubject("Mã xác nhận tài khoản");
 			// Nội dung email
-			email.setMsg("Mã xác nhận tài khoản " + EMAIL_TO + " là: " + u + "");
+			String url = req.getRequestURL() + "?action=verification&verification_code=" + u;
+			email.setHtmlMsg("<html>" + "<p>Mã xác nhận tài khoản " + EMAIL_TO + " là: </p>" + u + "<br>" + " <a href='"
+					+ url + "'> click xác nhận</a>" + "  </html>");
 			// Người nhận
 			email.addTo(EMAIL_TO);
 
@@ -123,8 +111,8 @@ public class userController extends HttpServlet {
 			hs.setAttribute("verification", u + "");
 			hs.setMaxInactiveInterval(120);
 
-			// chuyển đến trang xac thực
-			resp.sendRedirect("verification.jsp");
+			// http://localhost:9999/demo_webapp/verification.jsp
+			resp.getWriter().write("verification.jsp");
 		} catch (Exception e) {
 			System.out.println("register- loi: " + e.getMessage());
 			resp.sendError(404);
@@ -158,8 +146,10 @@ public class userController extends HttpServlet {
 
 	}
 
-	public void forget(HttpServletRequest req, HttpServletResponse resp, String EMAIL_TO) throws IOException {
-
+	public boolean forget(HttpServletRequest req, HttpServletResponse resp, String EMAIL_TO) throws IOException {
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");
+		HttpSession hs = req.getSession();
 		try {
 			UUID u = UUID.randomUUID();
 			String pass_new = u + "";
@@ -173,12 +163,12 @@ public class userController extends HttpServlet {
 				userBO.eidtPassword(user.getUser_password(), user.getUser_id());
 
 				HtmlEmail email = new HtmlEmail();
-				email.setAuthentication(EMAIL_NAME, EMAIL_PASSWORD);
+				email.setAuthentication(systemCONSTANT.EMAIL_NAME, systemCONSTANT.EMAIL_PASSWORD);
 				email.setHostName("smtp.googlemail.com");
 				email.setSmtpPort(465);
 				email.setSSLOnConnect(true);
 				// Người gửi
-				email.setFrom(EMAIL_NAME, "SHOP", "utf-8");
+				email.setFrom(systemCONSTANT.EMAIL_NAME, "SHOP");
 				email.setCharset("utf-8");
 				// Tiêu đề
 				email.setSubject("Mật khẩu mới");
@@ -191,52 +181,58 @@ public class userController extends HttpServlet {
 				email.setTextMsg("Your email client does not support HTML messages");
 				email.send();
 				System.out.println("password Sent!!");
-				req.setAttribute("notify", 1);
+				// thông báo ra jsp
+				resp.getWriter().write("1");
+				return true;
 			} else {
 				// neeus khoong co trong csdl
-				req.setAttribute("notify", 2);
+				resp.getWriter().write("2");
 			}
-			// chuyển đến trang dang nhap
-			req.getRequestDispatcher("login.jsp").forward(req, resp);
 		} catch (Exception e) {
 			System.out.println("forget- loi: " + e.getMessage());
 			resp.sendError(404);
 		}
+		return false;
 	}
 
 	public void update(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		String user_id = req.getParameter("user_id");
+		HttpSession hs = req.getSession();
+		userBEAN u = (userBEAN) hs.getAttribute("user");
 		String user_name = req.getParameter("user_name");
-		String user_email = req.getParameter("user_email");
 		String user_telephone = req.getParameter("user_telephone");
 		String user_gender = req.getParameter("user_gender");
 		String user_birthday = req.getParameter("user_birthday");
-		String user_password = req.getParameter("user_password");
-		userBEAN u = new userBEAN(user_id, user_name, user_email, user_password, user_telephone, user_birthday, "",
-				user_gender);
-		userBO.updateUser(u);
-
-		HttpSession hs = req.getSession();
-		hs.setAttribute("user", u);
+		u.setUser_name(user_name);
+		u.setUser_telephone(user_telephone);
+		u.setUser_gender(user_gender);
+		u.setUser_birthday(user_birthday);
+		String msg = "";
+		if (userBO.updateUser(u)) {
+			hs.setAttribute("user", u);
+			msg = messengerUTILS.showMSG(systemCONSTANT.UPDATE_SUCCESS);
+		} else {
+			msg = messengerUTILS.showMSG(systemCONSTANT.ERROR_SYSTEM);
+		}
 		hs.setAttribute("layout", 0);
-		String msg = messengerUTILS.showMSG("UPDATE_SUCCESS");
-		req.setAttribute("msg", msg);
-		req.getRequestDispatcher("my-account.jsp").forward(req, resp);
-
+		hs.setAttribute("msg", msg);
 	}
 
 	public void editPassword(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String password = req.getParameter("password");
-		String id = req.getParameter("user_id");
-
-		userBO.eidtPassword(password, id);
-		userBEAN u = userBO.getUser(id);
 		HttpSession hs = req.getSession();
-		hs.setAttribute("user", u);
-		hs.setAttribute("layout", 0);
-		String msg = messengerUTILS.showMSG("UPDATE_SUCCESS");
-		req.setAttribute("msg", msg);
-		resp.sendRedirect("my-account.jsp");
+		userBEAN u = (userBEAN) hs.getAttribute("user");
+		if (req.getParameter("pass-current").equals(u.getUser_password()) == false) {
+			resp.setCharacterEncoding("utf-8");
+			resp.setContentType("text/html");
+			resp.getWriter().write(messengerUTILS.showMSG(systemCONSTANT.FAIL_SYSTEM));
+		} else {
+			String password = req.getParameter("password");
+			if (userBO.eidtPassword(password, u.getUser_id())) {
+				u.setUser_password(password);
+				hs.setAttribute("user", u);
+				hs.setAttribute("msg", messengerUTILS.showMSG(systemCONSTANT.UPDATE_SUCCESS));
+			}
+			hs.setAttribute("layout", 0);
+		}
 	}
 
 	public void editAddress(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -251,9 +247,9 @@ public class userController extends HttpServlet {
 		int ward_id = 0;
 		try {
 			ward_id = Integer.parseInt(req.getParameter("ward"));
-			address_description += "||" + addressToBO.getName(province_id, district_id, ward_id);
+			address_description += "|" + addressToBO.getName(province_id, district_id, ward_id);
 		} catch (Exception e) {
-			address_description += "||" + addressToBO.getName(province_id, district_id);
+			address_description += "|" + addressToBO.getName(province_id, district_id);
 		}
 		String address_code = ward_id + " " + district_id + " " + province_id;
 		addressToBEAN a = new addressToBEAN(address_id, address_telephone, address_description, u.getUser_id(), null,
@@ -261,13 +257,14 @@ public class userController extends HttpServlet {
 
 		String msg = "";
 		if (addressToBO.updateAddress(a)) {
-			msg = messengerUTILS.showMSG("UPDATE_SUCCESS");
+			msg = messengerUTILS.showMSG(systemCONSTANT.UPDATE_SUCCESS);
 		} else {
-			msg = messengerUTILS.showMSG("ERROR_SYSTEM");
+			msg = messengerUTILS.showMSG(systemCONSTANT.ERROR_SYSTEM);
 		}
-		req.setAttribute("msg", msg);
+		hs.setAttribute("msg", msg);
 		hs.setAttribute("layout", 1);
-		req.getRequestDispatcher("userController?action=account").forward(req, resp);
+		ArrayList<addressToBEAN> dsAddress = addressToBO.getAddress(u.getUser_id());
+		hs.setAttribute("address_list", dsAddress);
 	}
 
 	public void addAddress(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -283,22 +280,23 @@ public class userController extends HttpServlet {
 		int ward_id = 0;
 		try {
 			ward_id = Integer.parseInt(req.getParameter("ward"));
-			address_description += "||" + addressToBO.getName(province_id, district_id, ward_id);
+			address_description += "|" + addressToBO.getName(province_id, district_id, ward_id);
 		} catch (Exception e) {
-			address_description += "||" + addressToBO.getName(province_id, district_id);
+			address_description += "|" + addressToBO.getName(province_id, district_id);
 		}
 		String address_code = ward_id + " " + district_id + " " + province_id;
 		addressToBEAN a = new addressToBEAN(address_id, address_telephone, address_description, u.getUser_id(), null,
 				address_user, address_code);
 		String msg = "";
 		if (addressToBO.insertAddress(a)) {
-			msg = messengerUTILS.showMSG("INSERT_SUCCESS");
+			msg = messengerUTILS.showMSG(systemCONSTANT.INSERT_SUCCESS);
 		} else {
-			msg = messengerUTILS.showMSG("ERROR_SYSTEM");
+			msg = messengerUTILS.showMSG(systemCONSTANT.ERROR_SYSTEM);
 		}
-		req.setAttribute("msg", msg);
+		hs.setAttribute("msg", msg);
 		hs.setAttribute("layout", 1);
-		req.getRequestDispatcher("userController?action=account").forward(req, resp);
+		ArrayList<addressToBEAN> dsAddress = addressToBO.getAddress(u.getUser_id());
+		hs.setAttribute("address_list", dsAddress);
 	}
 
 	// chinh sua dia chi mac dinh
@@ -307,31 +305,23 @@ public class userController extends HttpServlet {
 		HttpSession hs = req.getSession();
 		userBEAN u = (userBEAN) hs.getAttribute("user");
 
-		String msg = "";
-		if (addressToBO.updateAddressType(u.getUser_id(), address_id, "1")) {
-			msg = messengerUTILS.showMSG("UPDATE_SUCCESS");
-		} else {
-			msg = messengerUTILS.showMSG("ERROR_SYSTEM");
-		}
-		req.setAttribute("msg", msg);
+		addressToBO.updateAddressType(u.getUser_id(), address_id, "1");
 		hs.setAttribute("layout", 1);
-		req.getRequestDispatcher("userController?action=account").forward(req, resp);
+		ArrayList<addressToBEAN> dsAddress = addressToBO.getAddress(u.getUser_id());
+		hs.setAttribute("address_list", dsAddress);
 	}
 
 	// xoa dia chi
 	public void addressRemove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String address_id = req.getParameter("address_id");
-		String msg ="";
-		if(addressToBO.removeAddress(address_id)){
-			msg = messengerUTILS.showMSG("REMOVE_SUCCESS");
-		}else {
-			msg = messengerUTILS.showMSG("ERROR_SYSTEM");
-		}
-		
 		HttpSession hs = req.getSession();
-		req.setAttribute("msg", msg);
+		String address_id = req.getParameter("address_id");
+		userBEAN u = (userBEAN) hs.getAttribute("user");
+		addressToBO.removeAddress(address_id);
+
 		hs.setAttribute("layout", 1);
-		req.getRequestDispatcher("userController?action=account").forward(req, resp);
+		// nạp danh sách địa chỉ
+		ArrayList<addressToBEAN> dsAddress = addressToBO.getAddress(u.getUser_id());
+		hs.setAttribute("address_list", dsAddress);
 	}
 
 	public void account(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -357,8 +347,12 @@ public class userController extends HttpServlet {
 				HashMap<Integer, String> ds = addressToBO.getDistrict(Integer.parseInt(province_id));
 				my_accountAjax.getDistrict(req, resp, ds);
 			} else if (district_id != null) {
-				HashMap<Integer, String> ds = addressToBO.getWard(Integer.parseInt(district_id));
-				my_accountAjax.getWard(req, resp, ds);
+				try {
+					HashMap<Integer, String> ds = addressToBO.getWard(Integer.parseInt(district_id));
+					my_accountAjax.getWard(req, resp, ds);
+				} catch (Exception e) {
+				}
+
 			} else {
 				String mission = req.getParameter("mission");
 				if (mission.equals("add")) {
@@ -372,9 +366,7 @@ public class userController extends HttpServlet {
 					resp.setContentType("application/json");
 					resp.setCharacterEncoding("utf-8");
 					resp.getWriter().write(info);
-
 				}
-
 			}
 		} else if (action.equals("bill")) {
 
